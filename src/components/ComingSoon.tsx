@@ -22,28 +22,36 @@ export const ComingSoon = () => {
 
   return (
     <div className="flex flex-col items-center gap-6 md:gap-8">
-      {/* Overlapping "COMING SOON" text block */}
+      {/* Overlapping "COMING SOON" text block — Black Friday style */}
       <div className="relative flex flex-col items-center select-none">
-        {/* Background shadow layer */}
-        <span
-          className="absolute top-[4px] md:top-[6px] text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-ted-red/15 leading-[0.9] pointer-events-none"
-          aria-hidden="true"
-        >
-          Coming Soon
-        </span>
+        {/* Top outlined text — shows top portion of letters, bottom clipped */}
+        <div className="h-[1.2rem] sm:h-[1.8rem] md:h-[2.5rem] lg:h-[3.2rem] overflow-hidden">
+          <span
+            className="block text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight leading-[0.9] pointer-events-none"
+            style={{ WebkitTextStroke: "1.5px rgba(235, 0, 40, 0.35)", color: "transparent" }}
+            aria-hidden="true"
+          >
+            Coming Soon
+          </span>
+        </div>
 
-        {/* Middle echo layer */}
-        <span
-          className="absolute top-[2px] md:top-[3px] text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-ted-red/30 leading-[0.9] pointer-events-none blur-[1px]"
-          aria-hidden="true"
+        {/* Primary solid text — center, fully visible */}
+        <h2
+          className="text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-ted-red leading-[0.9] drop-shadow-[0_0_40px_rgba(235,0,40,0.4)]"
         >
-          Coming Soon
-        </span>
-
-        {/* Primary text */}
-        <h2 className="relative text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-ted-red leading-[0.9] drop-shadow-[0_0_40px_rgba(235,0,40,0.4)]">
           Coming Soon
         </h2>
+
+        {/* Bottom outlined text — shows bottom portion of letters, top clipped */}
+        <div className="h-[1.2rem] sm:h-[1.8rem] md:h-[2.5rem] lg:h-[3.2rem] overflow-hidden">
+          <span
+            className="block text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight leading-[0.9] pointer-events-none translate-y-[-55%]"
+            style={{ WebkitTextStroke: "1.5px rgba(235, 0, 40, 0.35)", color: "transparent" }}
+            aria-hidden="true"
+          >
+            Coming Soon
+          </span>
+        </div>
       </div>
 
       {/* Event date */}
