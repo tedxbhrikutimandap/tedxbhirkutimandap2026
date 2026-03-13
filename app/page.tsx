@@ -16,7 +16,7 @@ export default function Home() {
         </div>
 
         <div className="space-y-10">
-          <h1 className="text-5xl md:text-9xl font-black tracking-tight text-white leading-[0.9]">
+          <h1 className="text-5xl md:text-9xl font-[900] tracking-tight text-white leading-[0.9]">
             {siteConfig.tagline}
           </h1>
           <p className="text-xl md:text-3xl font-light text-white/60 max-w-3xl mx-auto leading-relaxed tracking-tight">
