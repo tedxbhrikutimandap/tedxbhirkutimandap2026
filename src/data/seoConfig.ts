@@ -3,7 +3,7 @@ import { siteConfig } from "./siteConfig";
 export const seoConfig = {
   title: siteConfig.name,
   description: siteConfig.description,
-  url: "https://tedxbhirkutimandap.com",
+  url: "https://www.tedxbhirkutimandap.com",
   siteName: "TedxBhirkutimandap",
   locale: "en_US",
   type: "website",
@@ -24,7 +24,7 @@ export const seoConfig = {
   // Organization Schema
   organization: {
     name: "TedxBhirkutimandap",
-    url: "https://tedxbhirkutimandap.com",
+    url: "https://www.tedxbhirkutimandap.com",
     logo: siteConfig.logos.white,
     sameAs: [
       "https://www.instagram.com/tedxbhirkutimandap/",
