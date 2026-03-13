@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { siteConfig } from "@/data/siteConfig";
 import { seoConfig } from "@/data/seoConfig";
 import { OrganizationJsonLd, PersonJsonLd } from "@/components/JsonLd";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -80,11 +76,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://tally.so" />
         <link rel="dns-prefetch" href="https://tally.so" />
+        <link rel="preload" href="https://tally.so/widgets/embed.js" as="script" />
         <OrganizationJsonLd />
         <PersonJsonLd />
         
-        {/* Tally Embed Script - Moved here for earlier loading */}
-        <Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
+        {/* Tally embed script */}
+        <Script id="tally-embed" src="https://tally.so/widgets/embed.js" strategy="beforeInteractive" />
 
         {/* Google Analytics */}
         <Script
@@ -120,7 +117,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
+        className={`${poppins.variable} antialiased bg-black`}
       >
         {children}
       </body>
