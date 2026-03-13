@@ -14,7 +14,7 @@ export const siteConfig = {
   ],
   tallyFormUrl: "https://tally.so/r/jaMNra",
   analytics: {
-    googleId: "G-F03386L7N9", // Placeholder or from your snippet if provided
+    googleId: "G-F03386L7N9",
     clarityId: "vv5aiduw9l",
   }
 };
