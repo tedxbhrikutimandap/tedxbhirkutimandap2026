@@ -1,16 +1,16 @@
 # Implementation Plan: UX Overhaul and Font Migration (ux_overhaul_20260313)
 
 ## Phase 1: Typography Migration
-- [ ] Task: Integrate **Poppins** font via `next/font/google` in `app/layout.tsx`.
-- [ ] Task: Update Tailwind CSS 4 theme configuration in `app/globals.css` to use Poppins as the primary sans-serif font.
-- [ ] Task: Refactor `app/page.tsx` to use the `H1` tag for the main title with the **Poppins Black (900)** weight.
-- [ ] Task: Conductor - User Manual Verification 'Typography Migration' (Protocol in workflow.md)
+- [x] Task: Integrate **Poppins** font via `next/font/google` in `app/layout.tsx`. 09a0b96
+- [x] Task: Update Tailwind CSS 4 theme configuration in `app/globals.css` to use Poppins as the primary sans-serif font. c536575
+- [x] Task: Refactor `app/page.tsx` to use the `H1` tag for the main title with the **Poppins Black (900)** weight. 70e734f
+- [x] Task: Conductor - User Manual Verification 'Typography Migration' (Protocol in workflow.md)
 
 ## Phase 2: Refactor Tally Action System
-- [ ] Task: Create a new `src/components/FloatingActions.tsx` component and migrate the Tally button logic from `src/components/TallyWidget.tsx`.
-- [ ] Task: Implement **Threshold-based** scroll detection to hide/show the floating action system.
-- [ ] Task: Implement a rotating prompt bubble with **Cross-fade** transitions (alternating every 2 seconds).
-- [ ] Task: Add a 'loading' state that changes the button text to **'Opening...'** when a Tally modal is being prepared.
+- [~] Task: Create a new `src/components/FloatingActions.tsx` component and migrate the Tally button logic from `src/components/TallyWidget.tsx`.
+- [~] Task: Implement **Threshold-based** scroll detection to hide/show the floating action system.
+- [~] Task: Implement a rotating prompt bubble with **Cross-fade** transitions (alternating every 2 seconds).
+- [~] Task: Add a 'loading' state that changes the button text to **'Opening...'** when a Tally modal is being prepared.
 - [ ] Task: Conductor - User Manual Verification 'Tally Action System' (Protocol in workflow.md)
 
 ## Phase 3: Polish and Verification
