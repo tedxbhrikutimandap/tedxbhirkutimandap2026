@@ -6,7 +6,7 @@ import { ComingSoon } from "@/components/ComingSoon";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between bg-black text-white px-4 relative overflow-hidden font-sans">
+    <div className="flex h-screen flex-col items-center justify-between bg-black text-white px-4 relative overflow-hidden font-sans">
       {/* Animated Ribbon Banners */}
       <RibbonBanner />
 
