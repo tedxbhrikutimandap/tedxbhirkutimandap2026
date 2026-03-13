@@ -27,10 +27,17 @@ export const PersonJsonLd = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": seoConfig.organizer.name,
-    "url": seoConfig.organizer.url,
-    "jobTitle": seoConfig.organizer.jobTitle,
-    "sameAs": seoConfig.organizer.sameAs,
+    "name": seoConfig.technicalLead.name,
+    "url": seoConfig.technicalLead.url,
+    "jobTitle": seoConfig.technicalLead.jobTitle,
+    "email": seoConfig.technicalLead.email,
+    "telephone": seoConfig.technicalLead.telephone,
+    "image": seoConfig.technicalLead.image,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": seoConfig.technicalLead.address,
+    },
+    "sameAs": seoConfig.technicalLead.sameAs,
   };
 
   return (
