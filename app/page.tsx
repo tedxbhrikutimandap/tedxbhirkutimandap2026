@@ -26,7 +26,7 @@ export default function Home() {
 
         <div className="pt-4">
           <div className="inline-flex flex-col items-center gap-6 px-12 py-8 border border-white/10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border-t-white/20">
-            <span className="text-xs md:text-sm font-black tracking-[0.6em] uppercase text-ted-red italic">
+            <span className="text-sm md:text-lg font-[900] tracking-[0.6em] uppercase text-ted-red italic">
               Coming Soon
             </span>
             <div className="h-px w-16 bg-white/10" />
