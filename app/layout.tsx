@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { siteConfig } from "@/data/siteConfig";
+import { seoConfig } from "@/data/seoConfig";
+import { OrganizationJsonLd, PersonJsonLd } from "@/components/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,28 +17,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description,
+  title: {
+    default: seoConfig.title,
+    template: `%s | ${seoConfig.siteName}`,
+  },
+  description: seoConfig.description,
+  metadataBase: new URL(seoConfig.url),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: seoConfig.title,
+    description: seoConfig.description,
+    url: seoConfig.url,
+    siteName: seoConfig.siteName,
+    locale: seoConfig.locale,
     type: "website",
-    url: "https://tedxbhirkutimandap.com", // Replace with your domain when ready
-    siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.logos.white,
+        url: seoConfig.images.og,
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: seoConfig.title,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [siteConfig.logos.white],
+    title: seoConfig.title,
+    description: seoConfig.description,
+    images: [seoConfig.images.twitter],
+    creator: seoConfig.twitter.handle,
+    site: seoConfig.twitter.site,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -48,6 +64,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <OrganizationJsonLd />
+        <PersonJsonLd />
+        
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
