@@ -11,19 +11,22 @@ export const TallyWidget = () => {
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3 group">
         {/* Tooltip message */}
         <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-bold tracking-widest uppercase text-white/80">
-          Wait for the event
+          Join the fun
         </div>
         
         <button
           data-tally-open={siteConfig.tallyFormUrl.split("/").pop()}
           data-tally-layout="modal"
+          data-tally-width="400"
+          data-tally-align-left="1"
+          data-tally-overlay="1"
           data-tally-emoji-text="👋"
           data-tally-emoji-animation="wave"
           className="flex items-center gap-3 px-6 py-5 bg-ted-red text-white rounded-2xl shadow-[0_0_20px_rgba(235,0,40,0.4)] hover:shadow-[0_0_30px_rgba(235,0,40,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 animate-bounce-slow"
         >
           <Mail size={20} fill="white" strokeWidth={1} />
           <span className="font-black tracking-[0.2em] uppercase text-xs">
-            Register Interest
+            Join waitlist
           </span>
         </button>
       </div>
@@ -39,6 +42,15 @@ export const TallyWidget = () => {
         }
         .animate-bounce-slow {
           animation: bounce-slow 3s ease-in-out infinite;
+        }
+        
+        /* Tally custom styling to force bottom-right if possible via data-attributes */
+        .tally-popup {
+          right: 20px !important;
+          bottom: 20px !important;
+          left: auto !important;
+          top: auto !important;
+          transform: none !important;
         }
       `}</style>
     </>
