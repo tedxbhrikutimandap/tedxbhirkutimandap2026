@@ -5,43 +5,43 @@ import { TallyWidget } from "@/components/TallyWidget";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white px-4 relative overflow-hidden">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white px-4 relative overflow-hidden font-sans">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ted-red/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-ted-red/10 rounded-full blur-[160px] pointer-events-none animate-pulse duration-7000" />
 
-      <main className="max-w-4xl w-full text-center space-y-20 animate-in fade-in zoom-in-95 duration-1000 z-10">
-        <div className="flex flex-col items-center space-y-10">
-          <Logo theme="white" />
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+      <main className="max-w-5xl w-full text-center py-20 flex flex-col items-center space-y-24 animate-in fade-in zoom-in-95 duration-1000 z-10">
+        <div className="flex flex-col items-center space-y-12">
+          <Logo theme="white" className="hover:scale-[1.02] transition-transform duration-500" />
+          <div className="h-px w-48 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </div>
 
-        <div className="space-y-8">
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-white leading-tight">
+        <div className="space-y-10">
+          <h1 className="text-5xl md:text-9xl font-black tracking-tight text-white leading-[0.9]">
             {siteConfig.tagline}
           </h1>
-          <p className="text-xl md:text-3xl font-light text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-3xl font-light text-white/60 max-w-3xl mx-auto leading-relaxed tracking-tight">
             {siteConfig.description}
           </p>
         </div>
 
-        <div className="pt-8">
-          <div className="inline-flex flex-col items-center gap-4 px-10 py-6 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-xl shadow-2xl">
-            <span className="text-sm md:text-base font-black tracking-[0.5em] uppercase text-ted-red">
+        <div className="pt-4">
+          <div className="inline-flex flex-col items-center gap-6 px-12 py-8 border border-white/10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border-t-white/20">
+            <span className="text-xs md:text-sm font-black tracking-[0.6em] uppercase text-ted-red italic">
               Coming Soon
             </span>
-            <div className="h-px w-12 bg-white/20" />
-            <span className="text-2xl md:text-3xl font-light tracking-widest text-white/90">
+            <div className="h-px w-16 bg-white/10" />
+            <span className="text-3xl md:text-5xl font-light tracking-[0.2em] text-white/90">
               {siteConfig.eventDate}
             </span>
           </div>
         </div>
 
-        <div className="pt-16">
+        <div className="pt-12 w-full">
           <SocialLinks />
         </div>
       </main>
 
-      <footer className="absolute bottom-8 text-center w-full px-6 text-white/20 text-[10px] md:text-xs tracking-[0.3em] uppercase max-w-3xl mx-auto leading-loose font-medium">
+      <footer className="w-full pb-12 pt-10 text-center px-6 text-white/10 text-[9px] md:text-xs tracking-[0.4em] uppercase max-w-4xl mx-auto leading-loose font-bold z-10 border-t border-white/5 mt-auto">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. This independent TEDx event is operated under license from TED.</p>
       </footer>
 
