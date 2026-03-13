@@ -1,7 +1,7 @@
 import { siteConfig } from "@/data/siteConfig";
 import { Logo } from "@/components/Logo";
 import { SocialLinks } from "@/components/SocialLinks";
-import { TallyWidget } from "@/components/TallyWidget";
+import { FloatingActions } from "@/components/FloatingActions";
 
 export default function Home() {
   return (
@@ -45,8 +45,8 @@ export default function Home() {
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. This independent TEDx event is operated under license from TED.</p>
       </footer>
 
-      {/* Tally Registration Button/Modal */}
-      <TallyWidget />
+      {/* Floating Action Buttons */}
+      <FloatingActions />
     </div>
   );
 }

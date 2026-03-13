@@ -81,7 +81,7 @@ export default function RootLayout({
         <PersonJsonLd />
         
         {/* Tally embed script */}
-        <Script id="tally-embed" src="https://tally.so/widgets/embed.js" strategy="beforeInteractive" />
+        <Script id="tally-embed" src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
 
         {/* Google Analytics */}
         <Script
