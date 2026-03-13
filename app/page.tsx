@@ -41,7 +41,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="w-full pb-12 pt-10 text-center px-6 text-white/10 text-[9px] md:text-xs tracking-[0.4em] uppercase max-w-4xl mx-auto leading-loose font-bold z-10 border-t border-white/5 mt-auto">
+      <footer className="w-full pb-12 pt-10 text-center px-6 text-white/40 text-[9px] md:text-xs tracking-[0.4em] uppercase max-w-4xl mx-auto leading-loose font-bold z-10 border-t border-white/10 mt-auto">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. This independent TEDx event is operated under license from TED.</p>
       </footer>
 
