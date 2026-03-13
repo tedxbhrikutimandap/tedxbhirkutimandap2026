@@ -11,6 +11,26 @@
   --color-foreground: var(--foreground);
   --color-ted-red: var(--ted-red);
   --font-sans: var(--font-poppins);
+  --animate-ribbon-scroll-left: ribbon-scroll-left 40s linear infinite;
+  --animate-ribbon-scroll-right: ribbon-scroll-right 40s linear infinite;
+}
+
+@keyframes ribbon-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ribbon-scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
