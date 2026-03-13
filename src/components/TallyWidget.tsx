@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/siteConfig";
 export const TallyWidget = () => {
   return (
     <>
-      <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
+      <Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
       <button
         data-tally-open={siteConfig.tallyFormUrl.split("/").pop()}
         data-tally-layout="modal"
