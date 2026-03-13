@@ -5,7 +5,7 @@ Improve the website's SEO by implementing structured data (JSON-LD), refining me
 
 ## Requirements
 - **Structured Data (Schema.org):**
-  - `Organization` schema for TEDxBhirkutiMandap.
+  - `Organization` schema for TEDxBhrikutiMandap.
   - `Person` schema for key event organizers/leads (placeholders/configurable).
 - **Metadata Management:**
   - Create a central `src/data/seo.ts` (or expand `siteConfig.ts`) to manage all SEO strings.

@@ -1,10 +1,10 @@
-# GEMINI.md - TEDxBhirkutiMandap2026
+# GEMINI.md - TEDxBhrikutiMandap2026
 
-This document provides instructional context for AI interactions within the `tedxbhirkutimandap2026` project.
+This document provides instructional context for AI interactions within the `tedxbhrikutimandap2026` project.
 
 ## Project Overview
 
-The **TEDxBhirkutiMandap2026** project is a web application developed for the TEDx event at Bhirkuti Mandap in 2026. It is built using the **Next.js** framework (App Router) and **React 19**.
+The **TEDxBhrikutiMandap2026** project is a web application developed for the TEDx event at Bhrikuti Mandap in 2026. It is built using the **Next.js** framework (App Router) and **React 19**.
 
 ### Key Technologies
 

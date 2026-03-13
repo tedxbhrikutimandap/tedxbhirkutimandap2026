@@ -54,6 +54,20 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "android-chrome-192x192", url: "/favicon/android-chrome-192x192.png" },
+      { rel: "android-chrome-512x512", url: "/favicon/android-chrome-512x512.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -64,9 +78,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://tally.so" />
+        <link rel="dns-prefetch" href="https://tally.so" />
         <OrganizationJsonLd />
         <PersonJsonLd />
         
+        {/* Tally Embed Script - Moved here for earlier loading */}
+        <Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
+
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"

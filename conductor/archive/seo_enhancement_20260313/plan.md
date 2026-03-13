@@ -30,7 +30,7 @@
 
 ## Phase 6: Dynamic SEO Assets [checkpoint: e222280]
 - [x] Task: Update Production URL (59cd66f)
-    - [ ] Update `seoConfig.ts` with `https://www.tedxbhirkutimandap.com/`.
+    - [ ] Update `seoConfig.ts` with `https://www.tedxbhrikutimandap.com/`.
 - [x] Task: Implement Dynamic Sitemap (59cd66f)
     - [ ] Create `app/sitemap.ts` using `seoConfig.ts`.
 - [x] Task: Implement Robots.txt (59cd66f)

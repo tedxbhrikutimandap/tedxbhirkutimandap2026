@@ -1,4 +1,4 @@
-# Technology Stack: TEDxBhirkutiMandap 2026
+# Technology Stack: TEDxBhrikutiMandap 2026
 
 ## Core Frameworks
 - **Framework:** Next.js (Version 16.1.6 - App Router)

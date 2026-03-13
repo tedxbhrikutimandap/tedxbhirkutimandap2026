@@ -1,4 +1,4 @@
-# Product Guidelines: TEDxBhirkutiMandap 2026
+# Product Guidelines: TEDxBhrikutiMandap 2026
 
 ## Prose Style: Inspiring & Visionary
 The website's content should use inspiring and visionary language that aligns with TED's mission of "ideas worth spreading." The tone should be thought-provoking, forward-thinking, and elevate the overall experience for the user.

@@ -3,15 +3,15 @@ import { siteConfig } from "./siteConfig";
 export const seoConfig = {
   title: siteConfig.name,
   description: siteConfig.description,
-  url: "https://www.tedxbhirkutimandap.com",
-  siteName: "TedxBhirkutimandap",
+  url: "https://www.tedxbhrikutimandap.com/",
+  siteName: "TEDxBhrikutimandap",
   locale: "en_US",
   type: "website",
   
   // Twitter
   twitter: {
-    handle: "@tedxbhirkutimandap", 
-    site: "@tedxbhirkutimandap",
+    handle: "@tedxbhrikutimandap", 
+    site: "@tedxbhrikutimandap",
     cardType: "summary_large_image",
   },
 
@@ -23,13 +23,13 @@ export const seoConfig = {
 
   // Organization Schema
   organization: {
-    name: "TedxBhirkutimandap",
-    url: "https://www.tedxbhirkutimandap.com",
+    name: "TEDxBhrikutimandap",
+    url: "https://www.tedxbhrikutimandap.com/",
     logo: siteConfig.logos.white,
     sameAs: [
-      "https://www.instagram.com/tedxbhirkutimandap/",
+      "https://www.instagram.com/tedxbhrikutimandap/",
       "https://www.facebook.com/profile.php?id=61586610127547",
-      "https://www.linkedin.com/company/tedxbhirkutimandap/",
+      "https://www.linkedin.com/company/tedxbhrikutimandap/",
     ],
     contactPoint: {
       telephone: "+977 9864782896",
