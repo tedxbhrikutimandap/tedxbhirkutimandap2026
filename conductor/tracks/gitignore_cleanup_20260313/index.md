@@ -1,4 +1,4 @@
-# Track seo_enhancement_20260313 Context
+# Track gitignore_cleanup_20260313 Context
 
 - [Specification](./spec.md)
 - [Implementation Plan](./plan.md)
