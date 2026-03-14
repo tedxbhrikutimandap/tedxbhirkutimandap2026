@@ -1,7 +1,7 @@
 import { siteConfig } from "@/data/siteConfig";
-import { Instagram, Facebook, Linkedin } from "lucide-react";
+import { Instagram, Facebook, Linkedin, type LucideIcon } from "lucide-react";
 
-const IconMap: Record<string, any> = {
+const IconMap: Record<string, LucideIcon> = {
   Instagram: Instagram,
   Facebook: Facebook,
   LinkedIn: Linkedin,
