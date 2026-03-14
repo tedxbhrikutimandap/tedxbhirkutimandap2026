@@ -4,8 +4,8 @@ export const siteConfig = {
   description: "Join us in 2026 for a journey through inspiration, innovation, and impact at TEDxBhrikutimandap.",
   eventDate: "2026",
   logos: {
-    black: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773410054/Official_Logo_Black_ctklrv.png",
-    white: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773410054/Official_Logo_White_ltw046.png",
+    black: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",
+    white: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",
   },
   socials: [
     { name: "Instagram", url: "https://www.instagram.com/tedxbhrikutimandap/" },

@@ -55,7 +55,7 @@ export const ComingSoon = () => {
       </div>
 
       {/* Event date */}
-      <span className="text-2xl sm:text-3xl md:text-5xl font-light tracking-[0.3em] text-white/80">
+      <span className="text-2xl sm:text-3xl md:text-5xl font-black tracking-[0.3em] text-white/80">
         {siteConfig.eventDate}
       </span>
 
