@@ -13,10 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
   ];
 
-  return routes.map((route) => ({
+  return routes.map((route): MetadataRoute.Sitemap[number] => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    changeFrequency: "weekly",
     priority: route === "" ? 1 : 0.8,
   }));
 }

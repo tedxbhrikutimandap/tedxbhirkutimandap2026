@@ -1,66 +1,106 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Lightbulb, Users, Globe, Sparkles } from "lucide-react";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about TEDxBhrikutiMandap — an independently organized TEDx event in Kathmandu, Nepal. Discover our story, our mission, and the venue.",
+    "Learn about TEDxBhrikutiMandap 2026 — Envisioning Tomorrow. An independently organized TEDx event in Kathmandu, Nepal, bringing together bold ideas shaping the future.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About TEDxBhrikutiMandap",
+    title: "About TEDxBhrikutiMandap — Envisioning Tomorrow",
     description:
-      "An independently organized TEDx event bringing ideas worth spreading to Kathmandu, Nepal.",
+      "An independently organized TEDx event bringing ideas worth spreading to Kathmandu, Nepal. Our 2026 theme: Envisioning Tomorrow.",
   },
 };
+
+const pillars = [
+  {
+    icon: Lightbulb,
+    title: "Bold Ideas",
+    description:
+      "We platform unconventional thinking — ideas that challenge assumptions, bridge disciplines, and offer fresh perspectives on Nepal and the world.",
+  },
+  {
+    icon: Users,
+    title: "Diverse Voices",
+    description:
+      "From climate scientists to digital artists, mountaineers to AI researchers — we amplify voices across every spectrum of human endeavor.",
+  },
+  {
+    icon: Globe,
+    title: "Global Impact",
+    description:
+      "Rooted in Kathmandu, connected to the world. We bridge local innovation with the global TED community of 30,000+ talks and counting.",
+  },
+  {
+    icon: Sparkles,
+    title: "Lasting Change",
+    description:
+      "Ideas that don't end at the stage. We foster a community of doers who turn inspiration into tangible action and real-world impact.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="About Us"
+        title="About"
         subtitle="TEDxBhrikutiMandap is an independently organized TEDx event, bringing the spirit of ideas worth spreading to the heart of Kathmandu."
       />
 
-      {/* ── Our Story ─────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
+      {/* ── Theme Section ─────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-surface border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <AnimatedSection direction="left">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/[0.06]">
                 <Image
                   src="/images/event-atmosphere.png"
-                  alt="TEDxBhrikutiMandap event"
+                  alt="TEDxBhrikutiMandap — Envisioning Tomorrow"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-ted-red/10 to-transparent" />
+                {/* Theme overlay text */}
+                <div className="absolute bottom-6 left-6">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/50 mb-1">
+                    2026 Theme
+                  </p>
+                  <p className="text-2xl sm:text-3xl font-[900] text-white uppercase tracking-tight leading-[0.95]">
+                    Envisioning
+                    <br />
+                    <span className="text-ted-red">Tomorrow</span>
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="right">
               <div className="h-1 w-12 bg-ted-red rounded-full mb-6" />
               <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-6">
-                Our Story
+                The Theme
               </h2>
               <div className="space-y-4 text-white/60 text-sm md:text-base leading-relaxed">
                 <p>
-                  TEDxBhrikutiMandap was born from a simple belief: Nepal is home to extraordinary
-                  ideas that deserve a global platform. Named after the iconic Bhrikuti Mandap
-                  exhibition hall in Kathmandu, our event bridges local innovation with global inspiration.
+                  <strong className="text-white">&ldquo;Envisioning Tomorrow&rdquo;</strong> is
+                  a call to look beyond the present — to imagine, design, and build the future
+                  we want to inhabit. In a world of accelerating change, the ideas we champion
+                  today define the world of tomorrow.
                 </p>
                 <p>
-                  We bring together thinkers, creators, and doers — from climate scientists to
-                  social entrepreneurs, digital artists to mountaineers — all united by a
-                  commitment to ideas that challenge, inspire, and transform.
+                  From sustainable cities to equitable technology, from reimagined education to
+                  the frontiers of science — our 2026 speakers explore what it means to shape
+                  the future with intention, empathy, and courage.
                 </p>
                 <p>
-                  Our 2026 event marks a new chapter, as we aim to amplify voices from Nepal
-                  and the broader South Asian region on the world stage.
+                  This isn&apos;t about prediction. It&apos;s about agency. It&apos;s about the
+                  audacity to envision a better tomorrow and the commitment to make it real.
                 </p>
               </div>
             </AnimatedSection>
@@ -68,8 +108,87 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* ── What is TEDx ──────────────────────────────────────────────────── */}
+      {/* ── Our Pillars ───────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <AnimatedSection>
+            <SectionHeading
+              title="What We Stand For"
+              subtitle="The principles that guide every TEDxBhrikutiMandap experience."
+            />
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {pillars.map((pillar, i) => {
+              const Icon = pillar.icon;
+              return (
+                <AnimatedSection key={pillar.title} delay={i * 0.1}>
+                  <div className="bg-surface-card border border-white/[0.06] rounded-2xl p-6 h-full hover:border-ted-red/20 hover:-translate-y-1 transition-all duration-500 group cursor-default">
+                    <div className="w-12 h-12 rounded-xl bg-ted-red/10 border border-ted-red/20 flex items-center justify-center mb-5 group-hover:bg-ted-red/20 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
+                      <Icon size={20} className="text-ted-red group-hover:text-white transition-colors" />
+                    </div>
+                    <h3 className="text-base font-[900] text-white uppercase tracking-wide mb-3 group-hover:text-ted-red transition-colors">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Our Story ─────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24 bg-surface border-y border-white/[0.04]">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <AnimatedSection direction="left">
+              <div className="h-1 w-12 bg-ted-red rounded-full mb-6" />
+              <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-6">
+                Our Story
+              </h2>
+              <div className="space-y-4 text-white/60 text-sm md:text-base leading-relaxed">
+                <p>
+                  TEDxBhrikutiMandap was born from a simple belief:{" "}
+                  <strong className="text-white">
+                    Nepal is home to extraordinary ideas that deserve a global platform.
+                  </strong>
+                </p>
+                <p>
+                  Named after the iconic Bhrikuti Mandap exhibition hall in the heart of Kathmandu,
+                  our event bridges local innovation with global inspiration. We bring together
+                  thinkers, creators, and doers — from climate scientists to social entrepreneurs,
+                  digital artists to mountaineers — all united by ideas that challenge, inspire,
+                  and transform.
+                </p>
+                <p>
+                  Our 2026 edition marks a new chapter. With the theme{" "}
+                  <strong className="text-white">&ldquo;Envisioning Tomorrow,&rdquo;</strong>{" "}
+                  we aim to amplify voices from Nepal and South Asia shaping the future of our
+                  world.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="right">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.06]">
+                <Image
+                  src="/images/venue-hero.png"
+                  alt="Bhrikuti Mandap, Kathmandu — TEDxBhrikutiMandap venue"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── What is TEDx ──────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24">
         <Container>
           <AnimatedSection className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-8">
@@ -88,34 +207,28 @@ export default function AboutPage() {
               </p>
               <p>
                 The TED Conference provides general guidance for the TEDx program, but individual
-                TEDx events are self-organized. (Subject to certain rules and regulations.)
+                TEDx events are self-organized, subject to certain rules and regulations.
               </p>
             </div>
           </AnimatedSection>
         </Container>
       </section>
 
-      {/* ── The Venue ─────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
+      {/* ── Venue + Team CTA ──────────────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-surface-card border-y border-white/[0.04]">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Venue Card */}
             <AnimatedSection direction="left">
-              <div className="h-1 w-12 bg-ted-red rounded-full mb-6" />
-              <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-6">
-                The Venue
-              </h2>
-              <div className="space-y-4 text-white/60 text-sm md:text-base leading-relaxed">
-                <p>
-                  <strong className="text-white">Bhrikuti Mandap</strong> is one of Kathmandu&apos;s
+              <div className="bg-surface border border-white/[0.06] rounded-2xl p-6 md:p-8 h-full">
+                <h3 className="text-xl font-[900] text-white uppercase tracking-tight mb-3">
+                  📍 The Venue
+                </h3>
+                <p className="text-sm text-white/50 leading-relaxed mb-4">
+                  <strong className="text-white">Bhrikuti Mandap</strong> — one of Kathmandu&apos;s
                   most iconic event spaces, located in the heart of the city near the Tundikhel
                   parade ground.
                 </p>
-                <p>
-                  With its spacious halls and central location, it provides the perfect setting
-                  for an event that brings together diverse minds from across Nepal and beyond.
-                </p>
-              </div>
-              <div className="mt-6 flex items-center gap-4">
                 <a
                   href="https://maps.google.com/?q=Bhrikuti+Mandap+Kathmandu"
                   target="_blank"
@@ -123,43 +236,33 @@ export default function AboutPage() {
                   className="inline-flex items-center gap-2 text-sm font-bold text-ted-red hover:text-ted-red-light transition-colors group"
                 >
                   View on Google Maps
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </AnimatedSection>
 
+            {/* Meet the Team Card */}
             <AnimatedSection direction="right">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.06]">
-                <Image
-                  src="/images/venue-hero.png"
-                  alt="Bhrikuti Mandap, Kathmandu"
-                  fill
-                  className="object-cover"
-                />
+              <div className="bg-surface border border-white/[0.06] rounded-2xl p-6 md:p-8 h-full flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-[900] text-white uppercase tracking-tight mb-3">
+                    🧑‍🤝‍🧑 The Team
+                  </h3>
+                  <p className="text-sm text-white/50 leading-relaxed mb-4">
+                    A diverse group of passionate volunteers from across Kathmandu, working
+                    together to bring TEDxBhrikutiMandap 2026 to life.
+                  </p>
+                </div>
+                <Link
+                  href="/team"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-ted-red hover:text-ted-red-light transition-colors group"
+                >
+                  Meet the team
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </AnimatedSection>
           </div>
-        </Container>
-      </section>
-
-      {/* ── Meet the Team CTA ─────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface-card border-y border-white/[0.04]">
-        <Container className="text-center">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-4">
-              Meet the Team
-            </h2>
-            <p className="text-white/50 text-sm md:text-base max-w-xl mx-auto mb-8">
-              The passionate volunteers making TEDxBhrikutiMandap 2026 a reality.
-            </p>
-            <Link
-              href="/team"
-              className="inline-flex items-center gap-2.5 bg-ted-red px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] shadow-[0_8px_25px_rgba(235,0,40,0.4)] hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              View Team
-              <ArrowRight size={14} />
-            </Link>
-          </AnimatedSection>
         </Container>
       </section>
     </>

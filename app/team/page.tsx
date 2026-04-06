@@ -1,87 +1,58 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Linkedin, Instagram } from "lucide-react";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { teamMembers, departments, type Department } from "@/data/team";
+import { teamMembers, departments } from "@/data/team";
+
+export const metadata: Metadata = {
+  title: "Our Team",
+  description: "Meet the passionate volunteers behind TEDxBhrikutiMandap 2026. Discover the leaders, creators, and technologists uniting ideas.",
+  alternates: { canonical: "/team" },
+  openGraph: {
+    title: "Our Team | TEDxBhrikutiMandap 2026",
+    description: "The visionary team organizing TEDxBhrikutiMandap.",
+  },
+};
 
 export default function TeamPage() {
-  const [activeFilter, setActiveFilter] = useState<Department | "All">("All");
-
-  const filteredMembers =
-    activeFilter === "All"
-      ? teamMembers
-      : teamMembers.filter((m) => m.department === activeFilter);
-
   return (
     <>
       <PageHero
         title="Our Team"
-        subtitle="The passionate volunteers behind TEDxBhrikutiMandap 2026 — united by a shared mission to spread ideas worth sharing."
+        subtitle="The passionate volunteers behind TEDxBhrikutiMandap 2026 — united by a shared mission to envision tomorrow, together."
       />
-
-      {/* ── Department Filter ──────────────────────────────────────────── */}
-      <section className="pb-8 md:pb-12">
-        <Container>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-            <button
-              onClick={() => setActiveFilter("All")}
-              className={`px-4 py-2 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${
-                activeFilter === "All"
-                  ? "bg-ted-red text-white shadow-[0_4px_15px_rgba(235,0,40,0.4)]"
-                  : "bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white hover:bg-white/[0.08]"
-              }`}
-            >
-              All
-            </button>
-            {departments.map((dept) => (
-              <button
-                key={dept}
-                onClick={() => setActiveFilter(dept)}
-                className={`px-4 py-2 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 ${
-                  activeFilter === dept
-                    ? "bg-ted-red text-white shadow-[0_4px_15px_rgba(235,0,40,0.4)]"
-                    : "bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white hover:bg-white/[0.08]"
-                }`}
-              >
-                {dept}
-              </button>
-            ))}
-          </div>
-        </Container>
-      </section>
 
       {/* ── Team Grid ──────────────────────────────────────────────────── */}
       <section className="pb-20 md:pb-32">
         <Container>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-            {filteredMembers.map((member, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            {teamMembers.map((member, i) => (
               <AnimatedSection key={member.name} delay={i * 0.05}>
-                <div className="group relative bg-surface-card border border-white/[0.06] rounded-2xl overflow-hidden hover:border-ted-red/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(235,0,40,0.12)]">
-                  {/* Photo */}
-                  <div className="relative aspect-square overflow-hidden">
+                <div className="group relative">
+                  {/* Photo with clip-path and grayscale filter */}
+                  <div className="relative aspect-[4/5] overflow-hidden bg-transparent [clip-path:polygon(0_0,100%_0,100%_92%,92%_100%,0_100%)] transition-all duration-700">
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
 
-                    {/* Social links overlay */}
-                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Social links overlay sliding from right */}
+                    <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
                       {member.socials?.linkedin && (
                         <a
                           href={member.socials.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1.5 bg-white/10 backdrop-blur-sm rounded-full hover:bg-ted-red transition-colors"
+                          className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
                           aria-label={`${member.name} LinkedIn`}
                         >
-                          <Linkedin size={12} className="text-white" />
+                          <Linkedin size={16} className="text-white" />
                         </a>
                       )}
                       {member.socials?.instagram && (
@@ -89,24 +60,24 @@ export default function TeamPage() {
                           href={member.socials.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1.5 bg-white/10 backdrop-blur-sm rounded-full hover:bg-ted-red transition-colors"
+                          className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
                           aria-label={`${member.name} Instagram`}
                         >
-                          <Instagram size={12} className="text-white" />
+                          <Instagram size={16} className="text-white" />
                         </a>
                       )}
                     </div>
                   </div>
 
-                  {/* Info */}
-                  <div className="p-4">
-                    <span className="inline-block px-2 py-0.5 rounded-full bg-ted-red/10 text-ted-red text-[8px] sm:text-[9px] font-bold uppercase tracking-wider mb-2">
+                  {/* Info below photo */}
+                  <div className="pt-4 pb-2 px-1">
+                    <span className="block text-ted-red text-[10px] font-[900] uppercase tracking-[0.2em] mb-1.5 transition-colors duration-300">
                       {member.department}
                     </span>
-                    <h3 className="text-sm sm:text-base font-[900] text-white leading-tight">
+                    <h3 className="text-lg lg:text-xl font-[900] text-white leading-tight group-hover:text-ted-red transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <p className="text-[10px] sm:text-xs text-white/40 mt-1">
+                    <p className="text-xs lg:text-sm text-white/50 mt-1 font-medium">
                       {member.role}
                     </p>
                   </div>
