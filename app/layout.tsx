@@ -5,16 +5,19 @@ import Script from "next/script";
 import { siteConfig } from "@/data/siteConfig";
 import { seoConfig } from "@/data/seoConfig";
 import { OrganizationJsonLd, PersonJsonLd } from "@/components/JsonLd";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: seoConfig.title,
+    default: `${seoConfig.title} — Ideas Worth Spreading | Kathmandu Nepal`,
     template: `%s | ${seoConfig.siteName}`,
   },
   description: seoConfig.description,
@@ -22,8 +25,24 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  keywords: [
+    "TEDx",
+    "TEDxBhrikutiMandap",
+    "TED talks",
+    "Kathmandu",
+    "Nepal",
+    "ideas worth spreading",
+    "conference",
+    "innovation",
+    "Bhrikuti Mandap",
+    "TEDx Nepal",
+    "TEDx Kathmandu",
+  ],
+  authors: [{ name: "TEDxBhrikutiMandap" }],
+  creator: "TEDxBhrikutiMandap",
+  publisher: "TEDxBhrikutiMandap",
   openGraph: {
-    title: seoConfig.title,
+    title: `${seoConfig.title} — Ideas Worth Spreading`,
     description: seoConfig.description,
     url: seoConfig.url,
     siteName: seoConfig.siteName,
@@ -34,13 +53,13 @@ export const metadata: Metadata = {
         url: seoConfig.images.og,
         width: 1200,
         height: 630,
-        alt: seoConfig.title,
+        alt: `${seoConfig.title} — Ideas Worth Spreading`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: seoConfig.title,
+    title: `${seoConfig.title} — Ideas Worth Spreading`,
     description: seoConfig.description,
     images: [seoConfig.images.twitter],
     creator: seoConfig.twitter.handle,
@@ -49,6 +68,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: [
@@ -63,6 +89,10 @@ export const metadata: Metadata = {
       { rel: "android-chrome-192x192", url: "/favicon/android-chrome-192x192.png" },
       { rel: "android-chrome-512x512", url: "/favicon/android-chrome-512x512.png" },
     ],
+  },
+  other: {
+    "geo.region": "NP-03",
+    "geo.placename": "Kathmandu",
   },
 };
 
@@ -79,7 +109,20 @@ export default function RootLayout({
         <link rel="preload" href="https://tally.so/widgets/embed.js" as="script" />
         <OrganizationJsonLd />
         <PersonJsonLd />
-        
+
+        {/* WebSite JSON-LD for sitelinks search */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "TEDxBhrikutiMandap",
+              url: seoConfig.url,
+            }),
+          }}
+        />
+
         {/* Tally embed script */}
         <Script id="tally-embed" src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
 
@@ -117,9 +160,13 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${poppins.variable} antialiased bg-black`}
+        className={`${poppins.variable} antialiased bg-black text-white`}
       >
-        {children}
+        <Navbar />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
