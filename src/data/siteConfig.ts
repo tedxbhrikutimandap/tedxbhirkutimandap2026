@@ -1,7 +1,8 @@
 export const siteConfig = {
   name: "TEDxBhrikutimandap",
   tagline: "Ideas Worth Spreading",
-  description: "Join us in 2026 for a journey through inspiration, innovation, and impact at TEDxBhrikutimandap.",
+  theme: "Envisioning Tomorrow",
+  description: "TEDxBhrikutiMandap 2026 — Envisioning Tomorrow. Join us in Kathmandu for a day of bold ideas, inspiring speakers, and meaningful connections shaping Nepal's future.",
   eventDate: "2026",
   logos: {
     black: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",

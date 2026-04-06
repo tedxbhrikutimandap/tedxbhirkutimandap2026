@@ -3,13 +3,34 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, Mic2 } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
-import { speakers } from "@/data/speakers";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AnimatedSection } from "@/components/AnimatedSection";
+
+// ─── Animation Variants ────────────────────────────────────────────────────────
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] } 
+  },
+};
+
 
 // ─── Countdown Timer ──────────────────────────────────────────────────────────
 
@@ -63,7 +84,6 @@ const CountdownTimer = () => {
 // ─── Home Page ─────────────────────────────────────────────────────────────────
 
 export default function Home() {
-  const featuredSpeakers = speakers.filter((s) => s.featured).slice(0, 4);
 
   return (
     <>
@@ -86,30 +106,33 @@ export default function Home() {
 
         <Container className="relative z-10 text-center py-20 md:py-0">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
             className="flex flex-col items-center gap-6 md:gap-8"
           >
             {/* Event badge */}
-            <div className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.08] rounded-full px-4 py-1.5">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.08] rounded-full px-4 py-1.5">
               <div className="w-2 h-2 bg-ted-red rounded-full animate-pulse" />
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/60">
-                TEDx Event — Kathmandu, Nepal
+                TEDxBhrikutiMandap 2026 — Kathmandu, Nepal
               </span>
-            </div>
+            </motion.div>
 
-            {/* Main title */}
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-white leading-[0.9]">
-              Ideas
+            {/* Main title — Event Theme */}
+            <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-white leading-[0.9]">
+              Envisioning
               <br />
-              <span className="text-ted-red">Worth</span>
-              <br />
-              Spreading
-            </h1>
+              <span className="text-ted-red">Tomorrow</span>
+            </motion.h1>
+
+            {/* Tagline */}
+            <motion.p variants={itemVariants} className="text-sm sm:text-base md:text-lg text-white/50 font-light tracking-wide max-w-lg">
+              {siteConfig.tagline}
+            </motion.p>
 
             {/* Event info */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-white/50">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-white/50">
               <div className="flex items-center gap-2">
                 <Calendar size={14} className="text-ted-red" />
                 <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
@@ -123,10 +146,10 @@ export default function Home() {
                   Bhrikuti Mandap, Kathmandu
                 </span>
               </div>
-            </div>
+            </motion.div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-4">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-4">
               <Link
                 href="#register"
                 className="inline-flex items-center gap-2.5 bg-ted-red px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] shadow-[0_8px_25px_rgba(235,0,40,0.4)] hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
@@ -141,7 +164,7 @@ export default function Home() {
                 <Mic2 size={14} />
                 View Speakers
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </Container>
 
@@ -165,60 +188,6 @@ export default function Home() {
               The countdown begins
             </h2>
             <CountdownTimer />
-          </AnimatedSection>
-        </Container>
-      </section>
-
-      {/* ── Featured Speakers ───────────────────────────────────────────────── */}
-      <section className="py-20 md:py-32">
-        <Container>
-          <AnimatedSection>
-            <SectionHeading
-              title="Featured Speakers"
-              subtitle="Visionaries, innovators, and changemakers taking the TEDxBhrikutiMandap stage."
-            />
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-            {featuredSpeakers.map((speaker, i) => (
-              <AnimatedSection key={speaker.id} delay={i * 0.1}>
-                <div className="group relative bg-surface-card border border-white/[0.06] rounded-2xl overflow-hidden hover:border-ted-red/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(235,0,40,0.15)]">
-                  {/* Image */}
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <Image
-                      src={speaker.image}
-                      alt={speaker.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                  </div>
-
-                  {/* Info */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ted-red mb-1">
-                      {speaker.organization}
-                    </p>
-                    <h3 className="text-lg font-[900] text-white leading-tight">
-                      {speaker.name}
-                    </h3>
-                    <p className="text-xs text-white/50 mt-1 line-clamp-2">
-                      {speaker.talkTitle}
-                    </p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          <AnimatedSection className="text-center mt-10">
-            <Link
-              href="/speakers"
-              className="inline-flex items-center gap-2 text-sm font-bold text-ted-red hover:text-ted-red-light transition-colors group"
-            >
-              View all speakers
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
           </AnimatedSection>
         </Container>
       </section>

@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { schedule } from "@/data/schedule";
-import { Mic2, Coffee, PartyPopper, Users } from "lucide-react";
+import { Mic2, Coffee, PartyPopper, Users, Download } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Schedule",
@@ -41,6 +41,24 @@ export default function SchedulePage() {
       <section className="pb-20 md:pb-32">
         <Container>
           <div className="max-w-3xl mx-auto">
+            <AnimatedSection>
+              {/* Disclaimer / Download Bar */}
+              <div className="bg-ted-red/10 border border-ted-red/20 rounded-xl p-4 sm:p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-sm font-[900] text-ted-red uppercase tracking-wider mb-1">Preview Only</h3>
+                  <p className="text-xs text-white/70 leading-relaxed">This schedule is a tentative preview. The fully finalized schedule will be published here in the days leading up to the program.</p>
+                </div>
+                <a
+                  href="/schedule.png"
+                  download
+                  className="shrink-0 inline-flex items-center gap-2 bg-ted-red/20 hover:bg-ted-red/30 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition-colors border border-ted-red/30"
+                >
+                  <Download size={14} className="text-ted-red" />
+                  Download PNG
+                </a>
+              </div>
+            </AnimatedSection>
+
             {/* Timeline */}
             <div className="relative">
               {/* Vertical line */}
