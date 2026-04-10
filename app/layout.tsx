@@ -7,6 +7,7 @@ import { seoConfig } from "@/data/seoConfig";
 import { OrganizationJsonLd, PersonJsonLd } from "@/components/JsonLd";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { BackgroundEffects } from "@/components/BackgroundEffects";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -162,6 +163,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} antialiased bg-black text-white`}
       >
+        <BackgroundEffects />
         <Navbar />
         <main className="min-h-screen">
           {children}
