@@ -9,9 +9,9 @@
   --ted-red-dark: #b80020;
   --ted-red-light: #ff1a3d;
 
-  --surface: #0a0a0a;
-  --surface-elevated: #111111;
-  --surface-card: #141414;
+  --surface: rgba(10, 10, 10, 0.8);
+  --surface-elevated: rgba(17, 17, 17, 0.85);
+  --surface-card: rgba(20, 20, 20, 0.6);
   --surface-overlay: #1a1a1a;
 
   --text-primary: #ffffff;
