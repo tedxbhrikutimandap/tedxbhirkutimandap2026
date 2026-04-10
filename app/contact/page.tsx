@@ -231,23 +231,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Map */}
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.06]">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.456!2d85.3206!3d27.7042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190a74aa!2sBhrikuti%20Mandap!5e0!3m2!1sen!2snp!4v1"
-                    width="100%"
-                    height="100%"
-                    style={{
-                      border: 0,
-                      filter: "invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.7)",
-                    }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Bhrikuti Mandap location"
-                    className="absolute inset-0"
-                  />
-                </div>
+
               </div>
             </AnimatedSection>
           </div>
