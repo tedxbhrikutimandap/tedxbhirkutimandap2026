@@ -33,26 +33,30 @@ export default function TeamPage() {
                 <div className="group relative">
                   {/* Photo with masked sharp shape and blurred background */}
                   <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-black">
-                    {/* Blurred Background Layer */}
-                    <div className="absolute inset-0">
+                    {/* Blurred Background Layer (Outside the clip) */}
+                    <div className="absolute inset-0 bg-black">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover blur-md scale-110 opacity-50 transition-all duration-700 group-hover:opacity-70"
+                        className="object-cover blur-xl group-hover:blur-sm scale-110 opacity-30 transition-all duration-700 group-hover:opacity-60 group-hover:contrast-125"
                       />
+                      {/* Dark overlay to fade top and bottom out completely to black */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black pointer-events-none transition-opacity duration-700 group-hover:opacity-60" />
                     </div>
 
-                    {/* Sharp Inner Clipped Layer */}
+                    {/* Sharp Inner Clipped Layer (The Person) */}
                     <div className="absolute inset-0 z-10 [clip-path:circle(50%_at_50%_50%)] transition-all duration-700">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 group-hover:contrast-110"
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80 opacity-70 group-hover:opacity-10 transition-opacity duration-500" />
+                      {/* Top glossy reflection for the circular masked area on hover */}
+                      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-t-full" />
                     </div>
 
                     {/* Social links overlay sliding from right */}
@@ -105,7 +109,7 @@ export default function TeamPage() {
                   </div>
 
                   {/* Info below photo */}
-                  <div className="pt-4 pb-2 px-1">
+                  <div className="pt-4 pb-2 px-1 text-center">
                     <h3 className="text-lg lg:text-xl font-[900] text-white leading-tight group-hover:text-ted-red transition-colors duration-300">
                       {member.name}
                     </h3>
