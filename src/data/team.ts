@@ -1,6 +1,7 @@
 export interface TeamMember {
   name: string;
   role: string;
+  quote?: string;
   image: string;
   socials?: {
     linkedin?: string;
@@ -13,7 +14,8 @@ export interface TeamMember {
 export const teamMembers: TeamMember[] = [
   {
     name: "Dipesh Thapa",
-    role: "Organizer",
+    role: "Organizer / Licensee",
+    quote: "Architect of the Vision.",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806873/Dipesh_Thapa_urhpqr.avif",
     socials: {
       instagram: "https://www.instagram.com/dipesh.thapa.02/",
@@ -23,7 +25,8 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Prisha Jalan",
-    role: "Co organiser",
+    role: "Co-Organizer",
+    quote: "The Catalyst of Execution.",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806486/Prisha_Jalan_dwyy47.avif",
     socials: {
       instagram: "https://www.instagram.com/prisha.jalan?igsh=MXNobGVoMnk4NnI3bQ==",
@@ -33,6 +36,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Upasana Pandey",
     role: "Curator",
+    quote: "The Guardian of the Red Circle.",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Upasna_Pandey_aws5be.avif",
     socials: {
       instagram: "https://www.instagram.com/_upaasnaa?igsh=Z3ozMnN2bmd6Y2Rx&utm_source=qr",
@@ -41,8 +45,30 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
+    name: "Richa Thapa",
+    role: "Treasurer",
+    quote: "The Engine of Sustainability.",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Richa_Thapa_vwfzcq.avif",
+    socials: {
+      instagram: "https://www.instagram.com/_richa.core_?igsh=bWRobmc1dnV5cHZ2&utm_source=qr",
+      facebook: "https://www.facebook.com/share/1FiHdNAkbK/?mibextid=wwXIfr",
+    },
+  },
+  {
+    name: "Mala Rijal",
+    role: "Sponsorship Manager",
+    quote: "Building the Bridges of Partnership.",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Mala_Rijal_j18lds.avif",
+    socials: {
+      instagram: "https://www.instagram.com/malarijal?igsh=MXN5bHF2czVjeDE0Zw%3D%3D&utm_source=qr",
+      facebook: "https://www.facebook.com/share/1Auutnff8F/?mibextid=wwXIfr",
+      linkedin: "https://www.linkedin.com/in/mala-rijal-6b50a520a/",
+    },
+  },
+  {
     name: "Apil Khadka",
     role: "Technical Lead",
+    quote: "Powering the Digital Pulse.",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Apil_Khadka_ln1s7t.avif",
     socials: {
       instagram: "https://www.instagram.com/apil.me",
@@ -52,18 +78,9 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: "Aayush Sah",
-    role: "Graphic Designer",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Ayush_Sah_tcbnnv.avif",
-    socials: {
-      instagram: "https://www.instagram.com/aayushsah5310?igsh=MWlydjVpd3AxeDJmcg==",
-      facebook: "https://www.facebook.com/share/1CZhnocrr7/",
-      linkedin: "https://www.linkedin.com/in/aayushsah5310?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    },
-  },
-  {
     name: "Niva Maharjan",
-    role: "Marketing & PR Lead",
+    role: "Media & PR Lead",
+    quote: "Amplifying the Voice of Tomorrow.",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Niva_Maharjan_xjob4x.avif",
     socials: {
       instagram: "https://www.instagram.com/nivaa_mhz/",
@@ -72,23 +89,16 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: "Richa Thapa",
-    role: "Treasurer",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Richa_Thapa_vwfzcq.avif",
+    name: "Aayush Sah",
+    role: "Graphics Lead",
+    quote: "Visualizing the Invisible.",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Ayush_Sah_tcbnnv.avif",
     socials: {
-      instagram: "https://www.instagram.com/_richa.core_?igsh=bWRobmc1dnV5cHZ2&utm_source=qr",
-      facebook: "https://www.facebook.com/share/1FiHdNAkbK/?mibextid=wwXIfr",
+      instagram: "https://www.instagram.com/aayushsah5310?igsh=MWlydjVpd3AxeDJmcg==",
+      facebook: "https://www.facebook.com/share/1CZhnocrr7/",
+      linkedin: "https://www.linkedin.com/in/aayushsah5310?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     },
   },
-  {
-    name: "Mala Rijal",
-    role: "Sponsor Manager",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Mala_Rijal_j18lds.avif",
-    socials: {
-      instagram: "https://www.instagram.com/malarijal?igsh=MXN5bHF2czVjeDE0Zw%3D%3D&utm_source=qr",
-      facebook: "https://www.facebook.com/share/1Auutnff8F/?mibextid=wwXIfr",
-      linkedin: "https://www.linkedin.com/in/mala-rijal-6b50a520a/",
-    },
-  },
+
 
 ];

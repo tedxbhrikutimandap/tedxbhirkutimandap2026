@@ -98,6 +98,15 @@ export default function TeamPage() {
                         </a>
                       )}
                     </div>
+
+                    {/* Quote overlay sliding up from bottom */}
+                    {member.quote && (
+                      <div className="absolute bottom-8 left-6 right-6 z-20 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none text-center">
+                        <p className="text-sm md:text-base font-[900] text-white italic drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] leading-snug">
+                          &quot;{member.quote}&quot;
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   {/* Info below photo */}
