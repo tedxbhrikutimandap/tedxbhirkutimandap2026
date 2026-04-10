@@ -22,6 +22,15 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
+    name: "Prisha Jalan",
+    role: "Co organiser",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806486/Prisha_Jalan_dwyy47.avif",
+    socials: {
+      instagram: "https://www.instagram.com/prisha.jalan?igsh=MXNobGVoMnk4NnI3bQ==",
+      facebook: "https://www.facebook.com/share/1Aw7pKE3x8/",
+    },
+  },
+  {
     name: "Upasana Pandey",
     role: "Curator",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Upasna_Pandey_aws5be.avif",
@@ -32,8 +41,19 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
+    name: "Apil Khadka",
+    role: "Technical Lead",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Apil_Khadka_ln1s7t.avif",
+    socials: {
+      instagram: "https://www.instagram.com/apil.me",
+      facebook: "https://www.facebook.com/apil.me",
+      linkedin: "https://www.linkedin.com/in/apil-khadka/",
+      github: "https://github.com/apil-khadka",
+    },
+  },
+  {
     name: "Aayush Sah",
-    role: "Graphic Designer (Design and Media)",
+    role: "Graphic Designer",
     image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Ayush_Sah_tcbnnv.avif",
     socials: {
       instagram: "https://www.instagram.com/aayushsah5310?igsh=MWlydjVpd3AxeDJmcg==",
@@ -49,16 +69,6 @@ export const teamMembers: TeamMember[] = [
       instagram: "https://www.instagram.com/nivaa_mhz/",
       facebook: "https://www.facebook.com/niva.maharjan.35/",
       linkedin: "https://www.linkedin.com/in/niva-maharjan-9184332a9/",
-    },
-  },
-  {
-    name: "Apil Khadka",
-    role: "Technical Lead",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Apil_Khadka_ln1s7t.avif",
-    socials: {
-      instagram: "https://www.instagram.com/apil.me",
-      facebook: "https://www.facebook.com/apil.me",
-      linkedin: "https://www.linkedin.com/in/apil-khadka/",
     },
   },
   {
@@ -80,13 +90,5 @@ export const teamMembers: TeamMember[] = [
       linkedin: "https://www.linkedin.com/in/mala-rijal-6b50a520a/",
     },
   },
-  {
-    name: "Prisha Jalan",
-    role: "Co organiser",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806486/Prisha_Jalan_dwyy47.avif",
-    socials: {
-      instagram: "https://www.instagram.com/prisha.jalan?igsh=MXNobGVoMnk4NnI3bQ==",
-      facebook: "https://www.facebook.com/share/1Aw7pKE3x8/",
-    },
-  },
+
 ];
