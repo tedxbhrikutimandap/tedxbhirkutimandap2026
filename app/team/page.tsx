@@ -31,22 +31,14 @@ export default function TeamPage() {
             {teamMembers.map((member, i) => (
               <AnimatedSection key={member.name} delay={i * 0.05}>
                 <div className="group relative">
-                  {/* Photo with masked sharp shape and blurred background */}
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-black">
-                    {/* Blurred Background Layer (Outside the clip) */}
-                    <div className="absolute inset-0 bg-black">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover blur-xl group-hover:blur-sm scale-110 opacity-30 transition-all duration-700 group-hover:opacity-60 group-hover:contrast-125"
-                      />
-                      {/* Dark overlay to fade top and bottom out completely to black */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black pointer-events-none transition-opacity duration-700 group-hover:opacity-60" />
-                    </div>
+                  {/* Card Container */}
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#0a0a0a] border border-white/5 group-hover:border-white/15 transition-colors duration-700 shadow-xl">
+                    {/* Sleek Dark Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-ted-red/5 via-[#0a0a0a] to-[#050505] group-hover:from-ted-red/20 transition-all duration-700" />
+                    {/* Subtle dot pattern or extra glow could go safely here if needed, but keeping it minimal */}
 
-                    {/* Sharp Inner Clipped Layer (The Person) */}
-                    <div className="absolute inset-0 z-10 [clip-path:circle(50%_at_50%_50%)] transition-all duration-700">
+                    {/* Sharp Inner Shard Layer (The Person) */}
+                    <div className="absolute inset-4 z-10 [clip-path:polygon(15%_0%,_100%_0%,_100%_85%,_85%_100%,_0%_100%,_0%_15%)] overflow-hidden transition-all duration-700">
                       <Image
                         src={member.image}
                         alt={member.name}
@@ -54,13 +46,13 @@ export default function TeamPage() {
                         className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 group-hover:contrast-110"
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80 opacity-70 group-hover:opacity-10 transition-opacity duration-500" />
-                      {/* Top glossy reflection for the circular masked area on hover */}
-                      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-t-full" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 opacity-70 group-hover:opacity-10 transition-opacity duration-500" />
+                      {/* Top glossy reflection adapting to the shard on hover */}
+                      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                     </div>
 
                     {/* Social links overlay sliding from right */}
-                    <div className="absolute top-3 right-3 z-20 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
+                    <div className="absolute top-5 right-5 z-20 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
                       {member.socials?.linkedin && (
                         <a
                           href={member.socials.linkedin}
