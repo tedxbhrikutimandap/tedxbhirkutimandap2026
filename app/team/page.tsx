@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram, Facebook, Github } from "lucide-react";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { teamMembers, departments } from "@/data/team";
+import { teamMembers } from "@/data/team";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -31,19 +31,32 @@ export default function TeamPage() {
             {teamMembers.map((member, i) => (
               <AnimatedSection key={member.name} delay={i * 0.05}>
                 <div className="group relative">
-                  {/* Photo with clip-path and grayscale filter */}
-                  <div className="relative aspect-[4/5] overflow-hidden bg-transparent [clip-path:polygon(0_0,100%_0,100%_92%,92%_100%,0_100%)] transition-all duration-700">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
+                  {/* Photo with masked sharp shape and blurred background */}
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-black">
+                    {/* Blurred Background Layer */}
+                    <div className="absolute inset-0">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover blur-md scale-110 opacity-50 transition-all duration-700 group-hover:opacity-70"
+                      />
+                    </div>
+
+                    {/* Sharp Inner Clipped Layer */}
+                    <div className="absolute inset-0 z-10 [clip-path:circle(50%_at_50%_50%)] transition-all duration-700">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
+                    </div>
 
                     {/* Social links overlay sliding from right */}
-                    <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
+                    <div className="absolute top-3 right-3 z-20 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
                       {member.socials?.linkedin && (
                         <a
                           href={member.socials.linkedin}
@@ -66,14 +79,33 @@ export default function TeamPage() {
                           <Instagram size={16} className="text-white" />
                         </a>
                       )}
+                      {member.socials?.facebook && (
+                        <a
+                          href={member.socials.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+                          aria-label={`${member.name} Facebook`}
+                        >
+                          <Facebook size={16} className="text-white" />
+                        </a>
+                      )}
+                      {member.socials?.github && (
+                        <a
+                          href={member.socials.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+                          aria-label={`${member.name} Github`}
+                        >
+                          <Github size={16} className="text-white" />
+                        </a>
+                      )}
                     </div>
                   </div>
 
                   {/* Info below photo */}
                   <div className="pt-4 pb-2 px-1">
-                    <span className="block text-ted-red text-[10px] font-[900] uppercase tracking-[0.2em] mb-1.5 transition-colors duration-300">
-                      {member.department}
-                    </span>
                     <h3 className="text-lg lg:text-xl font-[900] text-white leading-tight group-hover:text-ted-red transition-colors duration-300">
                       {member.name}
                     </h3>

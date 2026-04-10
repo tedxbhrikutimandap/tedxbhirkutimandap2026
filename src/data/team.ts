@@ -1,136 +1,92 @@
 export interface TeamMember {
   name: string;
   role: string;
-  department: Department;
   image: string;
   socials?: {
     linkedin?: string;
     instagram?: string;
+    facebook?: string;
+    github?: string;
   };
 }
 
-export type Department =
-  | "Leadership"
-  | "Curation"
-  | "Design"
-  | "Technology"
-  | "Operations"
-  | "Marketing"
-  | "Finance";
-
-export const departments: Department[] = [
-  "Leadership",
-  "Curation",
-  "Design",
-  "Technology",
-  "Operations",
-  "Marketing",
-  "Finance",
-];
-
 export const teamMembers: TeamMember[] = [
-  // Leadership
   {
-    name: "Priya Sharma",
-    role: "Licensee & Lead Organizer",
-    department: "Leadership",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#", instagram: "#" },
+    name: "Dipesh Thapa",
+    role: "Organizer",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806873/Dipesh_Thapa_urhpqr.avif",
+    socials: {
+      instagram: "https://www.instagram.com/dipesh.thapa.02/",
+      facebook: "https://www.facebook.com/dipesh.thapa.946741",
+      linkedin: "https://www.linkedin.com/in/dipesh-thapa-811307342/",
+    },
   },
   {
-    name: "Rajesh Adhikari",
-    role: "Co-Organizer",
-    department: "Leadership",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#" },
-  },
-
-  // Curation
-  {
-    name: "Anisha Thapa",
-    role: "Head of Curation",
-    department: "Curation",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#", instagram: "#" },
+    name: "Upasana Pandey",
+    role: "Curator",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Upasna_Pandey_aws5be.avif",
+    socials: {
+      instagram: "https://www.instagram.com/_upaasnaa?igsh=Z3ozMnN2bmd6Y2Rx&utm_source=qr",
+      facebook: "https://www.facebook.com/share/1L6vVPR1dt/?mibextid=wwXIfr",
+      linkedin: "https://www.linkedin.com/in/upasana-pandey-b0603836b?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    },
   },
   {
-    name: "Bikash Manandhar",
-    role: "Speaker Coordinator",
-    department: "Curation",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#" },
-  },
-
-  // Design
-  {
-    name: "Suman Karki",
-    role: "Head of Design",
-    department: "Design",
-    image: "/images/speaker-placeholder.png",
-    socials: { instagram: "#" },
+    name: "Aayush Sah",
+    role: "Graphic Designer (Design and Media)",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Ayush_Sah_tcbnnv.avif",
+    socials: {
+      instagram: "https://www.instagram.com/aayushsah5310?igsh=MWlydjVpd3AxeDJmcg==",
+      facebook: "https://www.facebook.com/share/1CZhnocrr7/",
+      linkedin: "https://www.linkedin.com/in/aayushsah5310?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    },
   },
   {
-    name: "Nisha Rai",
-    role: "Visual Designer",
-    department: "Design",
-    image: "/images/speaker-placeholder.png",
-    socials: { instagram: "#" },
+    name: "Niva Maharjan",
+    role: "Marketing & PR Lead",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Niva_Maharjan_xjob4x.avif",
+    socials: {
+      instagram: "https://www.instagram.com/nivaa_mhz/",
+      facebook: "https://www.facebook.com/niva.maharjan.35/",
+      linkedin: "https://www.linkedin.com/in/niva-maharjan-9184332a9/",
+    },
   },
-
-  // Technology
   {
     name: "Apil Khadka",
     role: "Technical Lead",
-    department: "Technology",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "https://www.linkedin.com/in/apil-khadka/", instagram: "https://www.instagram.com/apil.me/" },
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Apil_Khadka_ln1s7t.avif",
+    socials: {
+      instagram: "https://www.instagram.com/apil.me",
+      facebook: "https://www.facebook.com/apil.me",
+      linkedin: "https://www.linkedin.com/in/apil-khadka/",
+    },
   },
   {
-    name: "Dipesh Shrestha",
-    role: "Web Developer",
-    department: "Technology",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#" },
-  },
-
-  // Operations
-  {
-    name: "Mina Gurung",
-    role: "Head of Operations",
-    department: "Operations",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#" },
+    name: "Richa Thapa",
+    role: "Treasurer",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Richa_Thapa_vwfzcq.avif",
+    socials: {
+      instagram: "https://www.instagram.com/_richa.core_?igsh=bWRobmc1dnV5cHZ2&utm_source=qr",
+      facebook: "https://www.facebook.com/share/1FiHdNAkbK/?mibextid=wwXIfr",
+    },
   },
   {
-    name: "Arun Tamang",
-    role: "Logistics Coordinator",
-    department: "Operations",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#" },
-  },
-
-  // Marketing
-  {
-    name: "Shreya Maharjan",
-    role: "Head of Marketing",
-    department: "Marketing",
-    image: "/images/speaker-placeholder.png",
-    socials: { instagram: "#", linkedin: "#" },
+    name: "Mala Rijal",
+    role: "Sponsor Manager",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Mala_Rijal_j18lds.avif",
+    socials: {
+      instagram: "https://www.instagram.com/malarijal?igsh=MXN5bHF2czVjeDE0Zw%3D%3D&utm_source=qr",
+      facebook: "https://www.facebook.com/share/1Auutnff8F/?mibextid=wwXIfr",
+      linkedin: "https://www.linkedin.com/in/mala-rijal-6b50a520a/",
+    },
   },
   {
-    name: "Kiran Basnet",
-    role: "Social Media Manager",
-    department: "Marketing",
-    image: "/images/speaker-placeholder.png",
-    socials: { instagram: "#" },
-  },
-
-  // Finance
-  {
-    name: "Ravi Poudel",
-    role: "Head of Finance",
-    department: "Finance",
-    image: "/images/speaker-placeholder.png",
-    socials: { linkedin: "#" },
+    name: "Prisha Jalan",
+    role: "Co organiser",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806486/Prisha_Jalan_dwyy47.avif",
+    socials: {
+      instagram: "https://www.instagram.com/prisha.jalan?igsh=MXNobGVoMnk4NnI3bQ==",
+      facebook: "https://www.facebook.com/share/1Aw7pKE3x8/",
+    },
   },
 ];
