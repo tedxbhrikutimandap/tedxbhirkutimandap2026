@@ -55,7 +55,7 @@ export default function AboutPage() {
       />
 
       {/* ── Theme Section ─────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface border-y border-white/[0.04]">
+      <section className="py-16 md:py-24 border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <AnimatedSection direction="left">
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Our Story ─────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface border-y border-white/[0.04]">
+      <section className="py-16 md:py-24 border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <AnimatedSection direction="left">
@@ -215,7 +215,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Venue + Team CTA ──────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface-card border-y border-white/[0.04]">
+      <section className="py-16 md:py-24 border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Venue Card */}

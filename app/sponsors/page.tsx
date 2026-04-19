@@ -126,12 +126,14 @@ export default function SponsorsPage() {
                       
                       <div className={`relative w-full h-full ${config.imageClass} z-10 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110 flex items-center justify-center`}>
                         <div className="relative w-full h-full">
-                          <Image
-                            src={sponsor.logo}
-                            alt={sponsor.name}
-                            fill
-                            className="object-contain"
-                          />
+                          {sponsor.logo && (
+                            <Image
+                              src={sponsor.logo}
+                              alt={sponsor.name}
+                              fill
+                              className="object-contain"
+                            />
+                          )}
                         </div>
                       </div>
 
@@ -171,12 +173,14 @@ export default function SponsorsPage() {
                     className="group relative flex flex-col items-center justify-center border border-white/5 bg-white/[0.02] rounded-[1.5rem] overflow-hidden transition-all duration-500 hover:bg-white/[0.05] hover:border-white/10 cursor-pointer w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] lg:w-[calc(16.66%-0.75rem)] min-h-[160px] shadow-lg"
                   >
                     <div className="relative w-full h-full p-8 z-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
-                      <Image
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        fill
-                        className="object-contain"
-                      />
+                      {sponsor.logo && (
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          fill
+                          className="object-contain"
+                        />
+                      )}
                     </div>
                     {sponsor.partnerLabel && (
                       <div className="absolute bottom-4 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -255,12 +259,14 @@ export default function SponsorsPage() {
                   className="relative w-full aspect-square z-10 max-w-[280px] flex flex-col items-center justify-center gap-8"
                 >
                   <div className="relative w-full aspect-square">
-                    <Image
-                      src={selectedSponsor.logo}
-                      alt={selectedSponsor.name}
-                      fill
-                      className="object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
-                    />
+                    {selectedSponsor.logo && (
+                      <Image
+                        src={selectedSponsor.logo}
+                        alt={selectedSponsor.name}
+                        fill
+                        className="object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                      />
+                    )}
                   </div>
                   
                   {/* Integrated Name for Logo Area */}

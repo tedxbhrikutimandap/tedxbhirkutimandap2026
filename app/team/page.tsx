@@ -39,12 +39,14 @@ export default function TeamPage() {
 
                     {/* Sharp Inner Shard Layer (The Person) */}
                     <div className="absolute inset-4 z-10 [clip-path:polygon(15%_0%,_100%_0%,_100%_85%,_85%_100%,_0%_100%,_0%_15%)] overflow-hidden transition-all duration-700">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 group-hover:contrast-110"
-                      />
+                      {member.image && (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 group-hover:contrast-110"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 opacity-70 group-hover:opacity-10 transition-opacity duration-500" />
                       {/* Top glossy reflection adapting to the shard on hover */}
@@ -127,7 +129,7 @@ export default function TeamPage() {
 
       {/* ── Join Us CTA ────────────────────────────────────────────────── */}
       {false && (
-        <section className="py-16 md:py-24 bg-surface border-t border-white/[0.04]">
+        <section className="py-16 md:py-24 border-t border-white/[0.04]">
           <Container className="text-center">
             <AnimatedSection>
               <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-4">

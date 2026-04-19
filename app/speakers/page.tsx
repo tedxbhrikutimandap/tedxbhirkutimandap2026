@@ -46,12 +46,14 @@ export default function SpeakersPage() {
                 >
                   {/* Clipped Image */}
                   <div className="w-[40%] sm:w-[45%] h-full relative [clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] shrink-0">
-                    <Image
-                      src={speaker.image}
-                      alt={speaker.name}
-                      fill
-                      className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
-                    />
+                    {speaker.image && (
+                      <Image
+                        src={speaker.image}
+                        alt={speaker.name}
+                        fill
+                        className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
                   
@@ -111,13 +113,15 @@ export default function SpeakersPage() {
 
               {/* Left Side: Massive Clipped Image */}
               <div className="relative w-full h-[35vh] md:h-[85vh] md:min-h-[600px] md:w-[45%] lg:w-[40%] shrink-0 [clip-path:polygon(0_0,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] bg-black/20">
-                <Image
-                  src={selectedSpeaker.image}
-                  alt={selectedSpeaker.name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                {selectedSpeaker.image && (
+                  <Image
+                    src={selectedSpeaker.image}
+                    alt={selectedSpeaker.name}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                )}
                 <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-surface-card via-surface-card/60 to-transparent md:hidden" />
                 <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-surface-card via-surface-card/40 to-transparent hidden md:block" />
               </div>

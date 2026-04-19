@@ -15,5 +15,5 @@ export const navItems: NavItem[] = [
 
 export const ctaNav = {
   label: "Get Tickets",
-  href: "#register",
+  href: "/tickets",
 };
