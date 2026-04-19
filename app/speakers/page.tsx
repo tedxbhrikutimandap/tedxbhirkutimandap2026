@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Linkedin, Twitter, Globe, Mic2 } from "lucide-react";
@@ -12,6 +12,20 @@ import { siteConfig } from "@/data/siteConfig";
 
 export default function SpeakersPage() {
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedSpeaker) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedSpeaker]);
 
   return (
     <>
@@ -90,79 +104,112 @@ export default function SpeakersPage() {
         </Container>
       </section>
 
-      {/* ── Speaker Modal ──────────────────────────────────────────────── */}
+      {/* ── Speaker Modal (Cinematic Takeover) ─────────────────────────── */}
       <AnimatePresence>
         {selectedSpeaker && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md"
+            exit={{ opacity: 0, transition: { delay: 0.2 } }}
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden"
             onClick={() => setSelectedSpeaker(null)}
           >
+            {/* Massive Floating Cinematic Card */}
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-[#0a0a0a] border border-white/[0.08] rounded-3xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col md:flex-row shadow-[0_0_80px_rgba(235,0,40,0.15)]"
+              className="relative w-full max-w-[1400px] h-full max-h-[90vh] bg-surface-card border border-white/[0.08] rounded-[2rem] flex flex-col md:flex-row overflow-hidden shadow-[0_0_80px_rgba(235,0,40,0.15)]"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedSpeaker(null)}
-                className="absolute top-4 right-4 z-50 p-2.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red transition-all group"
-                aria-label="Close"
-              >
-                <X size={18} className="text-white/70 group-hover:text-white transition-colors" />
-              </button>
-
-              {/* Left Side: Image */}
-              <div className="relative h-72 md:h-auto md:w-2/5 shrink-0 overflow-hidden bg-surface-card">
+              {/* Left Side: Massive Clipped Image */}
+              <div className="relative w-full h-[40vh] md:h-full md:w-[45%] lg:w-[40%] shrink-0 [clip-path:polygon(0_0,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] bg-black/20">
                 <Image
                   src={selectedSpeaker.image}
                   alt={selectedSpeaker.name}
                   fill
                   className="object-cover"
+                  priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 md:from-transparent via-transparent to-black/30" />
-                <div className="absolute inset-0 bg-black/10" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-surface-card via-surface-card/40 to-transparent md:hidden" />
+                <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-surface-card via-surface-card/40 to-transparent hidden md:block" />
               </div>
 
-              {/* Right Side: Content */}
-              <div className="p-8 md:p-12 flex flex-col overflow-y-auto w-full md:w-3/5">
-                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-ted-red mb-3">
-                  {selectedSpeaker.title} <span className="text-white/30 px-2">•</span> {selectedSpeaker.organization}
-                </p>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-[900] text-white leading-[0.9] mb-6 font-heading tracking-tight">
-                  {selectedSpeaker.name}
-                </h3>
-                
-                <div className="h-px w-full bg-white/5 mb-8" />
+              {/* Right Side: Editorial Content */}
+              <div className="relative flex-1 h-full overflow-y-auto px-6 py-10 md:px-12 lg:px-24 flex flex-col justify-center -mt-8 md:mt-0 z-10">
+              {/* Close Button - Floats top right */}
+              <button
+                onClick={() => setSelectedSpeaker(null)}
+                className="absolute top-6 right-6 md:top-10 md:right-10 z-50 p-4 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red hover:rotate-90 transition-all duration-500 group"
+                aria-label="Close"
+              >
+                <X size={24} className="text-white/70 group-hover:text-white transition-colors" />
+              </button>
 
-                <div className="border-l-4 border-ted-red pl-5 py-1 mb-8">
-                  <p className="text-lg md:text-xl font-bold text-white/90 italic leading-snug">
-                    <span className="text-ted-red opacity-50 mr-1">"</span>
-                    {selectedSpeaker.talkTitle}
-                    <span className="text-ted-red opacity-50 ml-1">"</span>
-                  </p>
-                </div>
+              <div className="max-w-2xl mt-12 md:mt-0 relative z-10">
+                <motion.p
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-ted-red mb-4"
+                >
+                  {selectedSpeaker.title} <span className="text-white/30 mx-3">•</span> {selectedSpeaker.organization}
+                </motion.p>
                 
-                <p className="text-sm md:text-base text-white/50 leading-relaxed mb-10 flex-grow">
+                <motion.h3
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[900] text-white leading-[0.85] mb-8 font-heading tracking-tighter"
+                >
+                  {selectedSpeaker.name}
+                </motion.h3>
+
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="h-[2px] w-24 bg-ted-red mb-10 origin-left"
+                />
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <p className="text-xl md:text-3xl font-bold text-white/90 italic leading-snug mb-8 font-heading">
+                    <span className="text-ted-red opacity-60 mr-2">"</span>
+                    {selectedSpeaker.talkTitle}
+                    <span className="text-ted-red opacity-60 ml-2">"</span>
+                  </p>
+                </motion.div>
+
+                <motion.p
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-sm md:text-lg text-white/50 leading-relaxed mb-12 font-sans"
+                >
                   {selectedSpeaker.bio}
-                </p>
+                </motion.p>
 
                 {/* Social links */}
-                <div className="flex gap-3">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="flex gap-4"
+                >
                   {selectedSpeaker.socials?.linkedin && (
                     <a
                       href={selectedSpeaker.socials.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.08] hover:border-white/20 transition-all text-white/50 hover:text-white"
+                      className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
                       aria-label="LinkedIn"
                     >
-                      <Linkedin size={18} />
+                      <Linkedin size={20} className="text-white/50 group-hover:text-black transition-colors" />
                     </a>
                   )}
                   {selectedSpeaker.socials?.twitter && (
@@ -170,10 +217,10 @@ export default function SpeakersPage() {
                       href={selectedSpeaker.socials.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.08] hover:border-white/20 transition-all text-white/50 hover:text-white"
+                      className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
                       aria-label="Twitter"
                     >
-                      <Twitter size={18} />
+                      <Twitter size={20} className="text-white/50 group-hover:text-black transition-colors" />
                     </a>
                   )}
                   {selectedSpeaker.socials?.website && (
@@ -181,15 +228,16 @@ export default function SpeakersPage() {
                       href={selectedSpeaker.socials.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.08] hover:border-white/20 transition-all text-white/50 hover:text-white"
+                      className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
                       aria-label="Website"
                     >
-                      <Globe size={18} />
+                      <Globe size={20} className="text-white/50 group-hover:text-black transition-colors" />
                     </a>
                   )}
-                </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
