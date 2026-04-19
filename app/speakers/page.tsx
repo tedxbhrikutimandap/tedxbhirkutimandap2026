@@ -114,6 +114,9 @@ export default function SpeakersPage() {
             className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden"
             onClick={() => setSelectedSpeaker(null)}
           >
+            {/* Ambient Red Glow in Background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(235,0,40,0.12)_0%,transparent_100%)] pointer-events-none" />
+
             {/* Massive Floating Cinematic Card */}
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 30 }}
@@ -121,10 +124,19 @@ export default function SpeakersPage() {
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-[1400px] h-full max-h-[90vh] bg-surface-card border border-white/[0.08] rounded-[2rem] flex flex-col md:flex-row overflow-hidden shadow-[0_0_80px_rgba(235,0,40,0.15)]"
+              className="relative w-full max-w-[1400px] h-[85vh] md:h-auto md:max-h-[85vh] bg-surface-card border border-white/[0.08] rounded-3xl md:rounded-[2rem] flex flex-col md:flex-row overflow-hidden shadow-[0_0_80px_rgba(235,0,40,0.15)]"
             >
+              {/* Close Button - Floats top right of entire card */}
+              <button
+                onClick={() => setSelectedSpeaker(null)}
+                className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-3 md:p-4 bg-black/40 md:bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red hover:rotate-90 transition-all duration-500 group"
+                aria-label="Close"
+              >
+                <X size={20} className="text-white/70 group-hover:text-white transition-colors" />
+              </button>
+
               {/* Left Side: Massive Clipped Image */}
-              <div className="relative w-full h-[40vh] md:h-full md:w-[45%] lg:w-[40%] shrink-0 [clip-path:polygon(0_0,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] bg-black/20">
+              <div className="relative w-full h-[35vh] md:h-[85vh] md:min-h-[600px] md:w-[45%] lg:w-[40%] shrink-0 [clip-path:polygon(0_0,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] bg-black/20">
                 <Image
                   src={selectedSpeaker.image}
                   alt={selectedSpeaker.name}
@@ -132,39 +144,36 @@ export default function SpeakersPage() {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-surface-card via-surface-card/40 to-transparent md:hidden" />
+                <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-surface-card via-surface-card/60 to-transparent md:hidden" />
                 <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-surface-card via-surface-card/40 to-transparent hidden md:block" />
               </div>
 
               {/* Right Side: Editorial Content */}
-              <div className="relative flex-1 h-full overflow-y-auto px-6 py-10 md:px-12 lg:px-24 flex flex-col justify-center -mt-8 md:mt-0 z-10">
-              {/* Close Button - Floats top right */}
-              <button
-                onClick={() => setSelectedSpeaker(null)}
-                className="absolute top-6 right-6 md:top-10 md:right-10 z-50 p-4 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red hover:rotate-90 transition-all duration-500 group"
-                aria-label="Close"
-              >
-                <X size={24} className="text-white/70 group-hover:text-white transition-colors" />
-              </button>
-
-              <div className="max-w-2xl mt-12 md:mt-0 relative z-10">
-                <motion.p
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-ted-red mb-4"
-                >
-                  {selectedSpeaker.title} <span className="text-white/30 mx-3">•</span> {selectedSpeaker.organization}
-                </motion.p>
-                
+              <div className="relative flex-1 h-[50vh] md:h-full md:max-h-[85vh] overflow-y-auto px-6 py-6 md:py-12 md:px-12 lg:px-20 flex flex-col pt-0 md:justify-center z-10 -mt-10 md:mt-0 pb-12">
+              <div className="max-w-2xl relative z-10 mx-auto md:mx-0 w-full">
                 <motion.h3
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[900] text-white leading-[0.85] mb-8 font-heading tracking-tighter"
+                  transition={{ delay: 0.2 }}
+                  className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[900] text-white leading-[0.9] md:leading-[0.85] mb-4 md:mb-6 font-heading tracking-tighter"
                 >
                   {selectedSpeaker.name}
                 </motion.h3>
+
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 mb-8"
+                >
+                  <p className="text-lg md:text-xl font-bold text-white/90 font-sans tracking-wide">
+                    {selectedSpeaker.title}
+                  </p>
+                  <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-ted-red/60" />
+                  <p className="text-base md:text-lg text-white/50 font-sans">
+                    {selectedSpeaker.organization}
+                  </p>
+                </motion.div>
 
                 <motion.div
                   initial={{ scaleX: 0 }}
