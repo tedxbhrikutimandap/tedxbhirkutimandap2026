@@ -20,42 +20,42 @@ export default function SpeakersPage() {
         subtitle="Visionaries, innovators, and changemakers. Meet the voices of TEDxBhrikutiMandap 2026."
       />
 
-      {/* ── Speaker Grid ───────────────────────────────────────────────── */}
-      <section className="pb-20 md:pb-32">
+      {/* ── Speaker List (Cinema Strip) ────────────────────────────────── */}
+      <section className="pb-20 md:pb-32 overflow-hidden">
         <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {speakers.map((speaker, i) => (
-              <AnimatedSection key={speaker.id} delay={i * 0.08}>
+              <AnimatedSection key={speaker.id} delay={i * 0.1}>
                 <button
                   onClick={() => setSelectedSpeaker(speaker)}
-                  className="group relative bg-surface-card border border-white/[0.06] rounded-2xl overflow-hidden hover:border-ted-red/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(235,0,40,0.15)] text-left w-full"
+                  className="group relative w-full h-56 md:h-72 bg-white/[0.03] rounded-[2rem] overflow-hidden cursor-pointer flex border border-white/[0.05] hover:border-ted-red/50 hover:bg-ted-red/[0.05] transition-all duration-500 text-left shadow-lg hover:shadow-[0_15px_50px_rgba(235,0,40,0.15)] hover:-translate-y-2"
                 >
-                  <div className="relative aspect-[3/4] overflow-hidden">
+                  {/* Clipped Image */}
+                  <div className="w-[40%] sm:w-[45%] h-full relative [clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] shrink-0">
                     <Image
                       src={speaker.image}
                       alt={speaker.name}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
-                    {speaker.featured && (
-                      <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-ted-red text-white text-[8px] font-bold uppercase tracking-wider">
-                        Featured
-                      </div>
-                    )}
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ted-red mb-1.5">
-                      {speaker.title} · {speaker.organization}
+                  
+                  {/* Content */}
+                  <div className="w-[60%] sm:w-[55%] h-full px-5 py-6 md:p-8 flex flex-col justify-center flex-grow">
+                    <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-ted-red mb-2 line-clamp-1">
+                      {speaker.title}
                     </p>
-                    <h3 className="text-xl sm:text-2xl font-[900] text-white leading-tight">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-[900] text-white leading-tight mb-2 md:mb-3 font-heading tracking-tight line-clamp-2 md:line-clamp-none">
                       {speaker.name}
                     </h3>
-                    <p className="text-xs text-white/50 mt-2 line-clamp-2">
+                    <p className="text-xs md:text-sm text-white/50 italic line-clamp-2 md:line-clamp-3">
                       &ldquo;{speaker.talkTitle}&rdquo;
                     </p>
+                    
+                    <div className="mt-4 md:mt-6 flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-wider text-ted-red opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                      View details <span aria-hidden="true">&rarr;</span>
+                    </div>
                   </div>
                 </button>
               </AnimatedSection>
