@@ -27,7 +27,7 @@ export const teamMembers: TeamMember[] = [
     name: "Prisha Jalan",
     role: "Co-Organizer",
     quote: "The Catalyst of Execution.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806486/Prisha_Jalan_dwyy47.avif",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833335/Prisha_Jalan_dwyy47.webp",
     socials: {
       instagram: "https://www.instagram.com/prisha.jalan?igsh=MXNobGVoMnk4NnI3bQ==",
       facebook: "https://www.facebook.com/share/1Aw7pKE3x8/",
@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
     name: "Richa Thapa",
     role: "Treasurer",
     quote: "The Engine of Sustainability.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806487/Richa_Thapa_vwfzcq.avif",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833300/Richa_Thapa_vwfzcq.webp",
     socials: {
       instagram: "https://www.instagram.com/_richa.core_?igsh=bWRobmc1dnV5cHZ2&utm_source=qr",
       facebook: "https://www.facebook.com/share/1FiHdNAkbK/?mibextid=wwXIfr",
@@ -102,7 +102,7 @@ export const teamMembers: TeamMember[] = [
     name: "Aayush Sah",
     role: "Graphics Lead",
     quote: "Visualizing the Invisible.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806485/Ayush_Sah_tcbnnv.avif",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833317/Ayush_Sah_tcbnnv.webp",
     socials: {
       instagram: "https://www.instagram.com/aayushsah5310?igsh=MWlydjVpd3AxeDJmcg==",
       facebook: "https://www.facebook.com/share/1CZhnocrr7/",
