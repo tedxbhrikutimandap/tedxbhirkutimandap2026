@@ -7,34 +7,33 @@ const IconMap: Record<string, LucideIcon> = {
   LinkedIn: Linkedin,
 };
 
-export const SocialLinks = () => {
+export const SocialLinks = ({ vertical = false }: { vertical?: boolean }) => {
   return (
-    <div className="flex flex-col items-center gap-6">
-      <span className="text-[10px] font-black tracking-[0.6em] uppercase text-white/60 italic">
-        Connect With Us
-      </span>
-      <div className="flex gap-10">
-        {siteConfig.socials.map((social) => {
-          const Icon = IconMap[social.name];
-          return (
-            <a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-3 text-white/70 hover:text-ted-red transition-all duration-300"
-              aria-label={social.name}
-            >
-              <div className="p-3 rounded-full bg-white/10 border border-white/20 group-hover:border-ted-red/50 group-hover:bg-ted-red/10 transition-all duration-300">
-                {Icon && <Icon size={20} strokeWidth={1.5} />}
-              </div>
-              <span className="text-[9px] font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div className={`flex ${vertical ? "flex-col items-start gap-4" : "gap-6"}`}>
+      {siteConfig.socials.map((social) => {
+        const Icon = IconMap[social.name];
+        return (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group flex items-center gap-4 text-white/50 hover:text-white transition-all duration-300 ${
+              vertical ? "w-full" : ""
+            }`}
+            aria-label={social.name}
+          >
+            <div className="p-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] group-hover:border-ted-red/50 group-hover:bg-ted-red/10 group-hover:text-ted-red transition-all duration-500 shadow-lg">
+              {Icon && <Icon size={18} strokeWidth={1.5} />}
+            </div>
+            {vertical && (
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/40 group-hover:text-white transition-colors">
                 {social.name}
               </span>
-            </a>
-          );
-        })}
-      </div>
+            )}
+          </a>
+        );
+      })}
     </div>
   );
 };

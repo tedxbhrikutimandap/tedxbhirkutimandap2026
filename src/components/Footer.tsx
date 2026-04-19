@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/siteConfig";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-black border-t border-white/[0.06]">
+    <footer className="relative border-t border-white/[0.06]">
       {/* Red glow accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-px bg-gradient-to-r from-transparent via-ted-red/50 to-transparent" />
 
@@ -19,9 +19,6 @@ export const Footer = () => {
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               {siteConfig.description}
             </p>
-            <div className="mt-2">
-              <SocialLinks />
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -42,24 +39,12 @@ export const Footer = () => {
             </nav>
           </div>
 
-          {/* Contact & Info */}
+          {/* Social / Connect */}
           <div>
-            <h4 className="text-[11px] font-[900] uppercase tracking-[0.25em] text-white/60 mb-4">
-              Event Details
+            <h4 className="text-[11px] font-[900] uppercase tracking-[0.25em] text-white/60 mb-5">
+              Connect With Us
             </h4>
-            <div className="flex flex-col gap-2.5 text-sm text-white/40">
-              <p>📍 Bhrikuti Mandap, Kathmandu</p>
-              <p>📅 2026</p>
-              <p>
-                ✉️{" "}
-                <a
-                  href="mailto:info@tedxbhrikutimandap.com"
-                  className="hover:text-white transition-colors"
-                >
-                  info@tedxbhrikutimandap.com
-                </a>
-              </p>
-            </div>
+            <SocialLinks vertical />
           </div>
         </div>
 
@@ -68,9 +53,6 @@ export const Footer = () => {
           <p className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-white/25 text-center sm:text-left leading-relaxed font-bold">
             &copy; {new Date().getFullYear()} {siteConfig.name}. This
             independent TEDx event is operated under license from TED.
-          </p>
-          <p className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-white/20 font-bold">
-            Crafted with ❤️ in Kathmandu
           </p>
         </div>
       </div>

@@ -49,10 +49,12 @@ const CountdownTimer = () => {
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+  // Initialize with zeros to avoid hydration mismatch (server vs client time)
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(calculateTimeLeft), 1000);
+    setTimeLeft(calculateTimeLeft());
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
     return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -128,10 +130,10 @@ export default function Home() {
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-4">
               <Link
-                href="#register"
+                href={ctaNav.href}
                 className="inline-flex items-center gap-2.5 bg-ted-red/15 border border-ted-red/30 px-7 py-3.5 rounded-full text-ted-red text-xs font-[900] uppercase tracking-[0.15em] hover:bg-ted-red hover:text-white hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                Get Tickets
+                {ctaNav.label}
                 <ArrowRight size={14} />
               </Link>
               <Link
@@ -158,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* ── Countdown Section ───────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface border-y border-white/[0.04]">
+      <section className="py-16 md:py-24 border-y border-white/[0.04]">
         <Container>
           <AnimatedSection className="flex flex-col items-center gap-8">
             <h2 className="text-xs sm:text-sm font-[900] uppercase tracking-[0.3em] text-white/40">
@@ -170,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* ── What is TEDx? ───────────────────────────────────────────────────── */}
-      <section className="py-20 md:py-32 bg-surface border-y border-white/[0.04]">
+      <section className="py-20 md:py-32 border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <AnimatedSection direction="left">
@@ -221,8 +223,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA Band ────────────────────────────────────────────────────────── */}
-      <section id="register" className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-black" />
+      <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ted-red/15 rounded-full blur-[160px] pointer-events-none" />
         <div className="absolute top-[-20%] right-[-10%] w-[400px] h-[400px] bg-ted-red/10 rounded-full blur-[120px] pointer-events-none" />
 
