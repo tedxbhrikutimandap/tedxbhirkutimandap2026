@@ -88,7 +88,6 @@ export const Navbar = () => {
               {/* Logo */}
               <Link href="/" className="relative z-50 shrink-0" onClick={handleHomeClick}>
                 <Logo
-                  theme="white"
                   className={`transition-all duration-300 hover:scale-[1.02] ${
                     isScrolled || isOpen ? "!w-32 !h-8 md:!w-40 md:!h-10" : "!w-40 !h-10 md:!w-52 md:!h-12"
                   }`}
