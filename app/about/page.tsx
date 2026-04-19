@@ -218,26 +218,25 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Venue Card */}
+            {/* Speakers Card */}
             <AnimatedSection direction="left">
-              <div className="bg-surface border border-white/[0.06] rounded-2xl p-6 md:p-8 h-full">
-                <h3 className="text-xl font-[900] text-white uppercase tracking-tight mb-3">
-                  📍 The Venue
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed mb-4">
-                  <strong className="text-white">Bhrikuti Mandap</strong> — one of Kathmandu&apos;s
-                  most iconic event spaces, located in the heart of the city near the Tundikhel
-                  parade ground.
-                </p>
-                <a
-                  href="https://maps.google.com/?q=Bhrikuti+Mandap+Kathmandu"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div className="bg-surface border border-white/[0.06] rounded-2xl p-6 md:p-8 h-full flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-[900] text-white uppercase tracking-tight mb-3">
+                    🎤 The Speakers
+                  </h3>
+                  <p className="text-sm text-white/50 leading-relaxed mb-4">
+                    Meet the visionaries, explorers, and builders sharing their stories on the
+                    TEDxBhrikutiMandap stage this year.
+                  </p>
+                </div>
+                <Link
+                  href="/speakers"
                   className="inline-flex items-center gap-2 text-sm font-bold text-ted-red hover:text-ted-red-light transition-colors group"
                 >
-                  View on Google Maps
+                  View Speakers
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </div>
             </AnimatedSection>
 
