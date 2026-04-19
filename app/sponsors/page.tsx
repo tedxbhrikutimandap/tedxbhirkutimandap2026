@@ -17,6 +17,8 @@ const tierConfig = {
     span: "col-span-full lg:col-span-4 lg:row-span-2 min-h-[400px]",
     imageClass: "aspect-[2/1] p-12 md:p-20",
     accent: "bg-ted-red",
+    tint: "bg-ted-red/[0.12]",
+    buttonBg: "bg-ted-red hover:bg-ted-red-dark",
   },
   [SPONSOR_TIERS.GOLD]: {
     styles: "border-amber-500/20 bg-amber-500/[0.03]",
@@ -24,6 +26,8 @@ const tierConfig = {
     span: "col-span-full md:col-span-2 lg:col-span-2 min-h-[300px]",
     imageClass: "aspect-[3/1] p-10 md:p-14",
     accent: "bg-amber-500",
+    tint: "bg-amber-500/[0.08]",
+    buttonBg: "bg-amber-500 hover:bg-amber-600",
   },
   [SPONSOR_TIERS.SILVER]: {
     styles: "border-slate-300/20 bg-slate-300/[0.03]",
@@ -31,6 +35,8 @@ const tierConfig = {
     span: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[250px]",
     imageClass: "aspect-[3/1] p-8 md:p-12",
     accent: "bg-slate-300",
+    tint: "bg-slate-300/[0.06]",
+    buttonBg: "bg-slate-400 hover:bg-slate-500",
   },
   [SPONSOR_TIERS.BRONZE]: {
     styles: "border-orange-700/20 bg-orange-700/[0.03]",
@@ -38,6 +44,8 @@ const tierConfig = {
     span: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[200px]",
     imageClass: "aspect-[3/1] p-6 md:p-10",
     accent: "bg-orange-700",
+    tint: "bg-orange-700/[0.08]",
+    buttonBg: "bg-orange-700 hover:bg-orange-800",
   },
   [SPONSOR_TIERS.COMMUNITY]: {
     styles: "border-white/10 bg-white/[0.02]",
@@ -45,7 +53,9 @@ const tierConfig = {
     span: "col-span-1 md:col-span-2 lg:col-span-1.5 min-h-[180px]",
     gridClass: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
     imageClass: "aspect-[3/1] p-6",
-    accent: "bg-white",
+    accent: "bg-white/20",
+    tint: "bg-white/[0.04]",
+    buttonBg: "bg-white/10 hover:bg-white/20",
   },
 };
 
@@ -262,8 +272,8 @@ export default function SponsorsPage() {
               {/* Content Area: Editorial Layout with Tier Tint */}
               <div className="w-full md:w-auto flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative overflow-hidden">
                 {/* Background Tint (Branded by Tier) */}
-                <div className={`absolute inset-0 ${tierConfig[selectedSponsor.tier].accent}/[0.03] -z-10`} />
-                <div className={`absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent -z-10`} />
+                <div className={`absolute inset-0 ${tierConfig[selectedSponsor.tier].tint}`} />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent" />
 
                 <motion.div
                   initial={{ x: 20, opacity: 0 }}
@@ -272,13 +282,10 @@ export default function SponsorsPage() {
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-6">
                     <span className={`text-[10px] font-[900] uppercase tracking-[0.2em] text-white px-4 py-1.5 ${tierConfig[selectedSponsor.tier].accent} rounded-full shadow-lg`}>
-                      {selectedSponsor.tier} Sponsor
+                      {selectedSponsor.tier === SPONSOR_TIERS.COMMUNITY && selectedSponsor.partnerLabel
+                        ? selectedSponsor.partnerLabel
+                        : `${selectedSponsor.tier} Sponsor`}
                     </span>
-                    {selectedSponsor.partnerLabel && (
-                       <span className="text-[10px] font-[900] uppercase tracking-[0.2em] text-white/40 font-heading">
-                       • {selectedSponsor.partnerLabel}
-                     </span>
-                    )}
                   </div>
                   
                   <h3 className="text-4xl md:text-5xl lg:text-6xl font-[900] text-white uppercase tracking-tighter mb-8 leading-[0.9] font-heading">
@@ -296,7 +303,7 @@ export default function SponsorsPage() {
                       href={selectedSponsor.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative inline-flex items-center gap-3 bg-ted-red px-10 py-5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.2em] shadow-2xl hover:bg-ted-red-dark hover:scale-105 active:scale-95 transition-all duration-300"
+                      className={`group relative inline-flex items-center gap-3 ${tierConfig[selectedSponsor.tier].buttonBg} px-10 py-5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300`}
                     >
                       Official Website
                       <ExternalLink size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -308,45 +315,6 @@ export default function SponsorsPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* ── Become a Partner CTA (Branded) ────────────────────────────── */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
-        {/* Abstract Background Element */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl aspect-square bg-ted-red/10 rounded-full blur-[120px] pointer-events-none" />
-        
-        <Container className="text-center relative z-10">
-          <AnimatedSection>
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-ted-red/10 border border-ted-red/20 mb-8">
-              <Mail size={32} className="text-ted-red" />
-            </div>
-            
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-[900] uppercase tracking-tight text-white leading-[0.9] mb-6">
-              Become a <br className="sm:hidden" /> <span className="text-ted-red">Partner</span>
-            </h2>
-            
-            <p className="text-white/50 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-              Join a distinguished collective of organizations shaping the future of Nepal. 
-              Multiple partnership tiers and unique activation opportunities available.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a
-                href="mailto:sponsors@tedxbhrikutimandap.com"
-                className="group relative inline-flex items-center gap-3 bg-ted-red px-10 py-5 rounded-full text-white text-sm font-[900] uppercase tracking-[0.2em] shadow-[0_15px_35px_rgba(235,0,40,0.3)] hover:shadow-[0_20px_45px_rgba(235,0,40,0.45)] hover:scale-105 active:scale-95 transition-all duration-500"
-              >
-                Inquire for 2026
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 bg-white/[0.03] border border-white/10 px-10 py-5 rounded-full text-white/70 text-sm font-[900] uppercase tracking-[0.2em] hover:bg-white/[0.08] hover:text-white hover:scale-105 active:scale-95 transition-all duration-500"
-              >
-                Get in Touch
-              </Link>
-            </div>
-          </AnimatedSection>
-        </Container>
-      </section>
     </>
   );
 }
