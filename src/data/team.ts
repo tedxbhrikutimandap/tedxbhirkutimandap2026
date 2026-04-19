@@ -55,6 +55,16 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
+    name: "Pankaj Poudel",
+    role: "Event Manager",
+    quote: "Event Manager",
+    image: "",
+    socials:{
+      facebook: "https://www.facebook.com/pankaj.poudel.554738",
+      linkedin: "linkedin.com/in/pankaj-p-bba1b1256"
+    }
+  },
+  {
     name: "Mala Rijal",
     role: "Sponsorship Manager",
     quote: "Building the Bridges of Partnership.",
@@ -99,6 +109,4 @@ export const teamMembers: TeamMember[] = [
       linkedin: "https://www.linkedin.com/in/aayushsah5310?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     },
   },
-
-
 ];
