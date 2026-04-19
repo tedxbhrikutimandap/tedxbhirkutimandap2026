@@ -7,6 +7,7 @@ export const siteConfig = {
   logos: {
     black: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",
     white: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806687/Official_Logo_White_hkwadl.png",
+    footer: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",
   },
   socials: [
     { name: "Instagram", url: "https://www.instagram.com/tedxbhrikutimandap/" },

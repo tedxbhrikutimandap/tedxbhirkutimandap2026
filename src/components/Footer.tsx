@@ -15,7 +15,7 @@ export const Footer = () => {
         <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand column */}
           <div className="flex flex-col gap-4">
-            <Logo theme="white" className="!w-48 !h-12" />
+            <Logo isFooter className="!w-48 !h-12" />
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               {siteConfig.description}
             </p>
