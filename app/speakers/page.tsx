@@ -97,46 +97,58 @@ export default function SpeakersPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md"
             onClick={() => setSelectedSpeaker(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              initial={{ scale: 0.95, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-surface-card border border-white/[0.08] rounded-2xl overflow-hidden max-w-2xl w-full max-h-[85vh] overflow-y-auto"
+              className="relative bg-[#0a0a0a] border border-white/[0.08] rounded-3xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col md:flex-row shadow-[0_0_80px_rgba(235,0,40,0.15)]"
             >
+              {/* Close Button */}
               <button
                 onClick={() => setSelectedSpeaker(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-ted-red transition-colors"
+                className="absolute top-4 right-4 z-50 p-2.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red transition-all group"
                 aria-label="Close"
               >
-                <X size={16} className="text-white" />
+                <X size={18} className="text-white/70 group-hover:text-white transition-colors" />
               </button>
 
-              <div className="relative h-64 sm:h-80">
+              {/* Left Side: Image */}
+              <div className="relative h-72 md:h-auto md:w-2/5 shrink-0 overflow-hidden bg-surface-card">
                 <Image
                   src={selectedSpeaker.image}
                   alt={selectedSpeaker.name}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 md:from-transparent via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-black/10" />
               </div>
 
-              <div className="p-6 sm:p-8 -mt-16 relative z-10">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-ted-red mb-2">
-                  {selectedSpeaker.title} · {selectedSpeaker.organization}
+              {/* Right Side: Content */}
+              <div className="p-8 md:p-12 flex flex-col overflow-y-auto w-full md:w-3/5">
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-ted-red mb-3">
+                  {selectedSpeaker.title} <span className="text-white/30 px-2">•</span> {selectedSpeaker.organization}
                 </p>
-                <h3 className="text-2xl sm:text-3xl font-[900] text-white leading-tight mb-2">
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-[900] text-white leading-[0.9] mb-6 font-heading tracking-tight">
                   {selectedSpeaker.name}
                 </h3>
-                <p className="text-sm text-ted-red/80 font-bold mb-4">
-                  &ldquo;{selectedSpeaker.talkTitle}&rdquo;
-                </p>
-                <p className="text-sm text-white/60 leading-relaxed mb-6">
+                
+                <div className="h-px w-full bg-white/5 mb-8" />
+
+                <div className="border-l-4 border-ted-red pl-5 py-1 mb-8">
+                  <p className="text-lg md:text-xl font-bold text-white/90 italic leading-snug">
+                    <span className="text-ted-red opacity-50 mr-1">"</span>
+                    {selectedSpeaker.talkTitle}
+                    <span className="text-ted-red opacity-50 ml-1">"</span>
+                  </p>
+                </div>
+                
+                <p className="text-sm md:text-base text-white/50 leading-relaxed mb-10 flex-grow">
                   {selectedSpeaker.bio}
                 </p>
 
@@ -147,10 +159,10 @@ export default function SpeakersPage() {
                       href={selectedSpeaker.socials.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 bg-white/[0.05] border border-white/[0.08] rounded-full hover:bg-ted-red hover:border-ted-red transition-all"
+                      className="p-3 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.08] hover:border-white/20 transition-all text-white/50 hover:text-white"
                       aria-label="LinkedIn"
                     >
-                      <Linkedin size={16} className="text-white" />
+                      <Linkedin size={18} />
                     </a>
                   )}
                   {selectedSpeaker.socials?.twitter && (
@@ -158,10 +170,10 @@ export default function SpeakersPage() {
                       href={selectedSpeaker.socials.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 bg-white/[0.05] border border-white/[0.08] rounded-full hover:bg-ted-red hover:border-ted-red transition-all"
+                      className="p-3 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.08] hover:border-white/20 transition-all text-white/50 hover:text-white"
                       aria-label="Twitter"
                     >
-                      <Twitter size={16} className="text-white" />
+                      <Twitter size={18} />
                     </a>
                   )}
                   {selectedSpeaker.socials?.website && (
@@ -169,10 +181,10 @@ export default function SpeakersPage() {
                       href={selectedSpeaker.socials.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 bg-white/[0.05] border border-white/[0.08] rounded-full hover:bg-ted-red hover:border-ted-red transition-all"
+                      className="p-3 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.08] hover:border-white/20 transition-all text-white/50 hover:text-white"
                       aria-label="Website"
                     >
-                      <Globe size={16} className="text-white" />
+                      <Globe size={18} />
                     </a>
                   )}
                 </div>
