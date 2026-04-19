@@ -15,6 +15,7 @@ const tierConfig = {
     styles: "border-ted-red/30 bg-ted-red/[0.05] shadow-[0_0_50px_rgba(235,0,40,0.1)]",
     icon: <Star className="text-ted-red" size={24} />,
     span: "col-span-full lg:col-span-4 lg:row-span-2 min-h-[400px]",
+    cardWidth: "w-full max-w-3xl min-h-[400px]",
     imageClass: "aspect-[2/1] p-12 md:p-20",
     accent: "bg-ted-red",
     tint: "bg-ted-red/[0.12]",
@@ -24,6 +25,7 @@ const tierConfig = {
     styles: "border-amber-500/20 bg-amber-500/[0.03]",
     icon: <Award className="text-amber-400" size={20} />,
     span: "col-span-full md:col-span-2 lg:col-span-2 min-h-[300px]",
+    cardWidth: "w-full sm:w-[calc(50%-0.75rem)] max-w-lg min-h-[300px]",
     imageClass: "aspect-[3/1] p-10 md:p-14",
     accent: "bg-amber-500",
     tint: "bg-amber-500/[0.08]",
@@ -33,6 +35,7 @@ const tierConfig = {
     styles: "border-slate-300/20 bg-slate-300/[0.03]",
     icon: <Shield className="text-slate-300" size={18} />,
     span: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[250px]",
+    cardWidth: "w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] max-w-sm min-h-[250px]",
     imageClass: "aspect-[3/1] p-8 md:p-12",
     accent: "bg-slate-300",
     tint: "bg-slate-300/[0.06]",
@@ -42,6 +45,7 @@ const tierConfig = {
     styles: "border-orange-700/20 bg-orange-700/[0.03]",
     icon: <Shield className="text-orange-700" size={16} />,
     span: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[200px]",
+    cardWidth: "w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] lg:w-[calc(25%-0.75rem)] min-h-[200px]",
     imageClass: "aspect-[3/1] p-6 md:p-10",
     accent: "bg-orange-700",
     tint: "bg-orange-700/[0.08]",
@@ -98,10 +102,10 @@ export default function SponsorsPage() {
               return (
                 <AnimatedSection 
                   key={tier} 
-                  className={`col-span-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 mb-12`}
+                  className="col-span-full mb-12"
                 >
-                  {/* Tier Label (Optional, keeping it subtle) */}
-                  <div className="col-span-full flex items-center gap-4 mb-4 opacity-50">
+                  {/* Tier Label */}
+                  <div className="flex items-center gap-4 mb-4 opacity-50">
                     <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20" />
                     <span className="text-[10px] font-black uppercase tracking-[0.4em] whitespace-nowrap">
                       {tier} Partners
@@ -109,11 +113,13 @@ export default function SponsorsPage() {
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20" />
                   </div>
 
+                  {/* Centered Flex Container */}
+                  <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                   {tierSponsors.map((sponsor) => (
                     <button
                       key={sponsor.name}
                       onClick={() => setSelectedSponsor(sponsor)}
-                      className={`group relative flex flex-col items-center justify-center border rounded-[2rem] overflow-hidden transition-all duration-500 hover:scale-[1.01] cursor-pointer text-left w-full ${config.styles} ${config.span}`}
+                      className={`group relative flex flex-col items-center justify-center border rounded-[2rem] overflow-hidden transition-all duration-500 hover:scale-[1.01] cursor-pointer text-left ${config.styles} ${config.cardWidth}`}
                     >
                       {/* Hover Glow Effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -142,13 +148,14 @@ export default function SponsorsPage() {
                       </div>
                     </button>
                   ))}
+                  </div>
                 </AnimatedSection>
               );
             })}
 
             {/* Community Partners - Clean Minimal Bento at Bottom */}
-            <AnimatedSection className="col-span-full grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 mt-12">
-               <div className="col-span-full flex items-center gap-4 mb-4 opacity-50">
+            <AnimatedSection className="col-span-full mt-12">
+               <div className="flex items-center gap-4 mb-4 opacity-50">
                   <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] whitespace-nowrap">
                     Community Partners
@@ -156,11 +163,12 @@ export default function SponsorsPage() {
                   <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
                 </div>
 
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                 {sponsors.filter(s => s.tier === SPONSOR_TIERS.COMMUNITY).map((sponsor) => (
                    <button
                     key={sponsor.name}
                     onClick={() => setSelectedSponsor(sponsor)}
-                    className="group relative flex flex-col items-center justify-center border border-white/5 bg-white/[0.02] rounded-[1.5rem] overflow-hidden transition-all duration-500 hover:bg-white/[0.05] hover:border-white/10 cursor-pointer min-h-[160px] col-span-1 md:col-span-2 lg:col-span-1 shadow-lg"
+                    className="group relative flex flex-col items-center justify-center border border-white/5 bg-white/[0.02] rounded-[1.5rem] overflow-hidden transition-all duration-500 hover:bg-white/[0.05] hover:border-white/10 cursor-pointer w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] lg:w-[calc(16.66%-0.75rem)] min-h-[160px] shadow-lg"
                   >
                     <div className="relative w-full h-full p-8 z-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
                       <Image
@@ -179,6 +187,7 @@ export default function SponsorsPage() {
                     )}
                   </button>
                 ))}
+                </div>
             </AnimatedSection>
           </div>
         </Container>

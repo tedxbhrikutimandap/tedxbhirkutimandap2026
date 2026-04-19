@@ -115,7 +115,7 @@ export const Navbar = () => {
               <div className="hidden lg:flex items-center">
                 <Link
                   href={ctaNav.href}
-                  className="group relative px-6 py-2.5 bg-white text-black font-[900] uppercase tracking-[0.15em] text-[11px] rounded-full overflow-hidden hover:bg-ted-red hover:text-white transition-colors duration-300"
+                  className="group relative px-6 py-2.5 bg-ted-red/15 border border-ted-red/30 text-ted-red font-[900] uppercase tracking-[0.15em] text-[11px] rounded-full overflow-hidden hover:bg-ted-red hover:text-white hover:border-ted-red transition-all duration-300"
                 >
                   <span className="relative flex items-center gap-2">
                     {ctaNav.label} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -157,7 +157,7 @@ export const Navbar = () => {
                 <div className="pt-8 border-t border-white/[0.08]">
                   <Link
                     href={ctaNav.href}
-                    className="flex items-center justify-center px-8 py-4 bg-ted-red text-white text-sm font-[900] uppercase tracking-[0.2em] rounded-2xl shadow-[0_8px_25px_rgba(235,0,40,0.4)] w-fit min-w-[200px]"
+                    className="flex items-center justify-center px-8 py-4 bg-ted-red/15 border border-ted-red/30 text-ted-red text-sm font-[900] uppercase tracking-[0.2em] rounded-2xl hover:bg-ted-red hover:text-white transition-all duration-300 w-fit min-w-[200px]"
                   >
                     {ctaNav.label}
                   </Link>
