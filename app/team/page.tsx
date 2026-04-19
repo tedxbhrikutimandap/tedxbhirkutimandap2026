@@ -126,25 +126,27 @@ export default function TeamPage() {
       </section>
 
       {/* ── Join Us CTA ────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface border-t border-white/[0.04]">
-        <Container className="text-center">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-4">
-              Join Our Team
-            </h2>
-            <p className="text-white/50 text-sm md:text-base max-w-xl mx-auto mb-8">
-              Want to be part of TEDxBhrikutiMandap? We&apos;re always looking for passionate
-              volunteers to help make ideas worth spreading a reality.
-            </p>
-            <a
-              href="mailto:info@tedxbhrikutimandap.com"
-              className="inline-flex items-center gap-2.5 bg-ted-red px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] shadow-[0_8px_25px_rgba(235,0,40,0.4)] hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              Get in Touch
-            </a>
-          </AnimatedSection>
-        </Container>
-      </section>
+      {false && (
+        <section className="py-16 md:py-24 bg-surface border-t border-white/[0.04]">
+          <Container className="text-center">
+            <AnimatedSection>
+              <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-4">
+                Join Our Team
+              </h2>
+              <p className="text-white/50 text-sm md:text-base max-w-xl mx-auto mb-8">
+                Want to be part of TEDxBhrikutiMandap? We&apos;re always looking for passionate
+                volunteers to help make ideas worth spreading a reality.
+              </p>
+              <a
+                href="mailto:info@tedxbhrikutimandap.com"
+                className="inline-flex items-center gap-2.5 bg-ted-red px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] shadow-[0_8px_25px_rgba(235,0,40,0.4)] hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                Get in Touch
+              </a>
+            </AnimatedSection>
+          </Container>
+        </section>
+      )}
     </>
   );
 }

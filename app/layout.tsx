@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { siteConfig } from "@/data/siteConfig";
@@ -9,12 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
-  display: "swap",
-});
+
 
 export const metadata: Metadata = {
   title: {
@@ -161,7 +155,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${poppins.variable} antialiased bg-black text-white`}
+        className="antialiased bg-black text-white font-sans"
       >
         <BackgroundEffects />
         <Navbar />
