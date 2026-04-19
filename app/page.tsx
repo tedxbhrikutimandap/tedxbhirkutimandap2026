@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, Calendar, MapPin, Mic2 } from "lucide-react";
+import { ArrowRight, Mic2 } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
+import { ctaNav } from "@/data/navigation";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -35,7 +36,7 @@ const itemVariants: Variants = {
 // ─── Countdown Timer ──────────────────────────────────────────────────────────
 
 const CountdownTimer = () => {
-  const targetDate = new Date("2026-12-15T09:00:00+05:45");
+  const targetDate = new Date("2026-06-07T09:00:00+05:45");
 
   const calculateTimeLeft = () => {
     const diff = targetDate.getTime() - new Date().getTime();
@@ -111,13 +112,6 @@ export default function Home() {
             animate="show"
             className="flex flex-col items-center gap-6 md:gap-8"
           >
-            {/* Event badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.08] rounded-full px-4 py-1.5">
-              <div className="w-2 h-2 bg-ted-red rounded-full animate-pulse" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/60">
-                TEDxBhrikutiMandap 2026 — Kathmandu, Nepal
-              </span>
-            </motion.div>
 
             {/* Main title — Event Theme */}
             <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-[900] uppercase tracking-tight text-white leading-[0.9]">
@@ -131,28 +125,11 @@ export default function Home() {
               {siteConfig.tagline}
             </motion.p>
 
-            {/* Event info */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-white/50">
-              <div className="flex items-center gap-2">
-                <Calendar size={14} className="text-ted-red" />
-                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
-                  {siteConfig.eventDate}
-                </span>
-              </div>
-              <div className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
-              <div className="flex items-center gap-2">
-                <MapPin size={14} className="text-ted-red" />
-                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
-                  Bhrikuti Mandap, Kathmandu
-                </span>
-              </div>
-            </motion.div>
-
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-4">
               <Link
                 href="#register"
-                className="inline-flex items-center gap-2.5 bg-ted-red px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] shadow-[0_8px_25px_rgba(235,0,40,0.4)] hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
+                className="inline-flex items-center gap-2.5 bg-ted-red/15 border border-ted-red/30 px-7 py-3.5 rounded-full text-ted-red text-xs font-[900] uppercase tracking-[0.15em] hover:bg-ted-red hover:text-white hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
                 Get Tickets
                 <ArrowRight size={14} />
@@ -197,14 +174,15 @@ export default function Home() {
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <AnimatedSection direction="left">
-              <div className="relative aspect-video rounded-2xl overflow-hidden">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/[0.06] flex items-center justify-center">
                 <Image
-                  src="/images/venue-hero.png"
-                  alt="TEDxBhrikutiMandap venue"
-                  fill
-                  className="object-cover"
+                  src="https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806692/Theme_logo_ocwrwz.png"
+                  alt="TEDxBhrikutiMandap - Envisioning Tomorrow"
+                  width={280}
+                  height={280}
+                  className="opacity-90"
                 />
-                <div className="absolute inset-0 bg-ted-red/10" />
+                <div className="absolute inset-0 bg-gradient-to-br from-ted-red/10 to-transparent pointer-events-none" />
               </div>
             </AnimatedSection>
 
@@ -244,35 +222,31 @@ export default function Home() {
 
       {/* ── CTA Band ────────────────────────────────────────────────────────── */}
       <section id="register" className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-ted-red" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ted-red-dark via-ted-red to-ted-red-light opacity-50" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/10 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute inset-0 bg-black" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ted-red/15 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute top-[-20%] right-[-10%] w-[400px] h-[400px] bg-ted-red/10 rounded-full blur-[120px] pointer-events-none" />
 
         <Container className="relative z-10 text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-6">
               Be Part of the
               <br />
-              Conversation
+              <span className="text-ted-red">Conversation</span>
             </h2>
-            <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm md:text-base text-white/50 max-w-xl mx-auto mb-8 leading-relaxed">
               Join hundreds of curious minds at TEDxBhrikutiMandap 2026. Limited seats available.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={siteConfig.tallyFormUrl}
-                data-tally-open={siteConfig.tallyFormUrl.split("/").pop()}
-                data-tally-layout="modal"
-                data-tally-width="500"
-                data-tally-overlay="1"
-                className="inline-flex items-center gap-2.5 bg-white px-7 py-3.5 rounded-full text-black text-xs font-[900] uppercase tracking-[0.15em] hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+              <Link
+                href={ctaNav.href}
+                className="inline-flex items-center gap-2.5 bg-ted-red/15 border border-ted-red/30 px-7 py-3.5 rounded-full text-ted-red text-xs font-[900] uppercase tracking-[0.15em] hover:bg-ted-red hover:text-white hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                Join Waitlist
+                {ctaNav.label}
                 <ArrowRight size={14} />
-              </a>
+              </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2.5 bg-white/10 border border-white/30 px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] hover:bg-white/20 hover:scale-105 active:scale-95 transition-all duration-300"
+                className="inline-flex items-center gap-2.5 bg-white/[0.05] border border-white/[0.1] px-7 py-3.5 rounded-full text-white/70 text-xs font-[900] uppercase tracking-[0.15em] hover:bg-white/[0.1] hover:text-white hover:scale-105 active:scale-95 transition-all duration-300"
               >
                 Contact Us
               </Link>
