@@ -78,32 +78,6 @@ export default function SpeakersPage() {
         </Container>
       </section>
 
-      {/* ── Nominate CTA ───────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-surface border-t border-white/[0.04]">
-        <Container className="text-center">
-          <AnimatedSection>
-            <Mic2 size={40} className="text-ted-red mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-4">
-              Nominate a Speaker
-            </h2>
-            <p className="text-white/50 text-sm md:text-base max-w-xl mx-auto mb-8">
-              Know someone whose idea deserves the TEDx stage? Nominate them for
-              TEDxBhrikutiMandap 2026.
-            </p>
-            <a
-              href={`https://tally.so/r/${siteConfig.nominationFormId}`}
-              data-tally-open={siteConfig.nominationFormId}
-              data-tally-layout="modal"
-              data-tally-width="500"
-              data-tally-overlay="1"
-              className="inline-flex items-center gap-2.5 bg-ted-red px-7 py-3.5 rounded-full text-white text-xs font-[900] uppercase tracking-[0.15em] shadow-[0_8px_25px_rgba(235,0,40,0.4)] hover:shadow-[0_12px_35px_rgba(235,0,40,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              Nominate Speaker
-            </a>
-          </AnimatedSection>
-        </Container>
-      </section>
-
       {/* ── Speaker Modal (Cinematic Takeover) ─────────────────────────── */}
       <AnimatePresence>
         {selectedSpeaker && (
