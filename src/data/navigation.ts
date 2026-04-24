@@ -14,6 +14,6 @@ export const navItems: NavItem[] = [
 ];
 
 export const ctaNav = {
-  label: "Secure Thy Attendance",
+  label: "Book your seat",
   href: "/tickets",
 };

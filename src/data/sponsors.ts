@@ -28,115 +28,67 @@ export const sponsorTiers: SponsorTier[] = [
 export const sponsors: Sponsor[] = [
   // --- Title Sponsor ---
   { 
-    name: "Avantech Solutions", 
-    logo: "/images/sponsors/title-sponsor.png", 
-    url: "#", 
+    name: "Nepal Rising", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046395/Nepal_Rising_gtn63g.png", 
+    url: "https://daayitwaus.org/", 
     tier: SPONSOR_TIERS.TITLE,
-    description: "Avantech Solutions is a global leader in sustainable technology, dedicated to bridging the digital divide through innovative infrastructure and community-driven AI initiatives. Their support as our Title Sponsor enables the very core of TEDxBhrikutiMandap 2026."
+    partnerLabel: "Title Sponsor",
+    description: "Nepal Rising (Daayitwa US) is a global collaborative campaign organized for providing relief, rebuilding, and resilience of communities in need in Nepal and elsewhere. Formed in the aftermath of the devastating earthquake on April 25, 2015, they seek to sustain the movement to empower Nepali communities to bounce back from adversities."
   },
 
   // --- Gold Sponsors ---
   { 
-    name: "Synergia Global", 
-    logo: "/images/sponsors/gold-sponsor.png", 
-    url: "#", 
+    name: "Leo Club of Kathmandu Bhrikuti", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046393/White_theme_logo_ksljo0.png", 
+    url: "https://www.instagram.com/lck_bhrikuti/", 
     tier: SPONSOR_TIERS.GOLD,
-    description: "Synergia Global specializes in strategic consulting and cross-border investment, fostering entrepreneurship across South Asia. They believe in the power of local ideas to drive global change."
-  },
-  { 
-    name: "Nexus Ventures", 
-    logo: "/images/sponsors/gold-sponsor.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.GOLD,
-    description: "Nexus Ventures is a venture capital firm focusing on early-stage tech startups in Kathmandu. They are committed to empowering the next generation of Nepali innovators."
+    partnerLabel: "Association Partner",
+    description: "Leo Club of Kathmandu Bhrikuti (LCK Bhrikuti) is a dynamic youth organization dedicated to fostering positive change in society. Rooted in the core values of Leadership, Experience, and Opportunity (LEO), their mission is twofold: to uplift underserved communities and to empower young individuals aged 18 to 30 to grow personally and professionally through meaningful service and leadership."
   },
 
   // --- Silver Sponsors ---
   { 
-    name: "Aurora Logistics", 
-    logo: "/images/sponsors/silver-sponsor.png", 
+    name: "Ather", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046718/ather-logo_qbkk5a.svg", 
     url: "#", 
     tier: SPONSOR_TIERS.SILVER,
-    description: "Aurora Logistics is Nepal's most reliable supply chain partner, ensuring seamless connectivity from the Himalayas to the world. They handle the complex logistics that make large-scale events possible."
-  },
-  { 
-    name: "Zenith Media", 
-    logo: "/images/sponsors/silver-sponsor.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.SILVER,
-    description: "Zenith Media is a full-service creative agency that helps brands tell their stories with depth and impact. They are the creative force behind much of the visual storytelling for this event."
+    partnerLabel: "EV Mobility Partner",
+    description: "Ather is our EV Mobility Partner, driving the future of sustainable transportation and supporting innovation at TEDxBhrikutiMandap 2026."
   },
 
   // --- Bronze Sponsors ---
   { 
-    name: "Stellar Cloud", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
+    name: "Naulo Koseli", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046393/Naulo_Koseli_plobqp.png", 
+    url: "https://naulokoseli.com/", 
     tier: SPONSOR_TIERS.BRONZE,
-    description: "Stellar Cloud provides secure, scalable cloud infrastructure for enterprises. They ensure our digital presence remains robust and accessible to all."
+    partnerLabel: "Kit Partner",
+    description: "Naulo Koseli operates as a trusted online gift shop based in Kathmandu with a global reach. They specifically target the Nepali Diaspora in countries like India, Australia, the USA, Europe, Japan, and the Gulf, allowing them to send physical tokens of affection to over 100 locations within Nepal."
   },
   { 
-    name: "Pulse Analytics", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
+    name: "I am The Gardener", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046392/I_am_the_Gardener_qfimms.png", 
+    url: "https://www.iamthegardener.com/", 
     tier: SPONSOR_TIERS.BRONZE,
-    description: "Pulse Analytics uses advanced data science to provide actionable insights for NGOs and social enterprises, maximizing their community impact."
-  },
-  { 
-    name: "Vanguard Tech", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.BRONZE,
-    description: "Vanguard Tech focuses on cybersecurity education, protecting the digital future of Nepal's growing tech ecosystem."
+    partnerLabel: "Floral Partner",
+    description: "A contemporary garden center to meet all of your plant needs. Whether you're looking to purchase indoor plants, outdoor plants, flowerpots, or any other nursery equipment, they have got you covered! Their mission is to lead the way to raise the horticulture standards in Nepal."
   },
 
   // --- Community Partners ---
   { 
-    name: "Coca Cola", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
+    name: "AK Printing Hub", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046392/AK_Printing_Hub_uw2ahe.png", 
+    url: "https://www.instagram.com/akprinting.hub/", 
     tier: SPONSOR_TIERS.COMMUNITY,
-    partnerLabel: "Official Beverage Partner",
-    description: "As our Official Beverage Partner, Coca-Cola refreshes our attendees and speakers alike, supporting the vibrant energy of the TEDx community."
+    partnerLabel: "Printing Partner",
+    description: "AK Printing Hub is a versatile printing solution provider in Kathmandu. They specialize in high-quality digital and offset printing, catering to both corporate and creative clients. They are known for handling everything from small-scale marketing materials to large-scale event branding."
   },
   { 
-    name: "Nepal Education Board", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
+    name: "Himalayan Host", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046391/Himalayan_Host_hbulej.png", 
+    url: "https://www.himalayanhost.com/", 
     tier: SPONSOR_TIERS.COMMUNITY,
-    partnerLabel: "Education Partner",
-    description: "The NEB partners with us to bring 'Ideas Worth Spreading' directly into schools and universities, fostering a culture of curiosity among students."
-  },
-  { 
-    name: "Kwality Ice Cream", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.COMMUNITY,
-    partnerLabel: "Ice Cream Partner",
-    description: "Sweetening the deal, Kwality Ice Cream provides delightful treats for our mid-day breaks, creating perfect moments for networking and reflection."
-  },
-  { 
-    name: "Himalayan Java", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.COMMUNITY,
-    partnerLabel: "Taste Partner",
-    description: "Himalayan Java brings the world-famous Nepali coffee experience to TEDx, ensuring our guests stay fueled with the finest local brews."
-  },
-  { 
-    name: "Foodmandu", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.COMMUNITY,
-    partnerLabel: "Food Partner",
-    description: "Official Food Partner, Foodmandu manages the culinary experience of the event, coordinating with top local restaurants to provide diverse menus."
-  },
-  { 
-    name: "Volunteer Nepal", 
-    logo: "/images/sponsors/default-logo.png", 
-    url: "#", 
-    tier: SPONSOR_TIERS.COMMUNITY,
-    partnerLabel: "Supporting Partner",
-    description: "Volunteer Nepal coordinates our dedicated team of 100+ volunteers, the backbone of the entire event operation."
+    partnerLabel: "Digital Support Partner",
+    description: "Powering Nepal since 2007, Himalayan Host has been committed to delivering most affordable, high-quality web hosting solutions from Kathmandu, Nepal. They prioritize exceptional speed, robust security, and 24/7 local support for their clients."
   },
 ];

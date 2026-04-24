@@ -5,7 +5,6 @@ export const siteConfig = {
   description: "TEDxBhrikutiMandap 2026 — Envisioning Tomorrow. Join us in Kathmandu for a day of bold ideas, inspiring speakers, and meaningful connections shaping Nepal's future.",
   eventDate: "June 6, 2026, 10:00 AM onwards",
   logos: {
-    black: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",
     white: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806687/Official_Logo_White_hkwadl.png",
     footer: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1773469243/copy_of_official_logo-07_wnzedq_2969ee.png",
   },

@@ -58,7 +58,7 @@ export const teamMembers: TeamMember[] = [
     name: "Pankaj Poudel",
     role: "Logistic",
     quote: "Precision in Motion",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777036529/2257223E-73F5-4443-B527-27AB357DFA64_gb6pdc.jpg",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037775/2257223E-73F5-4443-B527-27AB357DFA64_gb6pdc.png",
     socials:{
       facebook: "https://www.facebook.com/pankaj.poudel.554738",
       linkedin: "https://linkedin.com/in/pankaj-p-bba1b1256",
@@ -69,7 +69,7 @@ export const teamMembers: TeamMember[] = [
     name: "Aditya Jha",
     role: "Event Manager",
     quote: "Event Manager",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777036526/WhatsApp_Image_2026-04-22_at_4.01.22_PM_-_Aditya_Jha_hviw3k.png",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037787/WhatsApp_Image_2026-04-22_at_4.01.22_PM_-_Aditya_Jha_hviw3k.png",
     socials:{
       facebook: "https://www.facebook.com/profile.php?id=100080583458082",
       instagram: "https://www.instagram.com/_adiosyncratic_/"
