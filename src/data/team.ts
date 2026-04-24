@@ -16,7 +16,7 @@ export const teamMembers: TeamMember[] = [
     name: "Dipesh Thapa",
     role: "Organizer / Licensee",
     quote: "Architect of the Vision.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775806873/Dipesh_Thapa_urhpqr.avif",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037804/Dipesh_Thapa_urhpqr.avif",
     socials: {
       instagram: "https://www.instagram.com/dipesh.thapa.02/",
       facebook: "https://www.facebook.com/dipesh.thapa.946741",
@@ -27,7 +27,7 @@ export const teamMembers: TeamMember[] = [
     name: "Prisha Jalan",
     role: "Co-Organizer",
     quote: "The Catalyst of Execution.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833335/Prisha_Jalan_dwyy47.webp",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833335/Prisha_Jalan_dwyy47.avif",
     socials: {
       instagram: "https://www.instagram.com/prisha.jalan?igsh=MXNobGVoMnk4NnI3bQ==",
       facebook: "https://www.facebook.com/share/1Aw7pKE3x8/",
@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
     name: "Richa Thapa",
     role: "Treasurer",
     quote: "The Engine of Sustainability.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833300/Richa_Thapa_vwfzcq.webp",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833300/Richa_Thapa_vwfzcq.avif",
     socials: {
       instagram: "https://www.instagram.com/_richa.core_?igsh=bWRobmc1dnV5cHZ2&utm_source=qr",
       facebook: "https://www.facebook.com/share/1FiHdNAkbK/?mibextid=wwXIfr",
@@ -58,7 +58,7 @@ export const teamMembers: TeamMember[] = [
     name: "Pankaj Poudel",
     role: "Logistic",
     quote: "Precision in Motion",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037775/2257223E-73F5-4443-B527-27AB357DFA64_gb6pdc.png",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037775/2257223E-73F5-4443-B527-27AB357DFA64_gb6pdc.avif",
     socials:{
       facebook: "https://www.facebook.com/pankaj.poudel.554738",
       linkedin: "https://linkedin.com/in/pankaj-p-bba1b1256",
@@ -69,7 +69,7 @@ export const teamMembers: TeamMember[] = [
     name: "Aditya Jha",
     role: "Event Manager",
     quote: "Event Manager",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037787/WhatsApp_Image_2026-04-22_at_4.01.22_PM_-_Aditya_Jha_hviw3k.png",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777037787/WhatsApp_Image_2026-04-22_at_4.01.22_PM_-_Aditya_Jha_hviw3k.avif",
     socials:{
       facebook: "https://www.facebook.com/profile.php?id=100080583458082",
       instagram: "https://www.instagram.com/_adiosyncratic_/"
@@ -113,7 +113,7 @@ export const teamMembers: TeamMember[] = [
     name: "Aayush Sah",
     role: "Graphics Lead",
     quote: "Visualizing the Invisible.",
-    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833317/Ayush_Sah_tcbnnv.webp",
+    image: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1775833317/Ayush_Sah_tcbnnv.avif",
     socials: {
       instagram: "https://www.instagram.com/aayushsah5310?igsh=MWlydjVpd3AxeDJmcg==",
       facebook: "https://www.facebook.com/share/1CZhnocrr7/",
