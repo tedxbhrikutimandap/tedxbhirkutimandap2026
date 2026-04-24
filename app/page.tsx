@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, Mic2 } from "lucide-react";
+import { ArrowRight, Mic2, Calendar } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { ctaNav } from "@/data/navigation";
 import { Container } from "@/components/Container";
@@ -127,10 +127,6 @@ export default function Home() {
               {siteConfig.tagline}
             </motion.p>
 
-            {/* Mission Statement */}
-            <motion.p variants={itemVariants} className="text-sm sm:text-base text-white/60 font-light tracking-wide max-w-3xl leading-relaxed mt-2">
-              It is our solemn conviction that the future is not something we blindly drift towards, but an era we purposefully design. &quot;Envisioning Tomorrow&quot; serves as a clarion call to the brilliant change makers of Kathmandu city, beckoning them to transcend the ordinary and contemplate the possibilities of change that shall come. We assemble to ignite the spark of that change and that idea and weave the threads of progress for the future endeavors.
-            </motion.p>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mt-4">
@@ -172,11 +168,33 @@ export default function Home() {
               The countdown begins
             </h2>
             <CountdownTimer />
+            
+            <div className="flex flex-col items-center gap-4 mt-4">
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+                <p className="text-lg md:text-xl font-heading font-bold text-white/90">
+                  {siteConfig.eventDate}
+                </p>
+                
+                <a 
+                  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=TEDxBhrikutimandap+2026&dates=20260606T041500Z/20260606T111500Z&details=TEDxBhrikutiMandap+2026+%E2%80%94+Envisioning+Tomorrow.+Get+ready+for+a+day+of+bold+ideas!+Visit+our+website%3A+https%3A%2F%2Fwww.tedxbhrikutimandap.com%2F&location=Kathmandu,+Nepal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.1] px-6 py-3 rounded-full text-white/80 text-sm font-bold hover:bg-white/[0.1] hover:text-white transition-colors hover:scale-105 active:scale-95"
+                >
+                  <Calendar size={16} className="text-ted-red" />
+                  Add to Google Calendar
+                </a>
+              </div>
+              
+              <p className="text-sm text-ted-red/80 font-medium text-center max-w-sm">
+                Set a reminder! Ticket sales will open a few weeks before the event.
+              </p>
+            </div>
           </AnimatedSection>
         </Container>
       </section>
 
-      {/* ── What is TEDx? ───────────────────────────────────────────────────── */}
+      {/* ── What is TEDxBhrikutimandap? ───────────────────────────────────────────────────── */}
       <section className="py-20 md:py-32 border-y border-white/[0.04]">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -195,24 +213,13 @@ export default function Home() {
 
             <AnimatedSection direction="right">
               <div className="h-1 w-12 bg-ted-red rounded-full mb-6" />
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-[900] uppercase tracking-tight text-white leading-[0.95] mb-6">
+              <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-[900] uppercase tracking-tight text-white leading-[0.95] mb-6">
                 What is{" "}
-                <span className="text-ted-red">TEDx</span>?
+                <span className="text-ted-red">TEDxBhrikutimandap</span>?
               </h2>
               <div className="space-y-4 text-white/60 text-sm md:text-base leading-relaxed">
                 <p>
-                  In the spirit of ideas worth spreading, TED has created a program called TEDx.
-                  TEDx is a program of local, self-organized events that bring people together
-                  to share a TED-like experience.
-                </p>
-                <p>
-                  At a TEDx event, TED Talks video and live speakers combine to spark deep
-                  discussion and connection. These local, self-organized events are branded TEDx,
-                  where x = independently organized TED event.
-                </p>
-                <p>
-                  TEDxBhrikutiMandap brings this global movement to the heart of Kathmandu,
-                  creating a platform for Nepal&apos;s brightest minds to share ideas that matter.
+                  It is our solemn conviction that the future is not something we blindly drift towards, but an era we purposefully design. &quot;Envisioning Tomorrow&quot; serves as a clarion call to the brilliant change makers of Kathmandu city, beckoning them to transcend the ordinary and contemplate the possibilities of change that shall come. We assemble to ignite the spark of that change and that idea and weave the threads of progress for the future endeavors.
                 </p>
               </div>
               <Link
