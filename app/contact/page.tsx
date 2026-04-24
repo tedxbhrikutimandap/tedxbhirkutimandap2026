@@ -146,10 +146,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-sm font-bold text-white mb-0.5">Email</p>
                       <a
-                        href="mailto:info@tedxbhrikutimandap.com"
+                        href="mailto:tedxbhrikutimandap@gmail.com"
                         className="text-xs text-white/50 hover:text-ted-red transition-colors"
                       >
-                        info@tedxbhrikutimandap.com
+                        tedxbhrikutimandap@gmail.com
                       </a>
                     </div>
                   </div>
@@ -238,7 +238,7 @@ const faqs = [
   },
   {
     question: "How can my organization partner with you?",
-    answer: "We offer various sponsorship tiers for organizations aligned with our mission. Please use the contact form or email us directly at info@tedxbhrikutimandap.com for our partnership prospectus and opportunities."
+    answer: "We offer various sponsorship tiers for organizations aligned with our mission. Please use the contact form or email us directly at tedxbhrikutimandap@gmail.com for our partnership prospectus and opportunities."
   },
   {
     question: "Are there volunteer opportunities?",

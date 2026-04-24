@@ -62,7 +62,11 @@ export default function SpeakersPage() {
                     <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-ted-red mb-2 line-clamp-1">
                       {speaker.title}
                     </p>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-[900] text-white leading-tight mb-2 md:mb-3 font-heading tracking-tight line-clamp-2 md:line-clamp-none">
+                    <h3 className={`font-[900] text-white leading-tight mb-2 md:mb-3 font-heading tracking-tight ${
+                      speaker.name.length > 20 
+                        ? "text-lg md:text-xl lg:text-2xl line-clamp-3" 
+                        : "text-2xl md:text-3xl lg:text-4xl line-clamp-2 md:line-clamp-none"
+                    }`}>
                       {speaker.name}
                     </h3>
                     <p className="text-xs md:text-sm text-white/50 italic line-clamp-2 md:line-clamp-3">
