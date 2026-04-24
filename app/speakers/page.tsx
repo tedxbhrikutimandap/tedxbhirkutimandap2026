@@ -104,7 +104,7 @@ export default function SpeakersPage() {
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-[1400px] h-[85vh] md:h-auto md:max-h-[85vh] bg-surface-card border border-white/[0.08] rounded-3xl md:rounded-[2rem] flex flex-col md:flex-row overflow-hidden shadow-[0_0_80px_rgba(235,0,40,0.15)]"
+              className="relative w-full max-w-[1400px] h-[85vh] lg:h-auto lg:max-h-[85vh] bg-surface-card border border-white/[0.08] rounded-3xl md:rounded-[2rem] flex flex-col lg:flex-row overflow-hidden shadow-[0_0_80px_rgba(235,0,40,0.15)]"
             >
               {/* Close Button - Floats top right of entire card */}
               <button
@@ -116,7 +116,7 @@ export default function SpeakersPage() {
               </button>
 
               {/* Left Side: Massive Clipped Image */}
-              <div className="relative w-full h-[35vh] md:h-[85vh] md:min-h-[600px] md:w-[45%] lg:w-[40%] shrink-0 [clip-path:polygon(0_0,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] bg-black/20">
+              <div className="relative w-full h-[35vh] md:h-[45vh] lg:h-[85vh] lg:min-h-[600px] lg:w-[45%] xl:w-[40%] shrink-0 [clip-path:polygon(0_0,_100%_0,_100%_100%,_0%_100%)] lg:[clip-path:polygon(0_0,_100%_0,_85%_100%,_0%_100%)] bg-black/20">
                 {selectedSpeaker.image && (
                   <Image
                     src={selectedSpeaker.image}
@@ -126,12 +126,12 @@ export default function SpeakersPage() {
                     priority
                   />
                 )}
-                <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-surface-card via-surface-card/60 to-transparent md:hidden" />
-                <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-surface-card via-surface-card/40 to-transparent hidden md:block" />
+                <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-surface-card via-surface-card/60 to-transparent lg:hidden" />
+                <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-surface-card via-surface-card/40 to-transparent hidden lg:block" />
               </div>
 
               {/* Right Side: Editorial Content */}
-              <div className="relative flex-1 h-[50vh] md:h-full md:max-h-[85vh] overflow-y-auto px-6 py-6 md:py-12 md:px-12 lg:px-20 flex flex-col pt-0 md:justify-center z-10 -mt-10 md:mt-0 pb-12">
+              <div className="relative flex-1 h-[50vh] md:h-[40vh] lg:h-full lg:max-h-[85vh] overflow-y-auto px-6 py-6 md:py-12 md:px-12 lg:px-20 flex flex-col pt-0 lg:justify-center z-10 -mt-10 lg:mt-0 pb-12">
               <div className="max-w-2xl relative z-10 mx-auto md:mx-0 w-full">
                 <motion.h3
                   initial={{ y: 20, opacity: 0 }}
