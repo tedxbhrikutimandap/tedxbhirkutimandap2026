@@ -164,27 +164,25 @@ export default function Home() {
       <section className="py-16 md:py-24 border-y border-white/[0.04]">
         <Container>
           <AnimatedSection className="flex flex-col items-center gap-8">
-            <h2 className="text-xs sm:text-sm font-[900] uppercase tracking-[0.3em] text-white/40">
-              The countdown begins
-            </h2>
+            <p className="text-2xl md:text-3xl font-heading font-bold text-white/90 uppercase tracking-wide">
+              June 6, 2026
+            </p>
             <CountdownTimer />
             
-            <div className="flex flex-col items-center gap-4 mt-4">
-              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                <p className="text-lg md:text-xl font-heading font-bold text-white/90">
-                  {siteConfig.eventDate}
-                </p>
-                
-                <a 
-                  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=TEDxBhrikutimandap+2026&dates=20260606T041500Z/20260606T111500Z&details=TEDxBhrikutiMandap+2026+%E2%80%94+Envisioning+Tomorrow.+Get+ready+for+a+day+of+bold+ideas!+Visit+our+website%3A+https%3A%2F%2Fwww.tedxbhrikutimandap.com%2F&location=Kathmandu,+Nepal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.1] px-6 py-3 rounded-full text-white/80 text-sm font-bold hover:bg-white/[0.1] hover:text-white transition-colors hover:scale-105 active:scale-95"
-                >
-                  <Calendar size={16} className="text-ted-red" />
-                  Add to Google Calendar
-                </a>
-              </div>
+            {/* <h2 className="text-xs sm:text-sm font-[900] uppercase tracking-[0.3em] text-white/40">
+              The countdown begins
+            </h2> */}
+
+            <div className="flex flex-col items-center gap-4">
+              <a 
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=TEDxBhrikutimandap+2026&dates=20260606T041500Z/20260606T111500Z&details=TEDxBhrikutiMandap+2026+%E2%80%94+Envisioning+Tomorrow.+Get+ready+for+a+day+of+bold+ideas!+Visit+our+website%3A+https%3A%2F%2Fwww.tedxbhrikutimandap.com%2F&location=Kathmandu,+Nepal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.1] px-6 py-3 rounded-full text-white/80 text-sm font-bold hover:bg-white/[0.1] hover:text-white transition-colors hover:scale-105 active:scale-95"
+              >
+                <Calendar size={16} className="text-ted-red" />
+                Add to Google Calendar
+              </a>
               
               <p className="text-sm text-ted-red/80 font-medium text-center max-w-sm">
                 Set a reminder! Ticket sales will open a few weeks before the event.
