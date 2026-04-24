@@ -14,9 +14,9 @@ const tierConfig = {
   [SPONSOR_TIERS.TITLE]: {
     styles: "border-ted-red/30 bg-ted-red/[0.05] shadow-[0_0_50px_rgba(235,0,40,0.1)]",
     icon: <Star className="text-ted-red" size={24} />,
-    span: "col-span-full lg:col-span-4 lg:row-span-2 min-h-[400px]",
-    cardWidth: "w-full max-w-3xl min-h-[400px]",
-    imageClass: "aspect-[2/1] p-12 md:p-20",
+    span: "col-span-full lg:col-span-4 lg:row-span-2",
+    cardWidth: "w-full max-w-2xl min-h-[240px] sm:min-h-[280px]",
+    imageClass: "aspect-[3/2] p-6 sm:p-8 md:p-12",
     accent: "bg-ted-red",
     tint: "bg-ted-red/[0.12]",
     buttonBg: "bg-ted-red hover:bg-ted-red-dark",
@@ -24,9 +24,9 @@ const tierConfig = {
   [SPONSOR_TIERS.GOLD]: {
     styles: "border-amber-500/20 bg-amber-500/[0.03]",
     icon: <Award className="text-amber-400" size={20} />,
-    span: "col-span-full md:col-span-2 lg:col-span-2 min-h-[300px]",
-    cardWidth: "w-full sm:w-[calc(50%-0.75rem)] max-w-lg min-h-[300px]",
-    imageClass: "aspect-[3/1] p-10 md:p-14",
+    span: "col-span-full md:col-span-2 lg:col-span-2",
+    cardWidth: "w-full sm:w-[calc(50%-0.75rem)] max-w-md min-h-[200px] sm:min-h-[240px]",
+    imageClass: "aspect-[3/2] p-6 sm:p-8 md:p-10",
     accent: "bg-amber-500",
     tint: "bg-amber-500/[0.08]",
     buttonBg: "bg-amber-500 hover:bg-amber-600",
@@ -34,9 +34,9 @@ const tierConfig = {
   [SPONSOR_TIERS.SILVER]: {
     styles: "border-slate-300/20 bg-slate-300/[0.03]",
     icon: <Shield className="text-slate-300" size={18} />,
-    span: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[250px]",
-    cardWidth: "w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] max-w-sm min-h-[250px]",
-    imageClass: "aspect-[3/1] p-8 md:p-12",
+    span: "col-span-1 md:col-span-2 lg:col-span-2",
+    cardWidth: "w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] max-w-sm min-h-[180px] sm:min-h-[220px]",
+    imageClass: "aspect-[3/2] p-4 sm:p-6 md:p-8",
     accent: "bg-slate-300",
     tint: "bg-slate-300/[0.06]",
     buttonBg: "bg-slate-400 hover:bg-slate-500",
@@ -44,9 +44,9 @@ const tierConfig = {
   [SPONSOR_TIERS.BRONZE]: {
     styles: "border-orange-700/20 bg-orange-700/[0.03]",
     icon: <Shield className="text-orange-700" size={16} />,
-    span: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[200px]",
-    cardWidth: "w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] lg:w-[calc(25%-0.75rem)] min-h-[200px]",
-    imageClass: "aspect-[3/1] p-6 md:p-10",
+    span: "col-span-1 md:col-span-2 lg:col-span-2",
+    cardWidth: "w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] lg:w-[calc(25%-0.75rem)] min-h-[160px] sm:min-h-[180px]",
+    imageClass: "aspect-[3/2] p-4 sm:p-5 md:p-8",
     accent: "bg-orange-700",
     tint: "bg-orange-700/[0.08]",
     buttonBg: "bg-orange-700 hover:bg-orange-800",
@@ -54,9 +54,9 @@ const tierConfig = {
   [SPONSOR_TIERS.COMMUNITY]: {
     styles: "border-white/10 bg-white/[0.02]",
     icon: <Users className="text-white/40" size={16} />,
-    span: "col-span-1 md:col-span-2 lg:col-span-1.5 min-h-[180px]",
+    span: "col-span-1 md:col-span-2 lg:col-span-1.5",
     gridClass: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
-    imageClass: "aspect-[3/1] p-6",
+    imageClass: "aspect-[3/2] p-4 sm:p-5",
     accent: "bg-white/20",
     tint: "bg-white/[0.04]",
     buttonBg: "bg-white/10 hover:bg-white/20",
@@ -102,15 +102,15 @@ export default function SponsorsPage() {
               return (
                 <AnimatedSection 
                   key={tier} 
-                  className="col-span-full mb-12"
+                  className="col-span-full mb-8"
                 >
                   {/* Tier Label */}
-                  <div className="flex items-center gap-4 mb-4 opacity-50">
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] whitespace-nowrap">
+                  <div className="flex items-center gap-4 mb-8 opacity-90">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/40" />
+                    <h2 className="text-xs font-[900] uppercase tracking-[0.6em] whitespace-nowrap text-white">
                       {tier} Partners
-                    </span>
-                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20" />
+                    </h2>
+                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/40" />
                   </div>
 
                   {/* Centered Flex Container */}
@@ -124,14 +124,17 @@ export default function SponsorsPage() {
                       {/* Hover Glow Effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
-                      <div className={`relative w-full h-full ${config.imageClass} z-10 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110 flex items-center justify-center`}>
-                        <div className="relative w-full h-full">
+                      <div className={`relative w-full ${config.imageClass} z-10 transition-all duration-500 group-hover:scale-105 flex items-center justify-center`}>
+                        <div className="relative w-full aspect-[3/2]">
                           {sponsor.logo && (
                             <Image
                               src={sponsor.logo}
                               alt={sponsor.name}
                               fill
-                              className="object-contain"
+                              className={`object-contain transition-all duration-500 ${
+                                sponsor.name.toLowerCase().includes('ather') ? 'invert brightness-[2] opacity-80 group-hover:opacity-100' : 'opacity-80 group-hover:opacity-100'
+                              }`}
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           )}
                         </div>
@@ -142,11 +145,11 @@ export default function SponsorsPage() {
                         <Info size={16} />
                       </div>
 
-                      {/* Name Reveal for larger cards */}
-                      <div className="absolute bottom-6 left-8 z-20 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-                         <span className="text-xs font-black uppercase tracking-[0.2em] text-white">
+                      {/* Name below image */}
+                      <div className="w-full px-4 sm:px-8 pb-4 z-20 text-center -mt-4 sm:-mt-6">
+                       <h3 className="text-[10px] sm:text-xs font-[900] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/90 group-hover:text-white transition-all duration-500 leading-relaxed block truncate">
                           {sponsor.name}
-                        </span>
+                        </h3>
                       </div>
                     </button>
                   ))}
@@ -156,13 +159,13 @@ export default function SponsorsPage() {
             })}
 
             {/* Community Partners - Clean Minimal Bento at Bottom */}
-            <AnimatedSection className="col-span-full mt-12">
-               <div className="flex items-center gap-4 mb-4 opacity-50">
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] whitespace-nowrap">
+            <AnimatedSection className="col-span-full mt-12 md:mt-16">
+               <div className="flex items-center gap-4 mb-6 sm:mb-8 opacity-90">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/30" />
+                  <h2 className="text-xs font-[900] uppercase tracking-[0.4em] sm:tracking-[0.6em] whitespace-nowrap text-white">
                     Community Partners
-                  </span>
-                  <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
+                  </h2>
+                  <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/30" />
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-4 md:gap-6">
@@ -170,25 +173,33 @@ export default function SponsorsPage() {
                    <button
                     key={sponsor.name}
                     onClick={() => setSelectedSponsor(sponsor)}
-                    className="group relative flex flex-col items-center justify-center border border-white/5 bg-white/[0.02] rounded-[1.5rem] overflow-hidden transition-all duration-500 hover:bg-white/[0.05] hover:border-white/10 cursor-pointer w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] lg:w-[calc(16.66%-0.75rem)] min-h-[160px] shadow-lg"
+                    className={`group relative flex flex-col items-center justify-center border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-700 hover:scale-[1.02] cursor-pointer shadow-2xl ${tierConfig[SPONSOR_TIERS.COMMUNITY].styles} w-full xs:w-[calc(50%-0.75rem)] sm:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1.25rem)] min-h-[160px] gap-0`}
+                    aria-label={`View details for ${sponsor.name}`}
                   >
-                    <div className="relative w-full h-full p-8 z-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ${tierConfig[SPONSOR_TIERS.COMMUNITY].tint}`} />
+                    <div className="relative w-full flex-1 px-6 z-10 transition-all duration-700 group-hover:scale-105">
                       {sponsor.logo && (
-                        <Image
-                          src={sponsor.logo}
-                          alt={sponsor.name}
-                          fill
-                          className="object-contain"
-                        />
+                        <div className={`relative w-full ${tierConfig[SPONSOR_TIERS.COMMUNITY].imageClass}`}>
+                          <Image
+                            src={sponsor.logo}
+                            alt={`${sponsor.name} logo`}
+                            fill
+                            className="object-contain opacity-60 group-hover:opacity-100 transition-all duration-500"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                          />
+                        </div>
                       )}
                     </div>
-                    {sponsor.partnerLabel && (
-                      <div className="absolute bottom-4 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span className="text-[9px] font-black uppercase tracking-[0.1em] text-white/40">
+                    <div className="w-full px-4 mt-4 z-20 text-center">
+                       <p className="text-[10px] font-[900] uppercase tracking-[0.15em] text-white/70 group-hover:text-white transition-all duration-500 leading-tight">
+                        {sponsor.name}
+                      </p>
+                      {sponsor.partnerLabel && (
+                        <p className="text-[9px] font-black uppercase tracking-[0.1em] text-ted-red/80 mt-2">
                           {sponsor.partnerLabel}
-                        </span>
-                      </div>
-                    )}
+                        </p>
+                      )}
+                    </div>
                   </button>
                 ))}
                 </div>
@@ -264,7 +275,10 @@ export default function SponsorsPage() {
                         src={selectedSponsor.logo}
                         alt={selectedSponsor.name}
                         fill
-                        className="object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                        className={`object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] ${
+                          selectedSponsor.name.toLowerCase().includes('ather') ? 'invert brightness-[2]' : ''
+                        }`}
+                        sizes="(max-width: 768px) 100vw, 400px"
                       />
                     )}
                   </div>
@@ -297,7 +311,7 @@ export default function SponsorsPage() {
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-6">
                     <span className={`text-[10px] font-[900] uppercase tracking-[0.2em] text-white px-4 py-1.5 ${tierConfig[selectedSponsor.tier].accent} rounded-full shadow-lg`}>
-                      {selectedSponsor.tier === SPONSOR_TIERS.COMMUNITY && selectedSponsor.partnerLabel
+                      {selectedSponsor.partnerLabel
                         ? selectedSponsor.partnerLabel
                         : `${selectedSponsor.tier} Sponsor`}
                     </span>

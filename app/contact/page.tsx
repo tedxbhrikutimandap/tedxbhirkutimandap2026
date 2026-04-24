@@ -226,11 +226,11 @@ const FAQItem = ({ question, answer, delay }: { question: string, answer: string
 const faqs = [
   {
     question: "What is TEDxBhrikutiMandap?",
-    answer: "TEDxBhrikutiMandap is an independently organized event licensed by TED, dedicated to sharing ideas that matter within our local community. We bring together diverse speakers and curious minds to explore the theme 'Envisioning Tomorrow'."
+    answer: "It is our solemn conviction that the future is not something we blindly drift towards, but an era we purposefully design. 'Envisioning Tomorrow' serves as a clarion call to the brilliant change makers of Kathmandu city, beckoning them to transcend the ordinary and contemplate the possibilities of change that shall come."
   },
   {
-    question: "Can I be a speaker or nominate someone?",
-    answer: "Absolutely! We're always looking for unconventional thinkers with an 'Idea Worth Spreading'. You can nominate yourself or someone else using the form above by selecting 'Speaker Nomination' from the topic dropdown."
+    question: "What is included in my ticket?",
+    answer: "Your ticket is an all-access pass to the 'Envisioning Tomorrow' experience. It includes entry to all speaker sessions and performances, an exclusive TEDxBhrikutimandap Attendee Kit (curated by our partners), high-level networking opportunities during the tea/coffee breaks, and a certificate of participation."
   },
   {
     question: "How can I get tickets for the 2026 event?",
