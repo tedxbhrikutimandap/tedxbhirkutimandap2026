@@ -20,37 +20,32 @@ const MemberCard = ({ member, i, aspect = "aspect-[4/5]" }: { member: TeamMember
   <AnimatedSection key={member.name} delay={i * 0.05} className="h-full">
     <div className="group relative h-full flex flex-col">
       {/* Card Container */}
-      <div className={`relative ${aspect} w-full overflow-hidden rounded-[2rem] bg-[#0a0a0a] border border-white/5 group-hover:border-white/15 transition-colors duration-700 shadow-xl`}>
-        {/* Sleek Dark Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-ted-red/5 via-[#0a0a0a] to-[#050505] group-hover:from-ted-red/20 transition-all duration-700" />
+      <div className={`relative ${aspect} w-full overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/10 group-hover:border-ted-red/50 transition-colors duration-500 shadow-xl`}>
         
-        {/* Sharp Inner Shard Layer (The Person) */}
-        <div className="absolute inset-4 z-10 [clip-path:polygon(15%_0%,_100%_0%,_100%_85%,_85%_100%,_0%_100%,_0%_15%)] overflow-hidden transition-all duration-700">
-          {member.image && (
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 group-hover:contrast-110"
-            />
-          )}
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 opacity-70 group-hover:opacity-10 transition-opacity duration-500" />
-          {/* Top glossy reflection adapting to the shard on hover */}
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-        </div>
+        {/* Image - Full Bleed */}
+        {member.image && (
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+          />
+        )}
+
+        {/* Gradient Overlay for bottom quote and hover effects */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
 
         {/* Social links overlay sliding from right */}
-        <div className="absolute top-5 right-5 z-20 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
+        <div className="absolute top-4 right-4 z-20 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
           {member.socials?.linkedin && (
             <a
               href={member.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+              className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
               aria-label={`${member.name} LinkedIn`}
             >
-              <Linkedin size={16} className="text-white" />
+              <Linkedin size={18} className="text-white" />
             </a>
           )}
           {member.socials?.instagram && (
@@ -58,10 +53,10 @@ const MemberCard = ({ member, i, aspect = "aspect-[4/5]" }: { member: TeamMember
               href={member.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+              className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
               aria-label={`${member.name} Instagram`}
             >
-              <Instagram size={16} className="text-white" />
+              <Instagram size={18} className="text-white" />
             </a>
           )}
           {member.socials?.facebook && (
@@ -69,10 +64,10 @@ const MemberCard = ({ member, i, aspect = "aspect-[4/5]" }: { member: TeamMember
               href={member.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+              className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
               aria-label={`${member.name} Facebook`}
             >
-              <Facebook size={16} className="text-white" />
+              <Facebook size={18} className="text-white" />
             </a>
           )}
           {member.socials?.github && (
@@ -80,18 +75,18 @@ const MemberCard = ({ member, i, aspect = "aspect-[4/5]" }: { member: TeamMember
               href={member.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-black/50 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+              className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
               aria-label={`${member.name} Github`}
             >
-              <Github size={16} className="text-white" />
+              <Github size={18} className="text-white" />
             </a>
           )}
         </div>
 
         {/* Quote overlay sliding up from bottom */}
         {member.quote && (
-          <div className="absolute bottom-8 left-6 right-6 z-20 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none text-center">
-            <p className="text-sm md:text-base font-[900] text-white italic drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] leading-snug">
+          <div className="absolute bottom-6 left-6 right-6 z-20 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out text-center">
+            <p className="text-sm font-[900] text-white italic drop-shadow-md leading-snug">
               &quot;{member.quote}&quot;
             </p>
           </div>
@@ -99,11 +94,11 @@ const MemberCard = ({ member, i, aspect = "aspect-[4/5]" }: { member: TeamMember
       </div>
 
       {/* Info below photo */}
-      <div className="pt-4 pb-2 px-1 text-center mt-auto">
+      <div className="pt-5 pb-2 px-1 text-center mt-auto">
         <h3 className="text-lg lg:text-xl font-[900] text-white leading-tight group-hover:text-ted-red transition-colors duration-300">
           {member.name}
         </h3>
-        <p className="text-xs lg:text-sm text-white/50 mt-1 font-medium">
+        <p className="text-xs lg:text-sm text-white/60 mt-1 font-medium tracking-wide uppercase">
           {member.role}
         </p>
       </div>
