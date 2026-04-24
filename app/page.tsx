@@ -36,7 +36,7 @@ const itemVariants: Variants = {
 // ─── Countdown Timer ──────────────────────────────────────────────────────────
 
 const CountdownTimer = () => {
-  const targetDate = new Date("2026-06-07T09:00:00+05:45");
+  const targetDate = new Date("2026-06-06T10:00:00+05:45");
 
   const calculateTimeLeft = () => {
     const diff = targetDate.getTime() - new Date().getTime();
@@ -123,8 +123,13 @@ export default function Home() {
             </motion.h1>
 
             {/* Tagline */}
-            <motion.p variants={itemVariants} className="text-sm sm:text-base md:text-lg text-white/50 font-light tracking-wide max-w-lg">
+            <motion.p variants={itemVariants} className="text-lg sm:text-xl md:text-2xl text-white font-medium tracking-wide max-w-lg">
               {siteConfig.tagline}
+            </motion.p>
+
+            {/* Mission Statement */}
+            <motion.p variants={itemVariants} className="text-sm sm:text-base text-white/60 font-light tracking-wide max-w-3xl leading-relaxed mt-2">
+              It is our solemn conviction that the future is not something we blindly drift towards, but an era we purposefully design. &quot;Envisioning Tomorrow&quot; serves as a clarion call to the brilliant change makers of Kathmandu city, beckoning them to transcend the ordinary and contemplate the possibilities of change that shall come. We assemble to ignite the spark of that change and that idea and weave the threads of progress for the future endeavors.
             </motion.p>
 
             {/* CTAs */}

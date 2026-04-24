@@ -22,27 +22,27 @@ export const metadata: Metadata = {
 const pillars = [
   {
     icon: Lightbulb,
-    title: "Bold Ideas",
+    title: "Challenging the Prejudice",
     description:
-      "We platform unconventional thinking — ideas that challenge assumptions, bridge disciplines, and offer fresh perspectives on Nepal and the world.",
+      "We believe that true progress begins when we build the courage to question the prevailing biases.",
   },
   {
     icon: Users,
-    title: "Diverse Voices",
+    title: "Humility over Arrogance",
     description:
-      "From climate scientists to digital artists, mountaineers to AI researchers — we amplify voices across every spectrum of human endeavor.",
-  },
-  {
-    icon: Globe,
-    title: "Global Impact",
-    description:
-      "Rooted in Kathmandu, connected to the world. We bridge local innovation with the global TED community of 30,000+ talks and counting.",
+      "We would rather endure the string of humiliation than poison ourselves with arrogance.",
   },
   {
     icon: Sparkles,
-    title: "Lasting Change",
+    title: "Integrity of the Impact",
     description:
-      "Ideas that don't end at the stage. We foster a community of doers who turn inspiration into tangible action and real-world impact.",
+      "The idea has no worth if it does not leave the world better than what we found.",
+  },
+  {
+    icon: Globe,
+    title: "Stewardship of the Future",
+    description:
+      "We believe we are not the viewers of the present, but the guardians of the future. It is our solemn duty to come up with ideas to protect it.",
   },
 ];
 
@@ -88,19 +88,13 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-white/60 text-sm md:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">&ldquo;Envisioning Tomorrow&rdquo;</strong> is
-                  a call to look beyond the present — to imagine, design, and build the future
-                  we want to inhabit. In a world of accelerating change, the ideas we champion
-                  today define the world of tomorrow.
+                  In this present year of 2026, we find ourselves standing at the edge of a brand new era and perceive the undefined potential within our society. Which requires a strong combination of courage and imagination to ask questions that will bring a change.
                 </p>
                 <p>
-                  From sustainable cities to equitable technology, from reimagined education to
-                  the frontiers of science — our 2026 speakers explore what it means to shape
-                  the future with intention, empathy, and courage.
+                  Through this conference, we are keen to create an environment of intellectual curiosity where the questions asked today bloom into a legacy of profound discovery. By gathering the most elite and forward-thinking individuals we aim to lead with quiet wisdom and a sharp eye for the future in a present full of noise.
                 </p>
                 <p>
-                  This isn&apos;t about prediction. It&apos;s about agency. It&apos;s about the
-                  audacity to envision a better tomorrow and the commitment to make it real.
+                  We are dedicated to building a new legacy of enlightenment for those who follow. We welcome the restless and brave to join us in shaping a brand new chapter.
                 </p>
               </div>
             </AnimatedSection>
@@ -152,23 +146,14 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-white/60 text-sm md:text-base leading-relaxed">
                 <p>
-                  TEDxBhrikutiMandap was born from a simple belief:{" "}
-                  <strong className="text-white">
-                    Nepal is home to extraordinary ideas that deserve a global platform.
-                  </strong>
+                  <strong className="text-white text-lg">Beyond the Horizon</strong><br/>
+                  We gather to move beyond the surface of the day and center our efforts on the enduring. Under the banner of &quot;Envisioning Tomorrow,&quot; we seek to replace the prejudices of old with a new clarity of thought, bequeathing a brighter world to those who follow in our footsteps.
                 </p>
                 <p>
-                  Named after the iconic Bhrikuti Mandap exhibition hall in the heart of Kathmandu,
-                  our event bridges local innovation with global inspiration. We bring together
-                  thinkers, creators, and doers — from climate scientists to social entrepreneurs,
-                  digital artists to mountaineers — all united by ideas that challenge, inspire,
-                  and transform.
+                  This event is rooted in the history of Bhrikutimandap, a place that has watched Kathmandu grow and change for years. Like the great gatherings of the past, we created this event to be a space for honest talk and big ideas.
                 </p>
                 <p>
-                  Our 2026 edition marks a new chapter. With the theme{" "}
-                  <strong className="text-white">&ldquo;Envisioning Tomorrow,&rdquo;</strong>{" "}
-                  we aim to amplify voices from Nepal and South Asia shaping the future of our
-                  world.
+                  Our goal is simple: to keep that tradition alive and make sure Kathmandu&apos;s voice is heard clearly by the rest of the world.
                 </p>
               </div>
             </AnimatedSection>
