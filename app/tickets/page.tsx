@@ -13,17 +13,34 @@ function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    // TODO: Connect to email collection service (e.g. POST /api/waitlist, Brevo, Mailchimp, etc.)
-    await new Promise((r) => setTimeout(r, 800)); // simulate async
+    try {
+      const response = await fetch("/api/ticket-waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      });
 
-    console.log("Waitlist signup:", email);
-    setLoading(false);
-    setSubmitted(true);
+      if (!response.ok) {
+        throw new Error("Unable to submit waitlist signup.");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -75,6 +92,11 @@ function WaitlistForm() {
           </>
         )}
       </button>
+      {error ? (
+        <p className="text-center text-xs font-bold text-ted-red sm:basis-full">
+          {error}
+        </p>
+      ) : null}
     </form>
   );
 }
