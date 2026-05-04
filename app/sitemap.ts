@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sponsors",
     "/contact",
     "/tickets",
+    "/privacy",
   ];
 
   return routes.map((route): MetadataRoute.Sitemap[number] => ({

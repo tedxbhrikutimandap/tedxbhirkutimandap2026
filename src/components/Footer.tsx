@@ -54,6 +54,12 @@ export const Footer = () => {
             &copy; {new Date().getFullYear()} {siteConfig.name}. This
             independent TEDx event is operated under license from TED.
           </p>
+          <Link
+            href="/privacy"
+            className="text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-white/25 hover:text-white/50 transition-colors duration-300 font-bold shrink-0"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>
