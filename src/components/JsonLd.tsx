@@ -1,18 +1,25 @@
 import { seoConfig } from "@/data/seoConfig";
+import { teamMembers } from "@/data/team";
 
 export const OrganizationJsonLd = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": seoConfig.organization.name,
-    "url": seoConfig.organization.url,
-    "logo": seoConfig.organization.logo,
-    "sameAs": seoConfig.organization.sameAs,
-    "contactPoint": {
+    name: seoConfig.organization.name,
+    url: seoConfig.organization.url,
+    logo: seoConfig.organization.logo,
+    sameAs: seoConfig.organization.sameAs,
+    contactPoint: {
       "@type": "ContactPoint",
-      "telephone": seoConfig.organization.contactPoint.telephone,
-      "contactType": seoConfig.organization.contactPoint.contactType,
+      telephone: seoConfig.organization.contactPoint.telephone,
+      contactType: seoConfig.organization.contactPoint.contactType,
     },
+    employee: teamMembers.map((member) => ({
+      "@type": "Person",
+      name: member.name,
+      jobTitle: member.role,
+      sameAs: member.socials ? Object.values(member.socials).filter(Boolean) : [],
+    })),
   };
 
   return (
