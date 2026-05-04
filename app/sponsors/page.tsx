@@ -280,7 +280,7 @@ function SponsorsPageInner() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 perspective-1000"
+            className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-4 sm:p-6 md:p-10 overflow-y-auto"
           >
             {/* Backdrop with Ambient Glows */}
             <motion.div
@@ -295,6 +295,15 @@ function SponsorsPageInner() {
               <div className="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-ted-red/10 rounded-full blur-[100px] pointer-events-none" />
             </motion.div>
 
+            {/* ── Close button: sibling of card, NOT inside it ── */}
+            <button
+              onClick={closeSponsor}
+              aria-label="Close"
+              className="absolute top-4 right-4 z-[110] p-3 bg-black/80 backdrop-blur-md border border-white/20 rounded-full hover:bg-ted-red hover:rotate-90 transition-all duration-500 group shadow-xl"
+            >
+              <X size={20} className="text-white" />
+            </button>
+
             {/* Cinematic Card */}
             <motion.div
               layoutId={selectedSponsor.name}
@@ -303,21 +312,10 @@ function SponsorsPageInner() {
               exit={{ scale: 0.9, opacity: 0, y: 20, rotateX: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row z-10"
+              className="relative w-full max-w-5xl bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row z-10 my-auto mt-16 sm:mt-auto"
             >
-              {/* Close Button */}
-              <button
-                onClick={closeSponsor}
-                className="absolute top-6 right-6 z-50 p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:rotate-90 transition-all duration-500 group shadow-xl"
-              >
-                <X
-                  size={20}
-                  className="text-white/70 group-hover:text-white"
-                />
-              </button>
-
               {/* Logo Area: Variable Background & Patterns */}
-              <div className="w-full md:w-[45%] lg:w-[40%] bg-black flex items-center justify-center p-12 md:p-16 relative overflow-hidden shrink-0 border-b md:border-b-0 md:border-r border-white/5">
+              <div className="w-full md:w-[45%] lg:w-[40%] bg-black flex items-center justify-center p-8 sm:p-12 md:p-16 relative overflow-hidden shrink-0 border-b md:border-b-0 md:border-r border-white/5">
                 {/* Dynamic Background Pattern (Dot Grid) */}
                 <div
                   className="absolute inset-0 opacity-[0.07] mix-blend-screen"
@@ -373,7 +371,7 @@ function SponsorsPageInner() {
               </div>
 
               {/* Content Area: Editorial Layout with Tier Tint */}
-              <div className="w-full md:w-auto flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative overflow-hidden">
+              <div className="w-full md:w-auto flex-1 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center relative overflow-hidden">
                 {/* Background Tint (Branded by Tier) */}
                 <div
                   className={`absolute inset-0 ${tierConfig[selectedSponsor.tier].tint}`}
@@ -395,7 +393,7 @@ function SponsorsPageInner() {
                     </span>
                   </div>
 
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-[900] text-white uppercase tracking-tighter mb-8 leading-[0.9] font-heading">
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[900] text-white uppercase tracking-tighter mb-6 sm:mb-8 leading-[0.9] font-heading">
                     {selectedSponsor.name}
                   </h3>
 
@@ -405,7 +403,7 @@ function SponsorsPageInner() {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-8 border-t border-white/5 pt-10">
+                  <div className="flex items-center gap-6 border-t border-white/5 pt-6 sm:pt-10">
                     <a
                       href={selectedSponsor.url}
                       target="_blank"
