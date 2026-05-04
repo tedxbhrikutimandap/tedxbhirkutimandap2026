@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TEDxBhrikutimandap 2026
+
+Official website for **TEDxBhrikutimandap 2026**, themed **"Envisioning Tomorrow"**. The site presents event information, speakers, schedule, sponsors, team details, ticket interest capture, contact information, SEO metadata, Open Graph images, and structured data for search engines.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) 16 with the App Router
+- [React](https://react.dev/) 19
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) 4
+- [Framer Motion](https://www.framer.com/motion/) for UI animation
+- [Lucide React](https://lucide.dev/) for icons
+- Google Analytics and Microsoft Clarity scripts configured from site data
+- SheetDB integration for ticket waitlist submissions
+
+## Project Structure
+
+```text
+app/                  Next.js routes, layouts, API routes, sitemap, and OG image routes
+src/components/       Reusable UI components
+src/data/             Site content, navigation, schedule, speakers, sponsors, team, and SEO config
+src/lib/              Shared helpers, including Open Graph image rendering
+src/styles/           Design system tokens and shared style primitives
+public/               Static assets, images, fonts, manifest, robots.txt, and favicons
+```
 
 ## Getting Started
 
-First, run the development server:
+Use `pnpm`, because this repository includes a `pnpm-lock.yaml`.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev
+```
 
-## Learn More
+Starts the development server with Turbopack.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Creates a production build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm start
+```
 
-## Deploy on Vercel
+Runs the production build locally. Run `pnpm build` first.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Runs ESLint for the project.
+
+## Development Workflow
+
+1. Install dependencies with `pnpm install`.
+2. Start the local server with `pnpm dev`.
+3. Edit pages in `app/` and reusable UI in `src/components/`.
+4. Update event content through the files in `src/data/`.
+5. Run `pnpm lint` before committing.
+6. Run `pnpm build` before deployment-facing changes.
+
+## Content Updates
+
+Most event content is centralized in `src/data/`:
+
+- `siteConfig.ts` controls the event name, theme, description, social links, form links, logos, and analytics IDs.
+- `navigation.ts` controls site navigation.
+- `speakers.ts` controls speaker data.
+- `schedule.ts` controls event schedule data.
+- `sponsors.ts` controls sponsor tiers and sponsor entries.
+- `team.ts` controls organizer/team data.
+- `seoConfig.ts` controls page-level SEO configuration.
+
+Images and static files belong in `public/`. Sponsor logos currently live under `public/images/sponsors/`, and favicons live under `public/favicon/`.
+
+## API Routes
+
+The ticket waitlist endpoint is implemented at:
+
+```text
+app/api/ticket-waitlist/route.ts
+```
+
+It accepts an email address and submits it to SheetDB. The current SheetDB endpoint is hard-coded in the route, so update that file if the backing sheet changes.
+
+## SEO and Metadata
+
+The app includes:
+
+- App Router metadata through route layouts
+- Dynamic Open Graph image routes
+- Sitemap generation in `app/sitemap.ts`
+- `robots.txt` and `manifest.json` in `public/`
+- JSON-LD helper components in `src/components/`
+
+## Deployment
+
+The app can be deployed to any platform that supports Next.js. Vercel is the most direct option.
+
+Before deploying, run:
+
+```bash
+pnpm lint
+pnpm build
+```
+
+For production, confirm that analytics IDs, social links, event date, form URLs, and sponsor/speaker content are final in `src/data/`.
