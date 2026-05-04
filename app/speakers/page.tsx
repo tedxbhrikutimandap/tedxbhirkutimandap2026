@@ -1,17 +1,45 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Linkedin, Twitter, Globe, Mic2 } from "lucide-react";
+import { X, Linkedin, Twitter, Globe } from "lucide-react";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { speakers, type Speaker } from "@/data/speakers";
-import { siteConfig } from "@/data/siteConfig";
 
-export default function SpeakersPage() {
+function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function findSpeakerBySlug(slug: string): Speaker | undefined {
+  return speakers.find((s) => slugify(s.name) === slug);
+}
+
+function SpeakersPageInner() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
+
+  // Open speaker from URL on initial load / back-forward navigation
+  useEffect(() => {
+    const speakerSlug = searchParams.get("speaker");
+    if (speakerSlug) {
+      const found = findSpeakerBySlug(speakerSlug);
+      if (found) {
+        setSelectedSpeaker(found);
+      }
+    } else {
+      setSelectedSpeaker(null);
+    }
+  }, [searchParams]);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -20,12 +48,26 @@ export default function SpeakersPage() {
     } else {
       document.body.style.overflow = "unset";
     }
-    
+
     // Cleanup on unmount
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [selectedSpeaker]);
+
+  const openSpeaker = (speaker: Speaker) => {
+    setSelectedSpeaker(speaker);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("speaker", slugify(speaker.name));
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const closeSpeaker = () => {
+    setSelectedSpeaker(null);
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("speaker");
+    router.push(pathname, { scroll: false });
+  };
 
   return (
     <>
@@ -41,7 +83,7 @@ export default function SpeakersPage() {
             {speakers.map((speaker, i) => (
               <AnimatedSection key={speaker.id} delay={i * 0.1}>
                 <button
-                  onClick={() => setSelectedSpeaker(speaker)}
+                  onClick={() => openSpeaker(speaker)}
                   className="group relative w-full h-56 md:h-72 bg-white/[0.03] rounded-[2rem] overflow-hidden cursor-pointer flex border border-white/[0.05] hover:border-ted-red/50 hover:bg-ted-red/[0.05] transition-all duration-500 text-left shadow-lg hover:shadow-[0_15px_50px_rgba(235,0,40,0.15)] hover:-translate-y-2"
                 >
                   {/* Clipped Image */}
@@ -56,23 +98,25 @@ export default function SpeakersPage() {
                     )}
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
-                  
+
                   {/* Content */}
                   <div className="w-[60%] sm:w-[55%] h-full px-5 py-6 md:p-8 flex flex-col justify-center flex-grow">
                     <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-ted-red mb-2 line-clamp-1">
                       {speaker.title}
                     </p>
-                    <h3 className={`font-[900] text-white leading-tight mb-2 md:mb-3 font-heading tracking-tight ${
-                      speaker.name.length > 20 
-                        ? "text-lg md:text-xl lg:text-2xl line-clamp-3" 
-                        : "text-2xl md:text-3xl lg:text-4xl line-clamp-2 md:line-clamp-none"
-                    }`}>
+                    <h3
+                      className={`font-[900] text-white leading-tight mb-2 md:mb-3 font-heading tracking-tight ${
+                        speaker.name.length > 20
+                          ? "text-lg md:text-xl lg:text-2xl line-clamp-3"
+                          : "text-2xl md:text-3xl lg:text-4xl line-clamp-2 md:line-clamp-none"
+                      }`}
+                    >
                       {speaker.name}
                     </h3>
                     <p className="text-xs md:text-sm text-white/50 italic line-clamp-2 md:line-clamp-3">
                       &ldquo;{speaker.talkTitle}&rdquo;
                     </p>
-                    
+
                     <div className="mt-4 md:mt-6 flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-wider text-ted-red opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
                       View details <span aria-hidden="true">&rarr;</span>
                     </div>
@@ -92,7 +136,7 @@ export default function SpeakersPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.2 } }}
             className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden"
-            onClick={() => setSelectedSpeaker(null)}
+            onClick={closeSpeaker}
           >
             {/* Ambient Red Glow in Background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(235,0,40,0.12)_0%,transparent_100%)] pointer-events-none" />
@@ -108,11 +152,14 @@ export default function SpeakersPage() {
             >
               {/* Close Button - Floats top right of entire card */}
               <button
-                onClick={() => setSelectedSpeaker(null)}
+                onClick={closeSpeaker}
                 className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-3 md:p-4 bg-black/40 md:bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red hover:rotate-90 transition-all duration-500 group"
                 aria-label="Close"
               >
-                <X size={20} className="text-white/70 group-hover:text-white transition-colors" />
+                <X
+                  size={20}
+                  className="text-white/70 group-hover:text-white transition-colors"
+                />
               </button>
 
               {/* Left Side: Massive Clipped Image */}
@@ -132,106 +179,146 @@ export default function SpeakersPage() {
 
               {/* Right Side: Editorial Content */}
               <div className="relative flex-1 h-[50vh] md:h-[40vh] lg:h-full lg:max-h-[85vh] overflow-y-auto px-6 py-6 md:py-12 md:px-12 lg:px-20 flex flex-col pt-0 lg:justify-center z-10 -mt-10 lg:mt-0 pb-12">
-              <div className="max-w-2xl relative z-10 mx-auto md:mx-0 w-full">
-                <motion.h3
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[900] text-white leading-[0.9] md:leading-[0.85] mb-4 md:mb-6 font-heading tracking-tighter"
-                >
-                  {selectedSpeaker.name}
-                </motion.h3>
+                <div className="max-w-2xl relative z-10 mx-auto md:mx-0 w-full">
+                  <motion.h3
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[900] text-white leading-[0.9] md:leading-[0.85] mb-4 md:mb-6 font-heading tracking-tighter"
+                  >
+                    {selectedSpeaker.name}
+                  </motion.h3>
 
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 mb-8"
-                >
-                  <p className="text-lg md:text-xl font-bold text-white/90 font-sans tracking-wide">
-                    {selectedSpeaker.title}
-                  </p>
-                  <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-ted-red/60" />
-                  <p className="text-base md:text-lg text-white/50 font-sans">
-                    {selectedSpeaker.organization}
-                  </p>
-                </motion.div>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 mb-8"
+                  >
+                    <p className="text-lg md:text-xl font-bold text-white/90 font-sans tracking-wide">
+                      {selectedSpeaker.title}
+                    </p>
+                    <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-ted-red/60" />
+                    <p className="text-base md:text-lg text-white/50 font-sans">
+                      {selectedSpeaker.organization}
+                    </p>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="h-[2px] w-24 bg-ted-red mb-10 origin-left"
-                />
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="h-[2px] w-24 bg-ted-red mb-10 origin-left"
+                  />
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <p className="text-xl md:text-3xl font-bold text-white/90 italic leading-snug mb-8 font-heading">
-                    <span className="text-ted-red opacity-60 mr-2">"</span>
-                    {selectedSpeaker.talkTitle}
-                    <span className="text-ted-red opacity-60 ml-2">"</span>
-                  </p>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <p className="text-xl md:text-3xl font-bold text-white/90 italic leading-snug mb-8 font-heading">
+                      <span className="text-ted-red opacity-60 mr-2">"</span>
+                      {selectedSpeaker.talkTitle}
+                      <span className="text-ted-red opacity-60 ml-2">"</span>
+                    </p>
+                  </motion.div>
 
-                <motion.p
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="text-sm md:text-lg text-white/50 leading-relaxed mb-12 font-sans"
-                >
-                  {selectedSpeaker.bio}
-                </motion.p>
+                  <motion.p
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="text-sm md:text-lg text-white/50 leading-relaxed mb-12 font-sans"
+                  >
+                    {selectedSpeaker.bio}
+                  </motion.p>
 
-                {/* Social links */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  className="flex gap-4"
-                >
-                  {selectedSpeaker.socials?.linkedin && (
-                    <a
-                      href={selectedSpeaker.socials.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
-                      aria-label="LinkedIn"
-                    >
-                      <Linkedin size={20} className="text-white/50 group-hover:text-black transition-colors" />
-                    </a>
-                  )}
-                  {selectedSpeaker.socials?.twitter && (
-                    <a
-                      href={selectedSpeaker.socials.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
-                      aria-label="Twitter"
-                    >
-                      <Twitter size={20} className="text-white/50 group-hover:text-black transition-colors" />
-                    </a>
-                  )}
-                  {selectedSpeaker.socials?.website && (
-                    <a
-                      href={selectedSpeaker.socials.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
-                      aria-label="Website"
-                    >
-                      <Globe size={20} className="text-white/50 group-hover:text-black transition-colors" />
-                    </a>
-                  )}
-                </motion.div>
+                  {/* Social links */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="flex gap-4"
+                  >
+                    {selectedSpeaker.socials?.linkedin && (
+                      <a
+                        href={selectedSpeaker.socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin
+                          size={20}
+                          className="text-white/50 group-hover:text-black transition-colors"
+                        />
+                      </a>
+                    )}
+                    {selectedSpeaker.socials?.twitter && (
+                      <a
+                        href={selectedSpeaker.socials.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
+                        aria-label="Twitter"
+                      >
+                        <Twitter
+                          size={20}
+                          className="text-white/50 group-hover:text-black transition-colors"
+                        />
+                      </a>
+                    )}
+                    {selectedSpeaker.socials?.website && (
+                      <a
+                        href={selectedSpeaker.socials.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-4 bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white focus:bg-white transition-colors group"
+                        aria-label="Website"
+                      >
+                        <Globe
+                          size={20}
+                          className="text-white/50 group-hover:text-black transition-colors"
+                        />
+                      </a>
+                    )}
+                  </motion.div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+    </>
+  );
+}
+
+export default function SpeakersPage() {
+  return (
+    <Suspense fallback={<SpeakersPageFallback />}>
+      <SpeakersPageInner />
+    </Suspense>
+  );
+}
+
+function SpeakersPageFallback() {
+  return (
+    <>
+      <PageHero
+        title="Speakers"
+        subtitle="Visionaries, innovators, and changemakers. Meet the voices of TEDxBhrikutiMandap 2026."
+      />
+      <section className="pb-20 md:pb-32 overflow-hidden">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div
+                key={i}
+                className="w-full h-56 md:h-72 bg-white/[0.03] rounded-[2rem] border border-white/[0.05] animate-pulse"
+              />
+            ))}
+          </div>
+        </Container>
+      </section>
     </>
   );
 }
