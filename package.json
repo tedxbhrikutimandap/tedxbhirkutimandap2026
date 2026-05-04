@@ -8,9 +8,16 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "browserslist": [
+    "chrome >= 80",
+    "edge >= 80",
+    "firefox >= 88",
+    "ios_saf >= 14",
+    "samsung >= 13",
+    "android >= 80"
+  ],
   "dependencies": {
     "@microsoft/clarity": "^1.0.2",
-    "firebase": "^12.10.0",
     "framer-motion": "^12.36.0",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
@@ -22,6 +29,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",

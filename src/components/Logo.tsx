@@ -7,7 +7,7 @@ export const Logo = ({ isFooter = false, className = "" }: { isFooter?: boolean,
     : siteConfig.logos.white;
   
   return (
-    <div className={`relative w-80 h-24 md:w-[450px] md:h-32 ${className}`}>
+    <div className={`relative w-40 h-10 md:w-52 md:h-12 ${className}`}>
       <Image
         src={src}
         alt={siteConfig.name}

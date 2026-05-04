@@ -108,6 +108,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload critical fonts to eliminate render-blocking font swap */}
+        <link
+          rel="preload"
+          href="/fonts/inter-v20-latin-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/fraunces-v38-latin-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <link rel="preconnect" href="https://tally.so" />
         <link rel="dns-prefetch" href="https://tally.so" />
         <link rel="preload" href="https://tally.so/widgets/embed.js" as="script" />
