@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/schedule",
     "/sponsors",
     "/contact",
+    "/tickets",
   ];
 
   return routes.map((route): MetadataRoute.Sitemap[number] => ({
