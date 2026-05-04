@@ -9,12 +9,12 @@
     "lint": "eslint"
   },
   "browserslist": [
-    "chrome >= 80",
-    "edge >= 80",
-    "firefox >= 88",
-    "ios_saf >= 14",
-    "samsung >= 13",
-    "android >= 80"
+    "chrome >= 99",
+    "edge >= 99",
+    "firefox >= 103",
+    "ios_saf >= 15.4",
+    "samsung >= 14",
+    "android >= 99"
   ],
   "dependencies": {
     "@microsoft/clarity": "^1.0.2",
