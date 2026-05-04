@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center relative overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-ted-red/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 hidden h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ted-red/10 blur-[120px] pointer-events-none md:block" />
 
       <Container className="relative z-10 text-center">
         <div className="h-1 w-12 bg-ted-red rounded-full mb-8 mx-auto" />

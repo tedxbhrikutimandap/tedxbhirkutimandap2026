@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -10,9 +10,16 @@ import { navItems, ctaNav } from "@/data/navigation";
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const isOpenRef = useRef(false);
+  const lastScrollYRef = useRef(0);
+  const scrolledRef = useRef(false);
+  const visibleRef = useRef(true);
   const pathname = usePathname();
+
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
 
   useEffect(() => {
     let ticking = false;
@@ -21,20 +28,24 @@ export const Navbar = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
+          const nextScrolled = currentScrollY > 20;
+          let nextVisible = true;
 
-          setIsScrolled(currentScrollY > 20);
-
-          if (currentScrollY > 100) {
-            if (currentScrollY > lastScrollY) {
-              if (!isOpen) setIsVisible(false);
-            } else {
-              setIsVisible(true);
-            }
-          } else {
-            setIsVisible(true);
+          if (currentScrollY > 100 && currentScrollY > lastScrollYRef.current && !isOpenRef.current) {
+            nextVisible = false;
           }
 
-          setLastScrollY(currentScrollY);
+          if (nextScrolled !== scrolledRef.current) {
+            scrolledRef.current = nextScrolled;
+            setIsScrolled(nextScrolled);
+          }
+
+          if (nextVisible !== visibleRef.current) {
+            visibleRef.current = nextVisible;
+            setIsVisible(nextVisible);
+          }
+
+          lastScrollYRef.current = currentScrollY;
           ticking = false;
         });
 
@@ -44,12 +55,7 @@ export const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, isOpen]);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  }, []);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -62,6 +68,19 @@ export const Navbar = () => {
   const handleHomeClick = useCallback(() => {
     window.scrollTo(0, 0);
     setIsOpen(false);
+  }, []);
+
+  const handleMenuToggle = useCallback(() => {
+    setIsOpen((open) => {
+      const nextOpen = !open;
+
+      if (nextOpen) {
+        visibleRef.current = true;
+        setIsVisible(true);
+      }
+
+      return nextOpen;
+    });
   }, []);
 
   const isActive = (path: string) => pathname === path;
@@ -80,7 +99,7 @@ export const Navbar = () => {
               isOpen ? "rounded-[2.5rem] shadow-2xl" : "rounded-full"
             } ${
               isScrolled || isOpen
-                ? "bg-black/80 backdrop-blur-xl border border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.5)] px-6 py-3"
+                ? "bg-black/90 md:bg-black/80 md:backdrop-blur-xl border border-white/[0.08] md:shadow-[0_4px_30px_rgba(0,0,0,0.5)] px-6 py-3"
                 : "bg-transparent ring-transparent px-2 py-2"
             }`}
           >
@@ -125,7 +144,7 @@ export const Navbar = () => {
 
               {/* Mobile Menu Button */}
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleMenuToggle}
                 className="lg:hidden relative z-50 p-2.5 rounded-full bg-white/5 text-white/80 hover:text-white hover:bg-white/10 transition-all active:scale-90 border border-white/[0.05]"
                 aria-label={isOpen ? "Close menu" : "Open menu"}
               >
@@ -144,6 +163,7 @@ export const Navbar = () => {
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={() => setIsOpen(false)}
                     className={`text-xl font-[900] uppercase tracking-[0.15em] transition-all ${
                       isActive(item.href)
                         ? "text-ted-red translate-x-2"
@@ -157,6 +177,7 @@ export const Navbar = () => {
                 <div className="pt-8 border-t border-white/[0.08]">
                   <Link
                     href={ctaNav.href}
+                    onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center px-8 py-4 bg-ted-red/15 border border-ted-red/30 text-ted-red text-sm font-[900] uppercase tracking-[0.2em] rounded-2xl hover:bg-ted-red hover:text-white transition-all duration-300 w-fit min-w-[200px]"
                   >
                     {ctaNav.label}
@@ -171,7 +192,7 @@ export const Navbar = () => {
       {/* Backdrop for mobile menu */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[45] bg-black/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-[45] bg-black/80 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}

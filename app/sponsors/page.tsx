@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -95,20 +95,8 @@ function SponsorsPageInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [selectedSponsor, setSelectedSponsor] = useState<Sponsor | null>(null);
-
-  // Open sponsor from URL on initial load / back-forward navigation
-  useEffect(() => {
-    const sponsorSlug = searchParams.get("sponsor");
-    if (sponsorSlug) {
-      const found = findSponsorBySlug(sponsorSlug);
-      if (found) {
-        setSelectedSponsor(found);
-      }
-    } else {
-      setSelectedSponsor(null);
-    }
-  }, [searchParams]);
+  const sponsorSlug = searchParams.get("sponsor");
+  const selectedSponsor = sponsorSlug ? findSponsorBySlug(sponsorSlug) : null;
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -125,14 +113,12 @@ function SponsorsPageInner() {
   }, [selectedSponsor]);
 
   const openSponsor = (sponsor: Sponsor) => {
-    setSelectedSponsor(sponsor);
     const params = new URLSearchParams(searchParams.toString());
     params.set("sponsor", slugify(sponsor.name));
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const closeSponsor = () => {
-    setSelectedSponsor(null);
     const params = new URLSearchParams(searchParams.toString());
     params.delete("sponsor");
     router.push(pathname, { scroll: false });
@@ -288,28 +274,27 @@ function SponsorsPageInner() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeSponsor}
-              className="absolute inset-0 bg-black/85 backdrop-blur-2xl"
+              className="absolute inset-0 bg-black/90 md:bg-black/85 md:backdrop-blur-2xl"
             >
               {/* Ambient Red Splashes (Signature look) */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-ted-red/20 rounded-full blur-[140px] pointer-events-none" />
-              <div className="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-ted-red/10 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 hidden h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ted-red/20 blur-[140px] pointer-events-none md:block" />
+              <div className="absolute top-[-10%] right-[-10%] hidden h-[40vw] w-[40vw] rounded-full bg-ted-red/10 blur-[100px] pointer-events-none md:block" />
             </motion.div>
 
             {/* ── Close button: sibling of card, NOT inside it ── */}
             <button
               onClick={closeSponsor}
               aria-label="Close"
-              className="absolute top-4 right-4 z-[110] p-3 bg-black/80 backdrop-blur-md border border-white/20 rounded-full hover:bg-ted-red hover:rotate-90 transition-all duration-500 group shadow-xl"
+              className="absolute top-4 right-4 z-[110] p-3 bg-black/90 md:bg-black/80 md:backdrop-blur-md border border-white/20 rounded-full hover:bg-ted-red hover:rotate-90 transition-all duration-500 group md:shadow-xl"
             >
               <X size={20} className="text-white" />
             </button>
 
             {/* Cinematic Card */}
             <motion.div
-              layoutId={selectedSponsor.name}
-              initial={{ scale: 0.9, opacity: 0, y: 30, rotateX: 5 }}
-              animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20, rotateX: -5 }}
+              initial={{ scale: 0.95, opacity: 0, y: 24 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 16 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-5xl bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row z-10 my-auto mt-16 sm:mt-auto"
@@ -327,7 +312,7 @@ function SponsorsPageInner() {
 
                 {/* Tier-specific Radial Glow */}
                 <div
-                  className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full aspect-square ${tierConfig[selectedSponsor.tier as keyof typeof tierConfig].accent}/10 rounded-full blur-[80px]`}
+                  className={`absolute top-1/2 left-1/2 hidden w-full -translate-x-1/2 -translate-y-1/2 rounded-full ${tierConfig[selectedSponsor.tier as keyof typeof tierConfig].accent}/10 aspect-square blur-[80px] md:block`}
                 />
 
                 {/* Logo with Soft Drop Shadow & Name Integration */}

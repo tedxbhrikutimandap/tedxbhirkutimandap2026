@@ -62,6 +62,7 @@ export function MemberCard({ member, i, aspect = "aspect-[4/5]" }: MemberCardPro
               src={member.image}
               alt={member.name}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className={`object-cover transition-all duration-700
                 ${active
                   ? "grayscale-0 scale-105"
@@ -90,7 +91,7 @@ export function MemberCard({ member, i, aspect = "aspect-[4/5]" }: MemberCardPro
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+                className="p-2.5 bg-black/75 md:bg-black/40 md:backdrop-blur-md rounded-full md:shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
                 aria-label={`${member.name} LinkedIn`}
               >
                 <Linkedin size={18} className="text-white" />
@@ -102,7 +103,7 @@ export function MemberCard({ member, i, aspect = "aspect-[4/5]" }: MemberCardPro
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+                className="p-2.5 bg-black/75 md:bg-black/40 md:backdrop-blur-md rounded-full md:shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
                 aria-label={`${member.name} Instagram`}
               >
                 <Instagram size={18} className="text-white" />
@@ -114,7 +115,7 @@ export function MemberCard({ member, i, aspect = "aspect-[4/5]" }: MemberCardPro
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+                className="p-2.5 bg-black/75 md:bg-black/40 md:backdrop-blur-md rounded-full md:shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
                 aria-label={`${member.name} Facebook`}
               >
                 <Facebook size={18} className="text-white" />
@@ -126,7 +127,7 @@ export function MemberCard({ member, i, aspect = "aspect-[4/5]" }: MemberCardPro
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-2.5 bg-black/40 backdrop-blur-md rounded-full shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
+                className="p-2.5 bg-black/75 md:bg-black/40 md:backdrop-blur-md rounded-full md:shadow-lg hover:bg-ted-red hover:scale-110 active:scale-95 transition-all duration-300"
                 aria-label={`${member.name} Github`}
               >
                 <Github size={18} className="text-white" />

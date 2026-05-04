@@ -1,37 +1,52 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { siteConfig } from "@/data/siteConfig";
 import { Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const FloatingActions = () => {
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
+  const visibleRef = useRef(true);
 
   const waitlistFormId = siteConfig.tallyFormUrl.split("/").pop();
 
-  // Threshold-based scroll detection
-  const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
-    const scrollDifference = currentScrollY - lastScrollY;
-    const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 50;
-
-    if (currentScrollY < 50 || isAtBottom) {
-      setIsVisible(true);
-    } else if (scrollDifference > 10) {
-      setIsVisible(false);
-    } else if (scrollDifference < -20) {
-      setIsVisible(true);
-    }
-
-    setLastScrollY(currentScrollY);
-  }, [lastScrollY]);
-
   useEffect(() => {
+    let ticking = false;
+
+    const updateVisibility = (nextVisible: boolean) => {
+      if (nextVisible !== visibleRef.current) {
+        visibleRef.current = nextVisible;
+        setIsVisible(nextVisible);
+      }
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollDifference = currentScrollY - lastScrollYRef.current;
+        const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 50;
+
+        if (currentScrollY < 50 || isAtBottom) {
+          updateVisibility(true);
+        } else if (scrollDifference > 10) {
+          updateVisibility(false);
+        } else if (scrollDifference < -20) {
+          updateVisibility(true);
+        }
+
+        lastScrollYRef.current = currentScrollY;
+        ticking = false;
+      });
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+  }, []);
 
   return (
     <AnimatePresence>

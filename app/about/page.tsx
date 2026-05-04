@@ -64,6 +64,7 @@ export default function AboutPage() {
                   src="/images/event-atmosphere.png"
                   alt="TEDxBhrikutiMandap — Envisioning Tomorrow"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-ted-red/10 to-transparent" />
@@ -164,6 +165,7 @@ export default function AboutPage() {
                   src="/images/venue-hero.png"
                   alt="Bhrikuti Mandap, Kathmandu — TEDxBhrikutiMandap venue"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>

@@ -8,7 +8,6 @@ import { ArrowRight, Mic2, Calendar } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { ctaNav } from "@/data/navigation";
 import { Container } from "@/components/Container";
-import { SectionHeading } from "@/components/SectionHeading";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 // ─── Animation Variants ────────────────────────────────────────────────────────
@@ -70,7 +69,7 @@ const CountdownTimer = () => {
     <div className="flex gap-3 sm:gap-5">
       {units.map((unit) => (
         <div key={unit.label} className="flex flex-col items-center">
-          <div className="bg-surface-card border border-white/[0.06] rounded-xl px-3 py-3 sm:px-5 sm:py-4 min-w-[60px] sm:min-w-[80px] text-center backdrop-blur-sm">
+          <div className="bg-surface-card border border-white/[0.06] rounded-xl px-3 py-3 sm:px-5 sm:py-4 min-w-[60px] sm:min-w-[80px] text-center md:backdrop-blur-sm">
             <span className="text-2xl sm:text-4xl font-[900] text-white tabular-nums">
               {String(unit.value).padStart(2, "0")}
             </span>
@@ -100,12 +99,13 @@ export default function Home() {
             fill
             className="object-cover opacity-30"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
         </div>
 
         {/* Animated glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-ted-red/10 rounded-full blur-[160px] pointer-events-none animate-glow-pulse" />
+        <div className="absolute top-1/2 left-1/2 hidden h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ted-red/10 blur-[160px] pointer-events-none animate-glow-pulse md:block" />
 
         <Container className="relative z-10 text-center py-20 md:py-0">
           <motion.div
@@ -234,8 +234,8 @@ export default function Home() {
 
       {/* ── CTA Band ────────────────────────────────────────────────────────── */}
       <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ted-red/15 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute top-[-20%] right-[-10%] w-[400px] h-[400px] bg-ted-red/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 hidden h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ted-red/15 blur-[160px] pointer-events-none md:block" />
+        <div className="absolute top-[-20%] right-[-10%] hidden h-[400px] w-[400px] rounded-full bg-ted-red/10 blur-[120px] pointer-events-none md:block" />
 
         <Container className="relative z-10 text-center">
           <AnimatedSection>

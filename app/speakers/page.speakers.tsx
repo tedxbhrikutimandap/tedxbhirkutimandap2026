@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,20 +26,8 @@ function SpeakersPageInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
-
-  // Open speaker from URL on initial load / back-forward navigation
-  useEffect(() => {
-    const speakerSlug = searchParams.get("speaker");
-    if (speakerSlug) {
-      const found = findSpeakerBySlug(speakerSlug);
-      if (found) {
-        setSelectedSpeaker(found);
-      }
-    } else {
-      setSelectedSpeaker(null);
-    }
-  }, [searchParams]);
+  const speakerSlug = searchParams.get("speaker");
+  const selectedSpeaker = speakerSlug ? findSpeakerBySlug(speakerSlug) : null;
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -56,14 +44,12 @@ function SpeakersPageInner() {
   }, [selectedSpeaker]);
 
   const openSpeaker = (speaker: Speaker) => {
-    setSelectedSpeaker(speaker);
     const params = new URLSearchParams(searchParams.toString());
     params.set("speaker", slugify(speaker.name));
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const closeSpeaker = () => {
-    setSelectedSpeaker(null);
     const params = new URLSearchParams(searchParams.toString());
     params.delete("speaker");
     router.push(pathname, { scroll: false });
@@ -93,6 +79,7 @@ function SpeakersPageInner() {
                         src={speaker.image}
                         alt={speaker.name}
                         fill
+                        sizes="(max-width: 1024px) 45vw, 22vw"
                         className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                       />
                     )}
@@ -135,7 +122,7 @@ function SpeakersPageInner() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.2 } }}
-            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden"
+            className="fixed inset-0 z-[100] bg-black/90 md:bg-black/60 md:backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden"
             onClick={closeSpeaker}
           >
             {/* Ambient Red Glow in Background */}
@@ -153,7 +140,7 @@ function SpeakersPageInner() {
               {/* Close Button - Floats top right of entire card */}
               <button
                 onClick={closeSpeaker}
-                className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-3 md:p-4 bg-black/40 md:bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red hover:rotate-90 transition-all duration-500 group"
+                className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-3 md:p-4 bg-black/75 md:bg-white/[0.03] md:backdrop-blur-md border border-white/10 rounded-full hover:bg-ted-red hover:border-ted-red hover:rotate-90 transition-all duration-500 group"
                 aria-label="Close"
               >
                 <X
@@ -171,6 +158,7 @@ function SpeakersPageInner() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                 )}
                 <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-surface-card via-surface-card/60 to-transparent lg:hidden" />
@@ -217,9 +205,9 @@ function SpeakersPageInner() {
                     transition={{ delay: 0.5 }}
                   >
                     <p className="text-xl md:text-3xl font-bold text-white/90 italic leading-snug mb-8 font-heading">
-                      <span className="text-ted-red opacity-60 mr-2">"</span>
+                      <span className="text-ted-red opacity-60 mr-2">&ldquo;</span>
                       {selectedSpeaker.talkTitle}
-                      <span className="text-ted-red opacity-60 ml-2">"</span>
+                      <span className="text-ted-red opacity-60 ml-2">&rdquo;</span>
                     </p>
                   </motion.div>
 

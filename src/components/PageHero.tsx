@@ -10,7 +10,7 @@ export const PageHero = ({ title, subtitle, children }: PageHeroProps) => {
   return (
     <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-ted-red/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 hidden h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-ted-red/8 blur-[120px] pointer-events-none md:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="h-1 w-12 bg-ted-red rounded-full mb-6 mx-auto" />

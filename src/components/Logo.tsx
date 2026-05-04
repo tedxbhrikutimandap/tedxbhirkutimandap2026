@@ -14,6 +14,7 @@ export const Logo = ({ isFooter = false, className = "" }: { isFooter?: boolean,
         fill
         className="object-contain"
         priority
+        sizes="(max-width: 768px) 13rem, 28rem"
         unoptimized={isFooter}
       />
     </div>
