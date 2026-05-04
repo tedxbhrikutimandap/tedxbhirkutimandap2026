@@ -146,10 +146,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-sm font-bold text-white mb-0.5">Email</p>
                       <a
-                        href="mailto:tedxbhrikutimandap@gmail.com"
+                        href="mailto:contact@tedxbhrikutimandap.com"
                         className="text-xs text-white/50 hover:text-ted-red transition-colors"
                       >
-                        tedxbhrikutimandap@gmail.com
+                        contact@tedxbhrikutimandap.com
                       </a>
                     </div>
                   </div>
