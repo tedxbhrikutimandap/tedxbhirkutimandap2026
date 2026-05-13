@@ -29,7 +29,7 @@ export const sponsors: Sponsor[] = [
   // --- Title Sponsor ---
   { 
     name: "Nepal Rising", 
-    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777046395/Nepal_Rising_gtn63g.avif", 
+    logo: "https://res.cloudinary.com/dgqtgob6n/image/upload/v1777047886/Nepal_Rising_gtn63g.png", 
     url: "https://daayitwaus.org/", 
     tier: SPONSOR_TIERS.TITLE,
     partnerLabel: "Title Sponsor",

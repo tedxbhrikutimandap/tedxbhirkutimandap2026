@@ -143,6 +143,26 @@ export default function RootLayout({
           }}
         />
 
+        {/* SiteNavigationElement JSON-LD for Sitelinks */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              itemListElement: [
+                { "@type": "SiteNavigationElement", position: 1, name: "About", url: `${seoConfig.url}about` },
+                { "@type": "SiteNavigationElement", position: 2, name: "Speakers", url: `${seoConfig.url}speakers` },
+                { "@type": "SiteNavigationElement", position: 3, name: "Schedule", url: `${seoConfig.url}schedule` },
+                { "@type": "SiteNavigationElement", position: 4, name: "Tickets", url: `${seoConfig.url}tickets` },
+                { "@type": "SiteNavigationElement", position: 5, name: "Team", url: `${seoConfig.url}team` },
+                { "@type": "SiteNavigationElement", position: 6, name: "Sponsors", url: `${seoConfig.url}sponsors` },
+                { "@type": "SiteNavigationElement", position: 7, name: "Contact", url: `${seoConfig.url}contact` },
+              ]
+            }),
+          }}
+        />
+
         {/* Event JSON-LD for rich results */}
         <script
           type="application/ld+json"
