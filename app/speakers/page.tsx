@@ -166,8 +166,8 @@ function SpeakersPageInner() {
               </div>
 
               {/* Right Side: Editorial Content */}
-              <div className="relative flex-1 h-[50vh] md:h-[40vh] lg:h-full lg:max-h-[85vh] overflow-y-auto px-6 py-6 md:py-12 md:px-12 lg:px-20 flex flex-col pt-0 lg:justify-center z-10 -mt-10 lg:mt-0 pb-12">
-                <div className="max-w-2xl relative z-10 mx-auto md:mx-0 w-full">
+              <div className="relative flex-1 h-[50vh] md:h-[40vh] lg:h-full lg:max-h-[85vh] overflow-y-auto px-6 py-10 md:py-12 md:px-12 lg:px-20 flex flex-col z-10 -mt-10 lg:mt-0 pb-12">
+                <div className="max-w-2xl relative z-10 mx-auto md:mx-0 w-full lg:my-auto">
                   <motion.h3
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -181,12 +181,11 @@ function SpeakersPageInner() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 mb-8"
+                    className="flex flex-col gap-1 mb-8"
                   >
                     <p className="text-lg md:text-xl font-bold text-white/90 font-sans tracking-wide">
                       {selectedSpeaker.title}
                     </p>
-                    <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-ted-red/60" />
                     <p className="text-base md:text-lg text-white/50 font-sans">
                       {selectedSpeaker.organization}
                     </p>
